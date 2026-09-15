@@ -1,0 +1,52 @@
+### Listar tareas (vacío al principio)
+GET http://localhost:3000/tareas
+
+### Crear una tarea
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Lavar los platos"
+}
+
+### Crear otra tarea
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Programacion IV"
+}
+
+### Intentar crear una tarea con nombre repetido
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Lavar los platos"
+}
+
+### Marcar una tarea como completada
+PATCH http://localhost:3000/tareas/Lavar los platos
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### Listar solo las completadas
+GET http://localhost:3000/tareas?completada=true
+
+### Listar solo las pendientes
+GET http://localhost:3000/tareas?completada=false
+
+### Consultar una tarea puntual
+GET http://localhost:3000/tareas/Estudiar Programacion IV
+
+### Consultar una tarea que no existe
+GET http://localhost:3000/tareas/No Existe
+
+### Borrar una tarea
+DELETE http://localhost:3000/tareas/Lavar los platos
+
+### Listar tareas al final
+GET http://localhost:3000/tareas
