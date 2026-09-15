@@ -1,0 +1,14 @@
+### Caso válido - rectángulo
+GET http://localhost:3000/rectangulos?base=4&altura=6
+
+### Caso válido - cuadrado
+GET http://localhost:3000/rectangulos?base=5&altura=5
+
+### Caso inválido - falta altura
+GET http://localhost:3000/rectangulos?base=4
+
+### Caso inválido - valores negativos
+GET http://localhost:3000/rectangulos?base=-4&altura=6
+
+### Caso inválido - valores no numéricos
+GET http://localhost:3000/rectangulos?base=abc&altura=6

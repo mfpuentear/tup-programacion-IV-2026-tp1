@@ -1,0 +1,58 @@
+### Listar alumnos (debería estar vacío al principio)
+GET http://localhost:3000/alumnos
+
+### Crear un alumno válido
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [7, 8, 6]
+}
+
+### Crear otro alumno (para probar promedio bajo)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Gomez",
+  "notas": [4, 5, 3]
+}
+
+### Consultar un alumno puntual
+GET http://localhost:3000/alumnos/Juan Perez
+
+### Intentar crear un alumno con nombre repetido
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [9, 9, 9]
+}
+
+### Intentar crear un alumno con notas inválidas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Pedro Lopez",
+  "notas": [7, 8]
+}
+
+### Modificar las notas de un alumno
+PUT http://localhost:3000/alumnos/Juan Perez
+Content-Type: application/json
+
+{
+  "notas": [10, 9, 10]
+}
+
+### Consultar un alumno que no existe
+GET http://localhost:3000/alumnos/No Existe
+
+### Borrar un alumno
+DELETE http://localhost:3000/alumnos/Ana Gomez
+
+### Listar alumnos al final
+GET http://localhost:3000/alumnos
