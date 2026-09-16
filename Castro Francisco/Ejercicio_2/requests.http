@@ -1,0 +1,126 @@
+### Ejercicio 2 - API de Alumnos y Calificaciones
+### Servidor: http://localhost:3002
+
+# -----------------------------------------------
+# 1. Listar todos los alumnos (vacío al inicio)
+# -----------------------------------------------
+GET http://localhost:3002/alumnos
+
+###
+
+# -----------------------------------------------
+# 2. Crear alumno - caso promocionado (promedio >= 8)
+# -----------------------------------------------
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "María García",
+  "notas": [9, 8, 10]
+}
+
+###
+
+# -----------------------------------------------
+# 3. Crear alumno - caso aprobado (promedio 6 o 7)
+# -----------------------------------------------
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "notas": [6, 7, 6]
+}
+
+###
+
+# -----------------------------------------------
+# 4. Crear alumno - caso reprobado (promedio < 6)
+# -----------------------------------------------
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Pedro López",
+  "notas": [3, 4, 5]
+}
+
+###
+
+# -----------------------------------------------
+# 5. Error: nombre duplicado
+# -----------------------------------------------
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "María García",
+  "notas": [7, 8, 9]
+}
+
+###
+
+# -----------------------------------------------
+# 6. Error: notas fuera de rango
+# -----------------------------------------------
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Torres",
+  "notas": [11, 5, 3]
+}
+
+###
+
+# -----------------------------------------------
+# 7. Error: cantidad de notas incorrecta
+# -----------------------------------------------
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Luis Romero",
+  "notas": [8, 9]
+}
+
+###
+
+# -----------------------------------------------
+# 8. Consultar alumno por nombre
+# -----------------------------------------------
+GET http://localhost:3002/alumnos/María García
+
+###
+
+# -----------------------------------------------
+# 9. Error: alumno no encontrado
+# -----------------------------------------------
+GET http://localhost:3002/alumnos/Carlos Rodríguez
+
+###
+
+# -----------------------------------------------
+# 10. Modificar alumno (actualizar notas)
+# -----------------------------------------------
+PUT http://localhost:3002/alumnos/Juan Pérez
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "notas": [8, 9, 8]
+}
+
+###
+
+# -----------------------------------------------
+# 11. Eliminar alumno
+# -----------------------------------------------
+DELETE http://localhost:3002/alumnos/Pedro López
+
+###
+
+# -----------------------------------------------
+# 12. Listar todos los alumnos (estado final)
+# -----------------------------------------------
+GET http://localhost:3002/alumnos
