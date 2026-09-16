@@ -1,0 +1,23 @@
+### Caso válido - rectángulo normal
+GET http://localhost:3000/rectangulos?base=10&altura=5
+
+### Caso válido - cuadrado (base === altura)
+GET http://localhost:3000/rectangulos?base=8&altura=8
+
+### Caso inválido - falta el parámetro "altura"
+GET http://localhost:3000/rectangulos?base=10
+
+### Caso inválido - falta el parámetro "base"
+GET http://localhost:3000/rectangulos?altura=5
+
+### Caso inválido - valor no numérico
+GET http://localhost:3000/rectangulos?base=abc&altura=5
+
+### Caso inválido - valor negativo
+GET http://localhost:3000/rectangulos?base=-3&altura=5
+
+### Caso inválido - valor igual a cero
+GET http://localhost:3000/rectangulos?base=0&altura=5
+
+### Caso inválido - ambos parámetros faltantes
+GET http://localhost:3000/rectangulos
