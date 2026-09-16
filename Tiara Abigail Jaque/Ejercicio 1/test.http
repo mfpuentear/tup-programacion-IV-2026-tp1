@@ -1,0 +1,37 @@
+### Variables
+@api = http://localhost:3000/api/rectangulos
+
+### 1. Calcular superficie y perímetro de un Rectángulo válido
+POST {{api}}/calcular
+Content-Type: application/json
+
+{
+  "base": 10,
+  "altura": 4
+}
+
+### 2. Calcular un Cuadrado (base y altura iguales)
+POST {{api}}/calcular
+Content-Type: application/json
+
+{
+  "base": 5,
+  "altura": 5
+}
+
+### 3. ERROR: Valores negativos o cero
+POST {{api}}/calcular
+Content-Type: application/json
+
+{
+  "base": -2,
+  "altura": 0
+}
+
+### 4. ERROR: Faltan datos
+POST {{api}}/calcular
+Content-Type: application/json
+
+{
+  "base": 8
+}
