@@ -7,7 +7,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch \"Ejercicio 1/index.js\""
+    "dev1": "node --watch \"Ejercicio 1/index.js\"",
+    "dev2": "node --watch \"Ejercicio 2/index.js\""
   },
   "dependencies": {
     "express": "^5.2.1"

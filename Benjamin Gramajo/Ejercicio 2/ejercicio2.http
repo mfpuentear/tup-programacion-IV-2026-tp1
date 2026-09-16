@@ -1,0 +1,96 @@
+### Crear un alumno válido
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Perez",
+  "notas": [8, 9, 7]
+}
+
+### Crear otro alumno válido (caso reprobado)
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Luis Gomez",
+  "notas": [4, 5, 3]
+}
+
+### Crear otro alumno válido (caso aprobado, no promocionado)
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carla Diaz",
+  "notas": [6, 7, 6]
+}
+
+### Caso inválido - nombre duplicado
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Perez",
+  "notas": [10, 10, 10]
+}
+
+### Caso inválido - faltan notas
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Pedro Ruiz",
+  "notas": [8, 9]
+}
+
+### Caso inválido - nota fuera de rango
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Marta Lopez",
+  "notas": [8, 15, 7]
+}
+
+### Caso inválido - nombre vacío
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "notas": [8, 9, 7]
+}
+
+### Listar todos los alumnos
+GET http://localhost:3001/alumnos
+
+### Consultar un alumno existente (promocionado)
+GET http://localhost:3001/alumnos/Ana Perez
+
+### Consultar un alumno inexistente
+GET http://localhost:3001/alumnos/No Existe
+
+### Modificar las notas de un alumno existente
+PUT http://localhost:3001/alumnos/Luis Gomez
+Content-Type: application/json
+
+{
+  "nombre": "Luis Gomez",
+  "notas": [9, 9, 9]
+}
+
+
+### Caso inválido - modificar un alumno inexistente
+PUT http://localhost:3001/alumnos/No Existe
+Content-Type: application/json
+
+{
+  "nombre": "No Existe",
+  "notas": [5, 5, 5]
+}
+
+### Eliminar un alumno existente
+DELETE http://localhost:3001/alumnos/Luis Gomez
+
+### Eliminar un alumno inexistente
+DELETE http://localhost:3001/alumnos/Luis Gomez
