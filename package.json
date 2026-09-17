@@ -1,0 +1,12 @@
+{
+  "name": "tup-programacion-IV-2026-tp1",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node ./\"De la Puente, Matias/Ejercicio 1/app.js\"",
+    "test": "node --test ./\"De la Puente, Matias/Ejercicio 1/test/**/*.test.js\""
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

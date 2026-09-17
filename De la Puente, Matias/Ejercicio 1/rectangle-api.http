@@ -1,0 +1,25 @@
+### GET valid rectangle
+GET http://localhost:3000/api/rectangles/summary?base=4&height=6
+Accept: application/json
+
+### POST square
+POST http://localhost:3000/api/rectangles/summary
+Content-Type: application/json
+
+{
+  "base": 5,
+  "height": 5
+}
+
+### GET invalid dimensions
+GET http://localhost:3000/api/rectangles/summary?base=0&height=7
+Accept: application/json
+
+### POST invalid body
+POST http://localhost:3000/api/rectangles/summary
+Content-Type: application/json
+
+{
+  "base": -2,
+  "height": 4
+}
