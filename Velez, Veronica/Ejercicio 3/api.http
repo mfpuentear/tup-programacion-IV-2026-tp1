@@ -1,0 +1,43 @@
+### Crear tarea 1
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer el TP1 de Programacion 4"
+}
+
+### Crear tarea 2
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para el parcial"
+}
+
+### Intentar crear tarea duplicada
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer el TP1 de Programacion 4"
+}
+
+### Marcar tarea 1 como completada
+PUT http://localhost:3003/tareas/1
+Content-Type: application/json
+
+{
+    "completada": true
+}
+
+### Listar TODAS las tareas
+GET http://localhost:3003/tareas
+
+### Listar solo tareas completadas
+GET http://localhost:3003/tareas?completada=true
+
+### Listar solo tareas pendientes
+GET http://localhost:3003/tareas?completada=false
+
+### Borrar la tarea 2
+DELETE http://localhost:3003/tareas/2

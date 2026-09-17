@@ -25,3 +25,6 @@
   00:00 hs y 12:00 hs del sábado 19/09/26.
 - Se considera no entregado si se realiza el pull request luego de las 12:00 hs
   del sábado 19/09/26.
+
+
+## Alumno: Veronica Velez

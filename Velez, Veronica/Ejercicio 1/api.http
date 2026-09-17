@@ -1,0 +1,29 @@
+### Crear un cuadrado
+POST http://localhost:3001/rectangulos
+Content-Type: application/json
+
+{
+    "base": 10,
+    "altura": 10
+}
+
+### Crear un rectangulo comun
+POST http://localhost:3001/rectangulos
+Content-Type: application/json
+
+{
+    "base": 20,
+    "altura": 5
+}
+
+### Intentar crear con valores malos
+POST http://localhost:3001/rectangulos
+Content-Type: application/json
+
+{
+    "base": -5,
+    "altura": 10
+}
+
+### Consultar todos
+GET http://localhost:3001/rectangulos
