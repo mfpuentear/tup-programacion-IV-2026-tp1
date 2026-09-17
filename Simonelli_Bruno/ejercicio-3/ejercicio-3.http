@@ -1,0 +1,42 @@
+### Crear una tarea (Pendiente)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer Ejercicio 2",
+  "completada": false
+}
+
+### Crear otra tarea (Completada)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer Ejercicio 1",
+  "completada": true
+}
+
+### Intentar crear tarea duplicada (Error 409)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer Ejercicio 2"
+}
+
+### Listar TODAS las tareas
+GET http://localhost:3000/tareas
+
+### Filtrar solo tareas PENDIENTES
+GET http://localhost:3000/tareas?completada=false
+
+### Filtrar solo tareas COMPLETADAS
+GET http://localhost:3000/tareas?completada=true
+
+### Cambiar estado de una tarea por ID
+PATCH http://localhost:3000/tareas/1
+Content-Type: application/json
+
+{
+  "completada": true
+}

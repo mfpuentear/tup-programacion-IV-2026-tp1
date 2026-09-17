@@ -1,0 +1,8 @@
+### Consulta rectángulo
+GET http://localhost:3000/rectangulo?base=10&altura=5
+
+### Consulta cuadrado
+GET http://localhost:3000/rectangulo?base=4&altura=4
+
+### Error (Valores inválidos)
+GET http://localhost:3000/rectangulo?base=-2&altura=5

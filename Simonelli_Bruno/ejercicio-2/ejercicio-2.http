@@ -1,0 +1,38 @@
+### Listar todos los alumnos
+GET http://localhost:3000/alumnos
+
+### Crear un alumno (Promocionado)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Pérez",
+  "notas": [8, 9, 10]
+}
+
+### Crear un alumno (Aprobado)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Maria Gomez",
+  "notas": [6, 7, 7]
+}
+
+### Crear un alumno (Reprobado)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Lopez",
+  "notas": [4, 5, 3]
+}
+
+### Error: Nombre duplicado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Pérez",
+  "notas": [7, 7, 7]
+}
