@@ -13,3 +13,9 @@ interno.
 
 Definir y fundamentar las decisiones de diseño necesarias para modelar la
 información y exponer la funcionalidad requerida.
+
+## Implementación
+
+Se crea un servicio REST con validaciones de nombre y notas, cálculo del
+promedio, clasificación académica y pruebas HTTP para listar, crear, actualizar
+y eliminar estudiantes.

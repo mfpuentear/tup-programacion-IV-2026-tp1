@@ -9,3 +9,9 @@ que permitan diferenciar las tareas completadas de las pendientes.
 
 Definir y fundamentar las decisiones de diseño necesarias para modelar la
 información y exponer la funcionalidad requerida.
+
+## Implementación
+
+Se implementa la API de tareas en español con validación de duplicados,
+filtrado por estado y archivo HTTP para probar los distintos métodos del
+recurso.
