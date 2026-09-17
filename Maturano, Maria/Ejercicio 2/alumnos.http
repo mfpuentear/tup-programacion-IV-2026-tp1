@@ -1,0 +1,23 @@
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [8, 7, 9]
+}
+
+###
+
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [5, 5, 5]
+}
+
+###
+
+GET http://localhost:3001/alumnos/Juan Perez
+
+GET http://localhost:3001/alumnos/Juan Perez
