@@ -1,0 +1,47 @@
+### Crear alumno promocionado
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Veronica Velez",
+    "notas": [8, 9, 10]
+}
+
+### Crear alumno aprobado
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan Perez",
+    "notas": [6, 6, 7]
+}
+
+### Crear alumno reprobado
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pepe",
+    "notas": [2, 4, 3]
+}
+
+### Intentar repetir nombre
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Veronica Velez",
+    "notas": [10, 10, 10]
+}
+
+### Actualizar alumno (ej: id 3)
+PUT http://localhost:3002/alumnos/3
+Content-Type: application/json
+
+{
+    "nombre": "Pepe Modificado",
+    "notas": [10, 9, 8]
+}
+
+### Ver alumnos y condicion academica
+GET http://localhost:3002/alumnos
