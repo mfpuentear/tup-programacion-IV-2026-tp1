@@ -1,0 +1,12 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "description": "API con Express para calcular perimetro y superficie de rectangulos y cuadrados",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
