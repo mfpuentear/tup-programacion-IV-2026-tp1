@@ -1,0 +1,14 @@
+{
+  "name": "tp1",
+  "version": "1.0.0",
+  "description": "Trabajo practico 1 de Programacion IV",
+  "main": "index.js",
+  "scripts": {
+    "ej1": "node \"Velez, Veronica/Ejercicio 1/index.js\"",
+    "ej2": "node \"Velez, Veronica/Ejercicio 2/index.js\"",
+    "ej3": "node \"Velez, Veronica/Ejercicio 3/index.js\""
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
