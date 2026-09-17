@@ -1,0 +1,12 @@
+{
+  "name": "ejercicio-3",
+  "version": "1.0.0",
+  "description": "API con Express para administrar tareas y filtrar entre completadas y pendientes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
