@@ -1,0 +1,91 @@
+### Ejercicio 2 - Pruebas de la API de Alumnos y Notas
+@baseUrl = http://localhost:3000
+
+### 1. Listar todos los alumnos inicialmente (lista vacía)
+GET {{baseUrl}}/alumnos
+
+### 2. Crear alumno 1 - Caso Reprobado (promedio menor a 6)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Martin Gómez",
+  "notas": [4, 5, 5]
+}
+
+### 3. Crear alumno 2 - Caso Aprobado (promedio de 6 o 7)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Lucía Fernandez",
+  "notas": [6, 7, 7]
+}
+
+### 4. Crear alumno 3 - Caso Promocionado (promedio de 8 o más)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Esteban Quito",
+  "notas": [8, 9, 10]
+}
+
+### 5. Listar todos los alumnos (debe mostrar los 3 con sus datos derivados)
+GET {{baseUrl}}/alumnos
+
+### 6. Consultar un alumno puntual por nombre
+GET {{baseUrl}}/alumnos/Lucía Fernandez
+
+### 7. Error - Consultar alumno inexistente (404)
+GET {{baseUrl}}/alumnos/Carlos Perez
+
+### 8. Error - Intentar registrar alumno con nombre repetido (409 Conflict)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Martin Gómez",
+  "notas": [8, 8, 8]
+}
+
+### 9. Error - Enviar cantidad incorrecta de notas (2 notas en lugar de 3)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Mariana Lopez",
+  "notas": [7, 9]
+}
+
+### 10. Error - Nota fuera del rango 0 a 10
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Mariana Lopez",
+  "notas": [7, 11, 8]
+}
+
+### 11. Error - Nombre vacío
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "notas": [7, 8, 9]
+}
+
+### 12. Modificar notas de un alumno existente (PUT)
+PUT {{baseUrl}}/alumnos/Martin Gómez
+Content-Type: application/json
+
+{
+  "notas": [8, 8, 9]
+}
+
+### 13. Eliminar un alumno (DELETE)
+DELETE {{baseUrl}}/alumnos/Esteban Quito
+
+### 14. Verificar eliminación consultando nuevamente el alumno eliminado (404)
+GET {{baseUrl}}/alumnos/Esteban Quito

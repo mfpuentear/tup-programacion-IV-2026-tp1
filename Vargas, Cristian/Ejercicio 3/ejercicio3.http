@@ -1,0 +1,94 @@
+### Ejercicio 3 - Pruebas de la API de Tareas
+@baseUrl = http://localhost:3000
+
+### 1. Listar todas las tareas inicialmente (lista vacía)
+GET {{baseUrl}}/tareas
+
+### 2. Crear tarea 1 - Pendiente (por defecto false)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar para el parcial de Programación IV"
+}
+
+### 3. Crear tarea 2 - Completada (explícitamente true)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Instalar Node.js y Express",
+  "completada": true
+}
+
+### 4. Crear tarea 3 - Pendiente (explícitamente false)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el informe del Trabajo Práctico",
+  "completada": false
+}
+
+### 5. Listar todas las tareas (debe mostrar las 3 tareas creadas)
+GET {{baseUrl}}/tareas
+
+### 6. Filtrar tareas completadas (?completada=true)
+GET {{baseUrl}}/tareas?completada=true
+
+### 7. Filtrar tareas pendientes (?completada=false)
+GET {{baseUrl}}/tareas?completada=false
+
+### 8. Filtrar tareas usando alias (?estado=completada)
+GET {{baseUrl}}/tareas?estado=completada
+
+### 9. Filtrar tareas usando alias (?estado=pendiente)
+GET {{baseUrl}}/tareas?estado=pendiente
+
+### 10. Consultar una tarea puntual por su nombre
+GET {{baseUrl}}/tareas/Instalar Node.js y Express
+
+### 11. Error - Consultar tarea inexistente (404 Not Found)
+GET {{baseUrl}}/tareas/Tarea Inexistente
+
+### 12. Error - Intentar crear tarea con nombre repetido (409 Conflict)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar para el parcial de Programación IV"
+}
+
+### 13. Error - Crear tarea con nombre vacío (400 Bad Request)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": ""
+}
+
+### 14. Error - Filtrar con valor booleano inválido (400 Bad Request)
+GET {{baseUrl}}/tareas?completada=si
+
+### 15. Modificar estado de tarea con PATCH (marcar como completada)
+PATCH {{baseUrl}}/tareas/Estudiar para el parcial de Programación IV
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### 16. Modificar tarea con PUT (cambiar nombre y estado)
+PUT {{baseUrl}}/tareas/Hacer el informe del Trabajo Práctico
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el informe final del TP1",
+  "completada": true
+}
+
+### 17. Eliminar una tarea (DELETE)
+DELETE {{baseUrl}}/tareas/Instalar Node.js y Express
+
+### 18. Verificar eliminación consultando nuevamente la tarea (404 Not Found)
+GET {{baseUrl}}/tareas/Instalar Node.js y Express
