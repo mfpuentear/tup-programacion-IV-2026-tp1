@@ -1,0 +1,26 @@
+### Obteniendo todos los alumnos
+GET http://localhost:3002/alumnos
+
+### Obteniendo un alumno por id
+GET http://localhost:3002/alumnos/1
+
+### Creando un alumno
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "María",
+  "notas": [9, 8, 10]
+}
+
+### Actualizando un alumno
+PUT http://localhost:3002/alumnos/1
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "notas": [7, 8, 9]
+}
+
+### Eliminando un alumno
+DELETE http://localhost:3002/alumnos/2

@@ -1,0 +1,29 @@
+### Obteniendo todas las tareas
+GET http://localhost:3003/tareas
+
+### Obteniendo tareas completadas
+GET http://localhost:3003/tareas?completada=true
+
+### Obteniendo una tarea por id
+GET http://localhost:3003/tareas/1
+
+### Creando una tarea
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Documentar API",
+  "completada": false
+}
+
+### Actualizando una tarea
+PUT http://localhost:3003/tareas/1
+Content-Type: application/json
+
+{
+  "nombre": "Preparar presentación",
+  "completada": true
+}
+
+### Eliminando una tarea
+DELETE http://localhost:3003/tareas/2

@@ -1,0 +1,24 @@
+{
+  "name": "tp-quispe-macarena",
+  "version": "1.0.0",
+  "description": "- Bifurcar (fork) el repositorio para tener una copia en su cuenta de Github.\r - Crear una rama con su nombre.\r - Realizar los ejercicios siguiendo la estructura de carpeta indicado en este\r   repositorio.\r - Los enunciados de los ejercicios se encuentran dentro de las carpetas de\r   ejercicios.\r - Para cada ejercicio plantear los método http que considere necesario junto con\r   el nombre del recurso.\r - También verificar que los valores (params, query, body) al consultar, crear,\r   modificar o quitar estén dentro de valores válidos.\r - Por último agregar un archivo http en cada ejercicio para probar los distintos\r   métodos.\r - Realizar al menos un commit por ejercicio.\r - Crear un pull request una vez finalizado el trabajo práctico.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfpuentear/tup-programacion-IV-2026-tp1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mfpuentear/tup-programacion-IV-2026-tp1/issues"
+  },
+  "homepage": "https://github.com/mfpuentear/tup-programacion-IV-2026-tp1#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
