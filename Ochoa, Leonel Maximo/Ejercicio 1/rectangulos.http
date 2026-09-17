@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3001
+
+### Crear rectángulo (también es cuadrado)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 4,
+  "altura": 4
+}
+
+### Crear rectángulo común
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 5,
+  "altura": 3
+}
+
+### Crear con datos inválidos (debe fallar 400)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": -2,
+  "altura": 3
+}
+
+### Listar todos
+GET {{baseUrl}}/rectangulos
+
+### Obtener uno por id
+GET {{baseUrl}}/rectangulos/1
+
+### Obtener id inexistente (debe fallar 404)
+GET {{baseUrl}}/rectangulos/999
+
+### Modificar uno
+PUT {{baseUrl}}/rectangulos/1
+Content-Type: application/json
+
+{
+  "base": 10,
+  "altura": 2
+}
+
+### Eliminar uno
+DELETE {{baseUrl}}/rectangulos/2
