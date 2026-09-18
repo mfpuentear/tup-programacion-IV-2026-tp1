@@ -1,0 +1,49 @@
+@url = http://localhost:3000/rectangulos
+
+### Crear rectángulo
+POST {{url}}
+Content-Type: application/json
+
+{ "base": 4, "altura": 6 }
+
+### Crear cuadrado
+POST {{url}}
+Content-Type: application/json
+
+{ "base": 5, "altura": 5 }
+
+### Crear inválido (400)
+POST {{url}}
+Content-Type: application/json
+
+{ "base": -2, "altura": "hola" }
+
+### Listar todos
+GET {{url}}
+
+### Solo cuadrados
+GET {{url}}?cuadrado=true
+
+### Solo no cuadrados
+GET {{url}}?cuadrado=false
+
+### Query inválida (400)
+GET {{url}}?cuadrado=quizas
+
+### Obtener por id
+GET {{url}}/1
+
+### Id inválido (400)
+GET {{url}}/abc
+
+### No existe (404)
+GET {{url}}/999
+
+### Modificar
+PUT {{url}}/1
+Content-Type: application/json
+
+{ "base": 3, "altura": 3 }
+
+### Eliminar
+DELETE {{url}}/2
