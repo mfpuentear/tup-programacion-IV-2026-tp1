@@ -1,0 +1,17 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "description": "API con ExpressJS para resolver consultas sobre rectangulos y cuadrados.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node verify.mjs"
+  },
+  "author": "Federico Merlo Brac",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
