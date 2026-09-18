@@ -1,0 +1,12 @@
+### Rectángulo válido
+GET http://localhost:3000/rectangulos?base=5&altura=3
+### Cuadrado válido
+GET http://localhost:3000/rectangulos?base=8&altura=8
+### Falta la altura
+GET http://localhost:3000/rectangulos?base=5
+### Base con valor no numérico
+GET http://localhost:3000/rectangulos?base=hola&altura=3
+### Base negativa
+GET http://localhost:3000/rectangulos?base=-5&altura=3
+### Altura igual a cero
+GET http://localhost:3000/rectangulos?base=5&altura=0
