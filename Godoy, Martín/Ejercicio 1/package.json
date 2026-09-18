@@ -1,0 +1,15 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "description": "Desarrollar una API con ExpressJS para resolver consultas sobre perímetros y\r superficies de rectángulos. La solución deberá permitir distinguir, cuando\r corresponda, los casos que también constituyen cuadrados.",
+  "license": "ISC",
+  "author": "Martin Godoy",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
