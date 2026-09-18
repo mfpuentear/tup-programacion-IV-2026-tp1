@@ -20,7 +20,7 @@ PUT {{url}}/api/alumnos/Martin Godoy
 Content-Type: application/json
 
 {
-  "notas": [9, 9, 10]
+  "notas": [10, 9, 10]
 }
 
 ### eliminar un alumno
