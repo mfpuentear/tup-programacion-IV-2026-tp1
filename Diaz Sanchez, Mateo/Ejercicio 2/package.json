@@ -1,0 +1,12 @@
+{
+  "name": "ejercicio-2",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "Alumnos.js",
+  "scripts": {
+    "start": "node Alumnos.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
