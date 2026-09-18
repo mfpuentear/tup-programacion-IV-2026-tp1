@@ -1,0 +1,116 @@
+### Ejercicio 3 - API de Tareas
+### Servidor: http://localhost:3003
+
+# Listar todas las tareas
+GET http://localhost:3003/tareas
+
+###
+
+# Crear tarea 1
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar para el examen"
+}
+
+###
+
+# Crear tarea 2
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer la compra"
+}
+
+###
+
+# Crear tarea 3
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Entregar el Trabajo practico"
+}
+
+###
+
+# Error: nombre duplicado
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer la compra"
+}
+
+###
+
+# Error: nombre vacio
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": ""
+}
+
+###
+
+# Obtener una tarea por nombre
+GET http://localhost:3003/tareas/Entregar el Trabajo practico
+
+###
+# Error: tarea no encontrada
+GET http://localhost:3003/tareas/Tarea inexistente
+
+###
+# Marcar tarea como completada
+PATCH http://localhost:3003/tareas/Hacer la compra
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+###
+# Marcar tarea como pendiente nuevamente
+PATCH http://localhost:3003/tareas/Hacer la compra
+Content-Type: application/json
+
+{
+  "completada": false
+}
+
+###
+
+# Error: valor de completada invalido
+PATCH http://localhost:3003/tareas/Entregar el Trabajo practico
+Content-Type: application/json
+
+{
+  "completada": "si"
+}
+
+###
+
+# Filtrar solo tareas completadas
+GET http://localhost:3003/tareas?estado=completada
+
+###
+# Filtrar solo tareas pendientes
+GET http://localhost:3003/tareas?estado=pendiente
+
+###
+# Error: filtro invalido
+GET http://localhost:3003/tareas?estado=enProceso
+
+###
+
+# Eliminar una tarea
+DELETE http://localhost:3003/tareas/Hacer la compra
+
+###
+
+# Error: eliminar tarea inexistente
+DELETE http://localhost:3003/tareas/Tarea que no existe
+

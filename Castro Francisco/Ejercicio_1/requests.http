@@ -1,0 +1,35 @@
+### Ejercicio 1 - API de Rectángulos
+### Servidor: http://localhost:3001
+
+# -----------------------------------------------
+# 1. Consultar un rectángulo (caso normal)
+# -----------------------------------------------
+GET http://localhost:3001/rectangulos?base=5&altura=3
+
+###
+
+# -----------------------------------------------
+# 2. Consultar un cuadrado (base === altura)
+# -----------------------------------------------
+GET http://localhost:3001/rectangulos?base=4&altura=4
+
+###
+
+# -----------------------------------------------
+# 3. Error: parámetros faltantes
+# -----------------------------------------------
+GET http://localhost:3001/rectangulos?base=5
+
+###
+
+# -----------------------------------------------
+# 4. Error: valores negativos
+# -----------------------------------------------
+GET http://localhost:3001/rectangulos?base=-3&altura=2
+
+###
+
+# -----------------------------------------------
+# 5. Error: valores no numéricos
+# -----------------------------------------------
+GET http://localhost:3001/rectangulos?base=abc&altura=3
