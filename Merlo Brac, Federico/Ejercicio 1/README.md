@@ -38,7 +38,7 @@ información y exponer la funcionalidad requerida.
    ```bash
    cd "Merlo Brac, Federico/Ejercicio 1"
    npm install
-   npm start
+   npm start  # Escuchando en http://localhost:3001
    ```
 
 2. Pruebas automáticas:
