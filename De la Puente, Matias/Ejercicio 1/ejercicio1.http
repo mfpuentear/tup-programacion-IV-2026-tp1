@@ -1,0 +1,47 @@
+### 1. Crear un rectángulo normal
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 10,
+    "altura": 5
+}
+
+### 2. Crear un cuadrado (debe detectar automáticamente que es cuadrado)
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 5,
+    "altura": 5
+}
+
+### 3. Validar Body incorrecto (Debe dar error 400 - números negativos o faltantes)
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": -2
+}
+
+### 4. Consultar todos los rectángulos (Query opcional)
+GET http://localhost:3000/rectangulos
+
+### 5. Consultar solo los que son cuadrados usando Query param
+GET http://localhost:3000/rectangulos?filtro=cuadrados
+
+### 6. Consultar un rectángulo por ID específico
+# (Reemplazar "1" por un ID generado en los pasos anteriores si usás UUIDs)
+GET http://localhost:3000/rectangulos/1
+
+### 7. Modificar un rectángulo (Params y Body)
+PUT http://localhost:3000/rectangulos/1
+Content-Type: application/json
+
+{
+    "base": 8,
+    "altura": 8
+}
+
+### 8. Eliminar un rectángulo
+DELETE http://localhost:3000/rectangulos/1
