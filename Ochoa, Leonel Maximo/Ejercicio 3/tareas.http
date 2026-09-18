@@ -1,0 +1,92 @@
+@baseUrl = http://localhost:3003
+
+### Crear tarea pendiente
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Express",
+  "completada": false
+}
+
+### Crear tarea (completada por defecto = false si se omite)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP1"
+}
+
+### Crear tarea ya completada
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Leer el enunciado",
+  "completada": true
+}
+
+### Crear otra pendiente
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Subir el pull request",
+  "completada": false
+}
+
+### Nombre duplicado (debe fallar 409)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Express",
+  "completada": false
+}
+
+### Body inválido (debe fallar 400)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "completada": "si"
+}
+
+### Listar todas
+GET {{baseUrl}}/tareas
+
+### Solo completadas
+GET {{baseUrl}}/tareas?completada=true
+
+### Solo pendientes
+GET {{baseUrl}}/tareas?completada=false
+
+### Query inválida (debe fallar 400)
+GET {{baseUrl}}/tareas?completada=talvez
+
+### Obtener una por id
+GET {{baseUrl}}/tareas/1
+
+### Id inexistente (debe fallar 404)
+GET {{baseUrl}}/tareas/999
+
+### Marcar como completada (PATCH)
+PATCH {{baseUrl}}/tareas/1
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### Reemplazar tarea (PUT)
+PUT {{baseUrl}}/tareas/2
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP1",
+  "completada": true
+}
+
+### Eliminar tarea
+DELETE {{baseUrl}}/tareas/4
