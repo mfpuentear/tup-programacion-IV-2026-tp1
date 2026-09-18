@@ -1,0 +1,101 @@
+@host = http://localhost:3002
+
+### Listado completo con promedio y condicion
+GET {{host}}/api/alumnos
+
+### Filtrar por condicion
+GET {{host}}/api/alumnos?condicion=promocionado
+
+### Filtrar por otra condicion
+GET {{host}}/api/alumnos?condicion=reprobado
+
+### Error 400: condicion que no existe
+GET {{host}}/api/alumnos?condicion=libre
+
+### Un alumno (el espacio del nombre va como %20)
+GET {{host}}/api/alumnos/Ana%20Gomez
+
+### La busqueda no distingue mayusculas
+GET {{host}}/api/alumnos/ana%20gomez
+
+### Las notas de un alumno con su promedio y condicion
+GET {{host}}/api/alumnos/Carla%20Ruiz/notas
+
+### Error 404: alumno inexistente
+GET {{host}}/api/alumnos/Pedro%20Lopez
+
+### Crear un alumno
+POST {{host}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego Sosa",
+  "notas": [7, 8, 9]
+}
+
+### Error 409: el nombre ya esta usado
+POST {{host}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "diego sosa",
+  "notas": [5, 5, 5]
+}
+
+### Error 400: faltan notas
+POST {{host}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Elena Paz",
+  "notas": [7, 8]
+}
+
+### Error 400: nota fuera de rango y nombre vacio
+POST {{host}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "   ",
+  "notas": [7, 8, 15]
+}
+
+### Reemplazar el registro completo (cambia nombre y notas)
+PUT {{host}}/api/alumnos/Diego%20Sosa
+Content-Type: application/json
+
+{
+  "nombre": "Diego Sosa Fernandez",
+  "notas": [9, 9, 10]
+}
+
+### Error 409: renombrar hacia un nombre ya ocupado
+PUT {{host}}/api/alumnos/Diego%20Sosa%20Fernandez
+Content-Type: application/json
+
+{
+  "nombre": "Ana Gomez",
+  "notas": [6, 6, 6]
+}
+
+### Reemplazar solo las notas
+PUT {{host}}/api/alumnos/Bruno%20Diaz/notas
+Content-Type: application/json
+
+{
+  "notas": [2, 3, 4]
+}
+
+### Error 404: notas de un alumno inexistente
+PUT {{host}}/api/alumnos/Pedro%20Lopez/notas
+Content-Type: application/json
+
+{
+  "notas": [5, 5, 5]
+}
+
+### Eliminar un alumno
+DELETE {{host}}/api/alumnos/Diego%20Sosa%20Fernandez
+
+### Error 404: eliminar algo que ya no esta
+DELETE {{host}}/api/alumnos/Diego%20Sosa%20Fernandez

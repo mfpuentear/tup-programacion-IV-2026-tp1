@@ -1,0 +1,122 @@
+@host = http://localhost:3003
+
+### Listado completo
+GET {{host}}/api/tareas
+
+### Solo las completadas
+GET {{host}}/api/tareas?completada=true
+
+### Solo las pendientes
+GET {{host}}/api/tareas?completada=false
+
+### Error 400: valor de completada invalido
+GET {{host}}/api/tareas?completada=si
+
+### Una tarea puntual
+GET {{host}}/api/tareas/Leer%20el%20enunciado
+
+### Error 404: tarea inexistente
+GET {{host}}/api/tareas/Tarea%20que%20no%20existe
+
+### Crear una tarea (nace pendiente)
+POST {{host}}/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Escribir el README"
+}
+
+### Crear una tarea ya completada
+POST {{host}}/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Instalar Express",
+  "completada": true
+}
+
+### Error 409: el nombre ya esta usado
+POST {{host}}/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "escribir el readme"
+}
+
+### Error 400: nombre vacio
+POST {{host}}/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "   "
+}
+
+### Error 400: completada no es booleano
+POST {{host}}/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Tarea rara",
+  "completada": "si"
+}
+
+### Reemplazo completo con PUT
+PUT {{host}}/api/tareas/Escribir%20el%20README
+Content-Type: application/json
+
+{
+  "nombre": "Escribir el README de cada ejercicio",
+  "completada": true
+}
+
+### Error 400: PUT sin el campo completada
+PUT {{host}}/api/tareas/Instalar%20Express
+Content-Type: application/json
+
+{
+  "nombre": "Instalar Express 4"
+}
+
+### Marcar como completada con PATCH
+PATCH {{host}}/api/tareas/Escribir%20los%20endpoints
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### Volver a dejarla pendiente
+PATCH {{host}}/api/tareas/Escribir%20los%20endpoints
+Content-Type: application/json
+
+{
+  "completada": false
+}
+
+### Renombrar con PATCH
+PATCH {{host}}/api/tareas/Probar%20con%20REST%20Client
+Content-Type: application/json
+
+{
+  "nombre": "Probar los endpoints con REST Client"
+}
+
+### Error 400: PATCH sin ningun campo
+PATCH {{host}}/api/tareas/Leer%20el%20enunciado
+Content-Type: application/json
+
+{}
+
+### Error 409: renombrar hacia un nombre ocupado
+PATCH {{host}}/api/tareas/Leer%20el%20enunciado
+Content-Type: application/json
+
+{
+  "nombre": "Preparar el entorno"
+}
+
+### Eliminar una tarea
+DELETE {{host}}/api/tareas/Instalar%20Express
+
+### Error 404: eliminar algo que ya no esta
+DELETE {{host}}/api/tareas/Instalar%20Express
