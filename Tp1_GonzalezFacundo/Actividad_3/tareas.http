@@ -1,0 +1,97 @@
+### Crear tarea pendiente
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para la universidad",
+    "completada": false
+}
+
+### Crear tarea completada
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicio",
+    "completada": true
+}
+
+### Crear otra tarea pendiente
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Leer apuntes",
+    "completada": false
+}
+
+### Crear otra tarea completada
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar trabajo práctico",
+    "completada": true
+}
+
+### Mostrar todas las tareas
+GET http://localhost:3000/tareas
+
+### Mostrar tareas ya completadas
+GET http://localhost:3000/tareas/completadas
+
+### Mostrar tareas pendientes
+GET http://localhost:3000/tareas/pendientes
+
+### Consultar una tarea específica
+GET http://localhost:3000/tareas/Estudiar%20para%20la%20universidad
+
+### Intentar crear una tarea con un nombre repetido
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para la universidad",
+    "completada": true
+}
+
+### Intentar crear una tarea sin nombre
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "completada": false
+}
+
+### Se intenta crear una tarea con estado incorrecto
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Nueva tarea",
+    "completada": "no"
+}
+
+### Modificar una tarea
+PUT http://localhost:3000/tareas/Estudiar%20para%20la%20universidad
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para la universidad",
+    "completada": true
+}
+
+### Modificar un nombre que ya existe
+PUT http://localhost:3000/tareas/Estudiar%20para%20la%20universidad
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicio",
+    "completada": false
+}
+
+### Eliminar una tarea
+DELETE http://localhost:3000/tareas/Leer%20apuntes
+
+### Comprobar nuevamente todas las tareas
+GET http://localhost:3000/tareas

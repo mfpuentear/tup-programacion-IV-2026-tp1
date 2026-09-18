@@ -1,0 +1,14 @@
+### Validacion - rectángulo
+GET http://localhost:3000/rectangulos?base=4&altura=6
+
+### Validacion - cuadrado
+GET http://localhost:3000/rectangulos?base=5&altura=5
+
+### Validacion - falta altura
+GET http://localhost:3000/rectangulos?base=4
+
+### Validacion - valores negativos
+GET http://localhost:3000/rectangulos?base=-4&altura=6
+
+### Validacion - valores no numéricos
+GET http://localhost:3000/rectangulos?base=abc&altura=6

@@ -1,0 +1,75 @@
+### 1. Obtener todos los alumnos
+GET http://localhost:3000/alumnos
+
+### 2. Crear alumno 1 - Promocionado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Castro",
+  "notas": [8, 9, 10]
+}
+
+### 3. Crear alumno 2 - Aprobado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Candela Carrizo",
+  "notas": [6, 7, 7]
+}
+
+### 4. Crear alumno 3 - Reprobado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Lopez",
+  "notas": [4, 5, 3]
+}
+
+
+### 5. Obtener todos los alumnos cargados
+GET http://localhost:3000/alumnos
+
+
+### 6. Consultar un alumno específico por nombre
+GET http://localhost:3000/alumnos/Juan%20Castro
+
+### 7. ERROR - Intentar crear un alumno con nombre duplicado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Castro",
+  "notas": [7, 7, 7]
+}
+
+### 8. ERROR - Crear un alumno con menos de 3 notas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Martin Diaz",
+  "notas": [8, 9]
+}
+
+### 9. Modificar las notas de un alumno
+PUT http://localhost:3000/alumnos/Carlos%20Lopez
+Content-Type: application/json
+
+{
+  "notas": [6, 6, 6]
+}
+
+### 10. Modificar nombre y notas
+PUT http://localhost:3000/alumnos/Candela%20Carrizo
+Content-Type: application/json
+
+{
+  "nuevoNombre": "Maria Fernandez",
+  "notas": [9, 9, 10]
+}
+
+### 11. Eliminar un alumno
+DELETE http://localhost:3000/alumnos/Carlos%20Lopez
