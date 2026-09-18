@@ -38,8 +38,48 @@ function enriquecerFigura(figura) {
 // RUTAS DE LA API
 // ==========================================
 
-// Ruta raíz informativa con enlaces directos para el navegador
+// Ruta raíz: si se abre en navegador responde HTML con enlaces; si es petición API devuelve JSON
 app.get('/', (req, res) => {
+  const esNavegador = req.headers.accept && req.headers.accept.includes('text/html') && !req.headers.accept.includes('application/json');
+  if (esNavegador) {
+    return res.send(`
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 1 - Rectángulos y Cuadrados</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 30px; line-height: 1.6; background: #f8fafc; color: #1e293b; max-width: 800px; margin: 0 auto; }
+          h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+          .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px; }
+          ul { list-style: none; padding: 0; }
+          li { margin: 12px 0; }
+          a { color: #2563eb; text-decoration: none; font-weight: 600; font-size: 16px; }
+          a:hover { text-decoration: underline; color: #1d4ed8; }
+          .desc { color: #64748b; font-size: 14px; margin-left: 8px; }
+          .badge { background: #e0e7ff; color: #3730a3; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <h1>Ejercicio 1: Rectángulos y Cuadrados <span class="badge">Puerto 3001</span></h1>
+        <p><strong>Autor:</strong> Federico Merlo Brac | <strong>Estado:</strong> Activo</p>
+        <div class="card">
+          <h3>Enlaces para probar en el navegador:</h3>
+          <ul>
+            <li><a href="/rectangulos">/rectangulos</a> <span class="desc">&rarr; Ver todos los rectángulos precargados</span></li>
+            <li><a href="/rectangulos?esCuadrado=true">/rectangulos?esCuadrado=true</a> <span class="desc">&rarr; Filtrar solo los que constituyen cuadrados</span></li>
+            <li><a href="/rectangulos?esCuadrado=false">/rectangulos?esCuadrado=false</a> <span class="desc">&rarr; Filtrar solo rectángulos no cuadrados</span></li>
+            <li><a href="/rectangulos/1">/rectangulos/1</a> <span class="desc">&rarr; Ver detalle de figura ID 1</span></li>
+            <li><a href="/rectangulos/1/perimetro">/rectangulos/1/perimetro</a> <span class="desc">&rarr; Consultar perímetro de figura ID 1</span></li>
+            <li><a href="/rectangulos/1/superficie">/rectangulos/1/superficie</a> <span class="desc">&rarr; Consultar superficie de figura ID 1</span></li>
+            <li><a href="/rectangulos/calcular?base=8&altura=8">/rectangulos/calcular?base=8&altura=8</a> <span class="desc">&rarr; Cálculo directo sin persistir (cuadrado 8x8)</span></li>
+          </ul>
+        </div>
+      </body>
+      </html>
+    `);
+  }
+
   res.json({
     mensaje: 'API de Rectángulos y Cuadrados - Ejercicio 1 (TP1)',
     autor: 'Federico Merlo Brac',
@@ -236,12 +276,19 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Error interno del servidor.' });
 });
 
-// Inicio del servidor (solo si se ejecuta directamente este archivo)
-const PORT = process.env.PORT || 3000;
+// Inicio del servidor en puerto 3001 por defecto (o process.env.PORT si se especifica)
+const PORT = process.env.PORT || 3001;
 if (process.argv[1] && process.argv[1].endsWith('index.js')) {
-  app.listen(PORT, () => {
-    console.log(`\n Servidor de Ejercicio 1 iniciado en: http://localhost:${PORT}`);
-    console.log(` Consulta la lista en: http://localhost:${PORT}/rectangulos`);
-    console.log(` Consulta cálculo al vuelo en: http://localhost:${PORT}/rectangulos/calcular?base=5&altura=5\n`);
+  const server = app.listen(PORT, () => {
+    console.log(`\n===============================================================`);
+    console.log(`  Ejercicio 1 iniciado en: http://localhost:${PORT}`);
+    console.log(`  Abre en tu navegador:    http://localhost:${PORT}`);
+    console.log(`  Ver todos los rectángulos: http://localhost:${PORT}/rectangulos`);
+    console.log(`===============================================================\n`);
+  });
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`\n [AVISO] El puerto ${PORT} está ocupado. Cerrá el proceso anterior con Ctrl+C.\n`);
+    }
   });
 }

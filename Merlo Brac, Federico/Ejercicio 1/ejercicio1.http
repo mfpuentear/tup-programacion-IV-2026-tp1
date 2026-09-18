@@ -1,5 +1,5 @@
 ### Variables
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:3001
 
 ### 1. Consultar endpoint raíz descriptivo
 GET {{baseUrl}}/
