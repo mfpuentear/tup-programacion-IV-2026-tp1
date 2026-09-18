@@ -1,0 +1,131 @@
+### GET - Consultar todas las tareas
+GET http://localhost:3000/tareas
+
+### GET - Consultar tareas completadas
+GET http://localhost:3000/tareas?completada=true
+
+### GET - Consultar tareas pendientes
+GET http://localhost:3000/tareas?completada=false
+
+### GET - Query invalido
+GET http://localhost:3000/tareas?completada=manzana
+
+### GET - Consultar tarea existente
+GET http://localhost:3000/tareas/Estudiar%20Matematica
+
+### GET - Consultar tarea inexistente
+GET http://localhost:3000/tareas/Estudiar%20Quimica
+
+### POST - Crear tarea valida
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Lengua",
+    "completada": false
+}
+
+### POST - Crear tarea completada
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Leer libros",
+    "completada": true
+}
+
+### POST - Nombre vacío
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "",
+    "completada": false
+}
+
+### POST - Nombre no valido
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": 123,
+    "completada": false
+}
+
+### POST - Estado no booleano
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Tarea incorrecta",
+    "completada": "false"
+}
+
+### POST - Alumno duplicado
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Matematica",
+    "completada": false
+}
+
+### PUT - Modificar estado de una tarea
+PUT http://localhost:3000/tareas/Estudiar%20Matematica
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Matematica",
+    "completada": true
+}
+
+### GET - Verificar modificacion
+GET http://localhost:3000/tareas/Estudiar%20Matematica
+
+### PUT - Modificar nombre y estado
+PUT http://localhost:3000/tareas/Hacer%20ejercicio
+Content-Type: application/json
+
+{
+    "nombre": "Ir al gimnasio",
+    "completada": true
+}
+
+### GET - Verificar cambio de nombre y estado
+GET http://localhost:3000/tareas/Ir%20al%20gimnasio
+
+### PUT - Tarea inexistente
+PUT http://localhost:3000/tareas/Tarea%20Inexistente
+Content-Type: application/json
+
+{
+    "nombre": "Tarea Inexistente",
+    "completada": true
+}
+
+### PUT - Intentar duplicar nombre
+PUT http://localhost:3000/tareas/Estudiar%20Matematica
+Content-Type: application/json
+
+{
+    "nombre": "Entregar Practico",
+    "completada": true
+}
+
+### PUT - Estado invalido
+PUT http://localhost:3000/tareas/Estudiar%20Matematica
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Matematica",
+    "completada": "si"
+}
+
+### DELETE - Eliminar tarea existente
+DELETE http://localhost:3000/tareas/Entregar%20Practico
+
+### GET - Verificar eliminacion
+GET http://localhost:3000/tareas/Entregar%20Practico
+
+### DELETE - Tarea inexistente
+DELETE http://localhost:3000/tareas/Tarea%20Inexistente
