@@ -1,3 +1,28 @@
+###############################################################################
+# TRABAJO PRÁCTICO N° 1 - PROGRAMACIÓN IV (2026)
+# Alumno: Federico Merlo Brac
+# EJERCICIO 3: API de Administración de Tareas y Estados de Avance
+#
+# =============================================================================
+# INSTRUCCIONES PARA EL PROFESOR (CÓMO INICIALIZAR ESTE EJERCICIO):
+# =============================================================================
+# 1. Abrir una terminal en la carpeta de este ejercicio:
+#    cd "Merlo Brac, Federico/Ejercicio 3"
+#
+# 2. Instalar dependencias (solo si no están instaladas):
+#    npm install
+#
+# 3. Iniciar el servidor Express:
+#    npm start
+#
+# 4. El servidor quedará escuchando en:
+#    http://localhost:3003
+#    (Puede abrirse en el navegador para ver la página interactiva con links).
+#
+# 5. Para ejecutar los tests automáticos integrados:
+#    npm test
+###############################################################################
+
 ### Variables
 @baseUrl = http://localhost:3003
 
