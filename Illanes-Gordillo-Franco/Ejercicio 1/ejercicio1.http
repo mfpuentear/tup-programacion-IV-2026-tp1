@@ -1,0 +1,14 @@
+### Prueba 1: Rectangulo valido
+GET http://localhost:3000/api/rectangulos?base=10&altura=5
+
+### Prueba 2: Cuadrado valido
+GET http://localhost:3000/api/rectangulos?base=8&altura=8
+
+### Prueba 3: Error por falta de parametros
+GET http://localhost:3000/api/rectangulos?base=10
+
+### Prueba 4: Error por letras (Invalid type)
+GET http://localhost:3000/api/rectangulos?base=diez&altura=5
+
+### Prueba 5: Error por numeros negativos
+GET http://localhost:3000/api/rectangulos?base=-4&altura=10

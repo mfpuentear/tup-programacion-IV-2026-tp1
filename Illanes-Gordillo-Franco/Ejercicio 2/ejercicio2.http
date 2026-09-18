@@ -1,0 +1,38 @@
+### 1. Guardar alumno 1 (Promocionado)
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Montoya",
+  "notas": [8, 7, 9]
+}
+
+### 2. Guardar alumno 2 (Regular)
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Mario Parco",
+  "notas": [5, 4, 6]
+}
+
+### 3. Error: alumno duplicado
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Montoya",
+  "notas": [10, 10, 10]
+}
+
+### 4. Error: no tiene 3 notas
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos chavez",
+  "notas": [8, 6]
+}
+
+### 5. Consultar alumnos (calcula promedio y condicion al vuelo)
+GET http://localhost:3001/api/alumnos

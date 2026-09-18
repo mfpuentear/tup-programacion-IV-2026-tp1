@@ -1,0 +1,46 @@
+### 1. Crear tarea 1
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+  "titulo": "Jugar al cs2"
+}
+
+### 2. Crear tarea 2
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+  "titulo": "Hacer un pull Request"
+}
+
+### 3. Error: crear tarea sin titulo
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+  "titulo": ""
+}
+
+### 4. Consultar todas las tareas
+GET http://localhost:3002/api/tareas
+
+### 5. Consultar tarea especifica por id
+GET http://localhost:3002/api/tareas/1
+
+### 6. Error: buscar id inexistente (404)
+GET http://localhost:3002/api/tareas/99
+
+### 7. Marcar tarea 1 como completada
+PUT http://localhost:3002/api/tareas/1
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### 8. Borrar tarea 2
+DELETE http://localhost:3002/api/tareas/2
+
+### 9. Error: borrar id que no existe (404)
+DELETE http://localhost:3002/api/tareas/99
