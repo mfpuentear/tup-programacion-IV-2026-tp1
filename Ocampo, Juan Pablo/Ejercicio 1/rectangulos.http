@@ -1,0 +1,45 @@
+@url=http://localhost:3000
+
+### calcular rectangulo
+POST {{url}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 5,
+  "altura": 3
+}
+
+#### calcular cuadrado
+POST {{url}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 4,
+  "altura": 4
+}
+
+### faltan parametros
+POST {{url}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 5
+}
+
+### valores no numericos
+POST {{url}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": "sdas",
+  "altura": 3
+}
+
+### valores negativos
+POST {{url}}/rectangulos    
+Content-Type: application/json
+
+{
+  "base": -5,
+  "altura": 3
+}
