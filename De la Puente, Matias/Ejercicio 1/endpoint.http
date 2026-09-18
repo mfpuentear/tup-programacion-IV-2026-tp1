@@ -1,0 +1,7 @@
+### Crear un nuevo recurso
+POST http://localhost:3000/recurso
+Content-Type: application/json
+
+{
+  "campo": "valor"
+}

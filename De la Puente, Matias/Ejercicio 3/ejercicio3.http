@@ -1,0 +1,48 @@
+### 1. Crear una tarea (por defecto pendiente)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "TRABAJAR EN EL TP DE PROGRAMACION IV"
+}
+
+### 2. Crear una tarea (marcada como completada desde el inicio)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Preparar mate",
+    "completada": true
+}
+
+### 3. Validar error por nombre duplicado (Debe dar 400)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "TRABAJAR EN EL TP DE PROGRAMACION IV"
+}
+
+### 4. Consultar todas las tareas
+GET http://localhost:3000/tareas
+
+### 5. Consultar SOLO las tareas completadas
+GET http://localhost:3000/tareas?estado=completadas
+
+### 6. Consultar SOLO las tareas pendientes
+GET http://localhost:3000/tareas?estado=pendientes
+
+### 7. Consultar una tarea específica por ID
+GET http://localhost:3000/tareas/1
+
+### 8. Modificar una tarea (ej. marcarla como completada)
+PUT http://localhost:3000/tareas/1
+Content-Type: application/json
+
+{
+    "nombre": "TRABAJAR EN EL TP DE PROGRAMACION IV",
+    "completada": true
+}
+
+### 9. Eliminar una tarea
+DELETE http://localhost:3000/tareas/2

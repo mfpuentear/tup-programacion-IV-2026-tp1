@@ -1,0 +1,53 @@
+### 1. Crear un alumno (Promocionado)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Matias De la Puente",
+    "notas": [8, 9, 10]
+}
+
+### 2. Crear un alumno (Aprobado)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana Gomez",
+    "notas": [6, 7, 5]
+}
+
+### 3. Validar error por nombre duplicado (Debe dar 400)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Matias De la Puente",
+    "notas": [10, 10, 10]
+}
+
+### 4. Validar error por cantidad de notas (Debe dar 400)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos Perez",
+    "notas": [8, 9]
+}
+
+### 5. Consultar todos (Deben mostrar promedio y condición calculados)
+GET http://localhost:3000/alumnos
+
+### 6. Consultar un alumno por ID
+GET http://localhost:3000/alumnos/1
+
+### 7. Modificar un alumno
+PUT http://localhost:3000/alumnos/2
+Content-Type: application/json
+
+{
+    "nombre": "Ana Gonzalez",
+    "notas": [4, 5, 4]
+}
+
+### 8. Eliminar un alumno
+DELETE http://localhost:3000/alumnos/1
