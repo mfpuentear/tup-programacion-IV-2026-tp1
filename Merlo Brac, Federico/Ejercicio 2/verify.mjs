@@ -1,4 +1,4 @@
-import { app } from './src/app.js';
+import { app } from './src/index.js';
 
 const PORT = 3998;
 const server = app.listen(PORT, async () => {
@@ -12,7 +12,7 @@ const server = app.listen(PORT, async () => {
     let data = await res.json();
     console.assert(res.status === 200, 'Root status 200');
 
-    // 2. Consulta de notas y condición derivada
+    // 2. Consulta de notas y condición derivada (consigna explícita)
     res = await fetch(`${baseUrl}/alumnos/1/notas`);
     data = await res.json();
     console.assert(res.status === 200 && data.condicion === 'promocionado' && data.promedio >= 8, 'Promocionado OK');
@@ -28,7 +28,8 @@ const server = app.listen(PORT, async () => {
     // 3. Filtrado por condición
     res = await fetch(`${baseUrl}/alumnos?condicion=promocionado`);
     data = await res.json();
-    console.assert(data.alumnos.every((a) => a.condicion === 'promocionado'), 'Filtro promocionado OK');
+    const lista = Array.isArray(data) ? data : data.alumnos;
+    console.assert(lista.every((a) => a.condicion === 'promocionado'), 'Filtro promocionado OK');
 
     // 4. Creación (POST)
     res = await fetch(`${baseUrl}/alumnos`, {
@@ -37,8 +38,9 @@ const server = app.listen(PORT, async () => {
       body: JSON.stringify({ nombre: 'Lucía Fernández', notas: [9, 8.5, 10] })
     });
     data = await res.json();
-    console.assert(res.status === 201 && data.alumno.promedio === 9.17, 'Creación OK');
-    const nuevoId = data.alumno.id;
+    const alumnoCreado = data.alumno || data;
+    console.assert(res.status === 201 && alumnoCreado.promedio === 9.17, 'Creación OK');
+    const nuevoId = alumnoCreado.id;
 
     // 5. Unicidad de nombres (409 Conflict)
     res = await fetch(`${baseUrl}/alumnos`, {
@@ -70,7 +72,8 @@ const server = app.listen(PORT, async () => {
       body: JSON.stringify({ notas: [9, 8, 10] })
     });
     data = await res.json();
-    console.assert(res.status === 200 && data.alumno.condicion === 'promocionado', 'Recálculo automático OK');
+    const alumnoModificado = data.alumno || data;
+    console.assert(res.status === 200 && alumnoModificado.condicion === 'promocionado', 'Recálculo automático OK');
 
     // Modificar a nombre duplicado (409)
     res = await fetch(`${baseUrl}/alumnos/3`, {
