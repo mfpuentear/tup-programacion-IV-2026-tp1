@@ -1,0 +1,35 @@
+@host = http://localhost:3001
+
+### Rectangulo comun: perimetro y superficie
+GET {{host}}/api/rectangulos/4/7
+
+### Cuadrado: base y altura iguales, se informa el lado
+GET {{host}}/api/rectangulos/5/5
+
+### Medidas con decimales
+GET {{host}}/api/rectangulos/1.1/2.2
+
+### Solo el perimetro
+GET {{host}}/api/rectangulos/4/7/perimetro
+
+### Solo la superficie
+GET {{host}}/api/rectangulos/4/7/superficie
+
+### Solo la superficie de un cuadrado
+GET {{host}}/api/rectangulos/5/5/superficie
+
+### Error 400: la base no es un numero
+GET {{host}}/api/rectangulos/abc/7
+
+### Error 400: altura negativa
+GET {{host}}/api/rectangulos/4/-7
+
+### Error 400: las dos medidas son cero
+GET {{host}}/api/rectangulos/0/0
+
+### Error 400: supera el maximo permitido
+GET {{host}}/api/rectangulos/9999999/2
+
+### Error 404: ruta inexistente
+GET {{host}}/api/rectangulos/4/7/diagonal
+
