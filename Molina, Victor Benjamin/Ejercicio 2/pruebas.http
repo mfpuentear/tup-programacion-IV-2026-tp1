@@ -1,0 +1,86 @@
+### Crear alumno
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Victor",
+    "notas": [8, 9, 7]
+}
+
+
+### Crear otro alumno
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Fede",
+    "notas": [6, 7, 8]
+}
+
+
+### Intentar crear alumno con nombre repetido
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Victor",
+    "notas": [5, 6, 7]
+}
+
+
+### Intentar crear alumno con menos de tres notas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Leonel",
+    "notas": [8, 9]
+}
+
+
+### Intentar crear alumno con nota inválida
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Martin",
+    "notas": [8, 15, 7]
+}
+
+### Consultar todos los alumnos
+GET http://localhost:3000/alumnos
+
+
+### Consultar un alumno por nombre
+GET http://localhost:3000/alumnos/Victor
+
+
+### Consultar alumno inexistente
+GET http://localhost:3000/alumnos/Pepe
+
+### Modificar alumno
+PUT http://localhost:3000/alumnos/Victor
+Content-Type: application/json
+
+{
+    "nombre": "Victor",
+    "notas": [10, 9, 8]
+}
+
+
+### Intentar modificar alumno inexistente
+PUT http://localhost:3000/alumnos/Pepe
+Content-Type: application/json
+
+{
+    "nombre": "Pepe",
+    "notas": [7, 7, 7]
+}
+
+
+### Eliminar alumno
+DELETE http://localhost:3000/alumnos/Victor
+
+
+### Intentar eliminar alumno inexistente
+DELETE http://localhost:3000/alumnos/Pepe
