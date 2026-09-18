@@ -1,0 +1,66 @@
+@baseUrl = http://localhost:3002
+
+### Crear un alumno (reprobado)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [3, 4, 5]
+}
+
+### Crear otro alumno (promocionado)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Gomez",
+  "notas": [9, 8, 10]
+}
+
+### Error: nombre duplicado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [6, 6, 6]
+}
+
+### Error: notas inválidas (falta una nota)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Luis Diaz",
+  "notas": [7, 8]
+}
+
+### Listar todos los alumnos con promedio y condición
+GET {{baseUrl}}/alumnos
+
+### Consultar un alumno puntual
+GET {{baseUrl}}/alumnos/Juan Perez
+
+### Error: alumno inexistente
+GET {{baseUrl}}/alumnos/No Existe
+
+### Modificar notas de un alumno (pasa a aprobado)
+PUT {{baseUrl}}/alumnos/Juan Perez
+Content-Type: application/json
+
+{
+  "notas": [6, 7, 6]
+}
+
+### Error: modificar hacia un nombre que ya existe
+PUT {{baseUrl}}/alumnos/Juan Perez
+Content-Type: application/json
+
+{
+  "nombre": "Ana Gomez",
+  "notas": [6, 7, 6]
+}
+
+### Eliminar un alumno
+DELETE {{baseUrl}}/alumnos/Juan Perez
