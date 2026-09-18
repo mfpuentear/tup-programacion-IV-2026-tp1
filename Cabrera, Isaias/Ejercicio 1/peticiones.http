@@ -1,0 +1,14 @@
+### 1. Cálculo de rectángulo
+GET http://localhost:3001/rectangulos?base=10&altura=5 HTTP/1.1
+
+### 2. Caso particular que constituye cuadrado (base === altura)
+GET http://localhost:3001/rectangulos?base=7&altura=7 HTTP/1.1
+
+### 3. Error 400: Parámetro faltante
+GET http://localhost:3001/rectangulos?base=10 HTTP/1.1
+
+### 4. Error 400: Valor no numérico
+GET http://localhost:3001/rectangulos?base=diez&altura=5 HTTP/1.1
+
+### 5. Error 400: Dimensión negativa
+GET http://localhost:3001/rectangulos?base=-4&altura=8 HTTP/1.1
