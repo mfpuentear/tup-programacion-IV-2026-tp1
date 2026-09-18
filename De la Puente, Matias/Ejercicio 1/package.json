@@ -1,0 +1,15 @@
+{
+  "name": "api-node",
+  "version": "1.0.0",
+  "description": "Ejercicios",
+  "license": "ISC",
+  "author": "Juan Gramajo",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
