@@ -8,8 +8,8 @@ POST {{URL}}/Alumno
 Content-Type: application/json
 
 {
-    "nombre": "carlos",
-    "notas": [6, 2, 5]
+    "nombre": "pedro",
+    "notas": [6, 2, 9]
 }
 
 ### Consultar condicion academica y promedio
