@@ -64,8 +64,48 @@ function validarNotas(notas) {
 // RUTAS DE LA API
 // ==========================================
 
-// Ruta raíz informativa
+// Ruta raíz: si se abre en navegador responde HTML con enlaces; si es petición API devuelve JSON
 app.get('/', (req, res) => {
+  const esNavegador = req.headers.accept && req.headers.accept.includes('text/html') && !req.headers.accept.includes('application/json');
+  if (esNavegador) {
+    return res.send(`
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 2 - Alumnos y Calificaciones</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 30px; line-height: 1.6; background: #f8fafc; color: #1e293b; max-width: 800px; margin: 0 auto; }
+          h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+          .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px; }
+          ul { list-style: none; padding: 0; }
+          li { margin: 12px 0; }
+          a { color: #2563eb; text-decoration: none; font-weight: 600; font-size: 16px; }
+          a:hover { text-decoration: underline; color: #1d4ed8; }
+          .desc { color: #64748b; font-size: 14px; margin-left: 8px; }
+          .badge { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <h1>Ejercicio 2: Gestión de Alumnos <span class="badge">Puerto 3002</span></h1>
+        <p><strong>Autor:</strong> Federico Merlo Brac | <strong>Estado:</strong> Activo</p>
+        <div class="card">
+          <h3>Enlaces para probar en el navegador:</h3>
+          <ul>
+            <li><a href="/alumnos">/alumnos</a> <span class="desc">&rarr; Ver todos los alumnos con promedio y condición</span></li>
+            <li><a href="/alumnos/1/notas">/alumnos/1/notas</a> <span class="desc">&rarr; Consultar notas y condición de Juan Pérez (Promocionado)</span></li>
+            <li><a href="/alumnos/2/notas">/alumnos/2/notas</a> <span class="desc">&rarr; Consultar notas y condición de María González (Aprobado)</span></li>
+            <li><a href="/alumnos/3/notas">/alumnos/3/notas</a> <span class="desc">&rarr; Consultar notas y condición de Carlos Rodríguez (Reprobado)</span></li>
+            <li><a href="/alumnos?condicion=promocionado">/alumnos?condicion=promocionado</a> <span class="desc">&rarr; Filtrar alumnos promocionados</span></li>
+            <li><a href="/alumnos?condicion=aprobado">/alumnos?condicion=aprobado</a> <span class="desc">&rarr; Filtrar alumnos aprobados</span></li>
+            <li><a href="/alumnos?condicion=reprobado">/alumnos?condicion=reprobado</a> <span class="desc">&rarr; Filtrar alumnos reprobados</span></li>
+          </ul>
+        </div>
+      </body>
+      </html>
+    `);
+  }
+
   res.json({
     mensaje: 'API de Gestión Académica de Alumnos - Ejercicio 2 (TP1)',
     autor: 'Federico Merlo Brac',
@@ -236,12 +276,20 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Error interno del servidor.' });
 });
 
-// Inicio del servidor (solo si se ejecuta directamente este archivo)
-const PORT = process.env.PORT || 3000;
+// Inicio del servidor en puerto 3002 por defecto (o process.env.PORT si se especifica)
+const PORT = process.env.PORT || 3002;
 if (process.argv[1] && process.argv[1].endsWith('index.js')) {
-  app.listen(PORT, () => {
-    console.log(`\n Servidor de Ejercicio 2 iniciado en: http://localhost:${PORT}`);
-    console.log(` Consulta la lista en: http://localhost:${PORT}/alumnos`);
-    console.log(` Consulta notas del alumno 1 en: http://localhost:${PORT}/alumnos/1/notas\n`);
+  const server = app.listen(PORT, () => {
+    console.log(`\n===============================================================`);
+    console.log(`  Ejercicio 2 iniciado en: http://localhost:${PORT}`);
+    console.log(`  Abre en tu navegador:    http://localhost:${PORT}`);
+    console.log(`  Ver todos los alumnos:   http://localhost:${PORT}/alumnos`);
+    console.log(`  Ver notas alumno 1:      http://localhost:${PORT}/alumnos/1/notas`);
+    console.log(`===============================================================\n`);
+  });
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`\n [AVISO] El puerto ${PORT} está ocupado. Cerrá el proceso anterior con Ctrl+C.\n`);
+    }
   });
 }
