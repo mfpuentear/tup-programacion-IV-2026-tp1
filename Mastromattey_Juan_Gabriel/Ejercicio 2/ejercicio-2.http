@@ -1,0 +1,140 @@
+### GET - Consultar todos los alumnos
+GET http://localhost:3000/alumnos
+
+### GET - Consultar alumno existente
+GET http://localhost:3000/alumnos/Gabriel
+
+### GET - Consultar alumno inexistente
+GET http://localhost:3000/alumnos/Martin
+
+### POST - Crear alumno valido
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Martin",
+"notas": [7, 8, 6]
+}
+
+### POST - Nombre vacio
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "",
+"notas": [7, 8, 6]
+}
+
+### POST - Menos de tres notas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Carlos",
+"notas": [7, 8]
+}
+
+### POST - Mas de tres notas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Carlos",
+"notas": [7, 8, 9, 10]
+}
+
+### POST - Nota menor que 0
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Carlos",
+"notas": [-1, 8, 9]
+}
+
+### POST - Nota mayor que 10
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Carlos",
+"notas": [7, 8, 11]
+}
+
+### POST - Nota no numerica
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Carlos",
+"notas": [7, "ocho", 9]
+}
+
+### POST - Alumno duplicado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Gabriel",
+"notas": [6, 6, 6]
+}
+
+### PUT - Modificar notas de un alumno
+PUT http://localhost:3000/alumnos/Gabriel
+Content-Type: application/json
+
+{
+"nombre": "Gabriel",
+"notas": [10, 9, 8]
+}
+
+### GET - Verificar modificacion de notas
+GET http://localhost:3000/alumnos/Gabriel
+
+### PUT - Cambiar nombre y notas
+PUT http://localhost:3000/alumnos/Nati
+Content-Type: application/json
+
+{
+"nombre": "Nati Chumbita",
+"notas": [8, 8, 9]
+}
+
+### GET - Verificar cambio de nombre y notas
+GET http://localhost:3000/alumnos/Nati%20Chumbita
+
+### PUT - Alumno inexistente
+PUT http://localhost:3000/alumnos/Martin
+Content-Type: application/json
+
+{
+"nombre": "Martin",
+"notas": [7, 7, 7]
+}
+
+### PUT - Intentar usar un nombre existente
+PUT http://localhost:3000/alumnos/Gabriel
+Content-Type: application/json
+
+{
+"nombre": "Nati Chumbita",
+"notas": [8, 8, 8]
+}
+
+### PUT - Notas invalidas
+PUT http://localhost:3000/alumnos/Gabriel
+Content-Type: application/json
+
+{
+"nombre": "Gabriel",
+"notas": [15, 8, 9]
+}
+
+### DELETE - Eliminar alumno
+DELETE http://localhost:3000/alumnos/Gabriel
+
+### GET - Verificar eliminacion
+GET http://localhost:3000/alumnos/Gabriel
+
+### DELETE - Alumno inexistente
+DELETE http://localhost:3000/alumnos/Martin
