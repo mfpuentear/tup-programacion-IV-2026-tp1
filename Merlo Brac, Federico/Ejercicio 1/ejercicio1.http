@@ -1,0 +1,104 @@
+###############################################################################
+# TRABAJO PRÁCTICO N° 1 - PROGRAMACIÓN IV (2026)
+# Alumno: Federico Merlo Brac
+# EJERCICIO 1: API de Rectángulos y Cuadrados
+#
+# =============================================================================
+# CÓMO INICIALIZAR Y VER ESTE EJERCICIO:
+# =============================================================================
+# OPCIÓN A (Desde la terminal principal "tp1 prog4"):
+#   npm run start:1
+#   (o: cd "tup-programacion-IV-2026-tp1/Merlo Brac, Federico/Ejercicio 1" && npm start)
+#
+# OPCIÓN B (Si tu terminal ya está dentro de "tup-programacion-IV-2026-tp1"):
+#   cd "Merlo Brac, Federico/Ejercicio 1"
+#   npm start
+#
+# DÓNDE VER LOS RESULTADOS:
+#   * En el navegador: http://localhost:3001
+#   * Ver rectángulos: http://localhost:3001/rectangulos
+#
+# PRUEBAS AUTOMÁTICAS:
+#   npm test  (o desde la raíz: npm run test:1)
+#
+# PRUEBAS INTERACTIVAS EN ESTE ARCHIVO:
+#   Haz clic en "Send Request" encima de cada petición de abajo.
+###############################################################################
+
+### Variables
+@baseUrl = http://localhost:3001
+
+### 1. Consultar endpoint raíz descriptivo
+GET {{baseUrl}}/
+Accept: application/json
+
+### 2. Listar todos los rectángulos
+GET {{baseUrl}}/rectangulos
+Accept: application/json
+
+### 3. Filtrar solo los que constituyen cuadrados (esCuadrado = true)
+GET {{baseUrl}}/rectangulos?esCuadrado=true
+Accept: application/json
+
+### 4. Filtrar solo los rectángulos no cuadrados (esCuadrado = false)
+GET {{baseUrl}}/rectangulos?esCuadrado=false
+Accept: application/json
+
+### 5. Consultar un rectángulo por ID
+GET {{baseUrl}}/rectangulos/1
+Accept: application/json
+
+### 6. Consultar solo el perímetro de un rectángulo por ID
+GET {{baseUrl}}/rectangulos/1/perimetro
+Accept: application/json
+
+### 7. Consultar solo la superficie de un rectángulo por ID
+GET {{baseUrl}}/rectangulos/1/superficie
+Accept: application/json
+
+### 8. Cálculo directo al vuelo sin almacenar (ejemplo de cuadrado: 8x8)
+GET {{baseUrl}}/rectangulos/calcular?base=8&altura=8
+Accept: application/json
+
+### 9. Crear un nuevo rectángulo estándar (POST)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 15,
+  "altura": 7,
+  "nombre": "Ventana comedor"
+}
+
+### 10. Crear una figura con lados iguales (constituye cuadrado)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 12,
+  "altura": 12,
+  "nombre": "Caja cuadrada"
+}
+
+### 11. Error al crear: valores negativos o cero (debe retornar 400)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": -5,
+  "altura": 10
+}
+
+### 12. Modificar un rectángulo existente (PUT)
+PUT {{baseUrl}}/rectangulos/1
+Content-Type: application/json
+
+{
+  "base": 9,
+  "altura": 9,
+  "nombre": "Rectángulo transformado en Cuadrado"
+}
+
+### 13. Eliminar un rectángulo (DELETE)
+DELETE {{baseUrl}}/rectangulos/4
+Accept: application/json

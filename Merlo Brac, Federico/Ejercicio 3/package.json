@@ -1,0 +1,17 @@
+{
+  "name": "ejercicio-3",
+  "version": "1.0.0",
+  "description": "API con ExpressJS para administración de tareas y estado de avance.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node verify.mjs"
+  },
+  "author": "Federico Merlo Brac",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,116 @@
+###############################################################################
+# TRABAJO PRÁCTICO N° 1 - PROGRAMACIÓN IV (2026)
+# Alumno: Federico Merlo Brac
+# EJERCICIO 3: API de Administración de Tareas y Estados de Avance
+#
+# =============================================================================
+# CÓMO INICIALIZAR Y VER ESTE EJERCICIO:
+# =============================================================================
+# OPCIÓN A (Desde la terminal principal "tp1 prog4"):
+#   npm run start:3
+#   (o: cd "tup-programacion-IV-2026-tp1/Merlo Brac, Federico/Ejercicio 3" && npm start)
+#
+# OPCIÓN B (Si tu terminal ya está dentro de "tup-programacion-IV-2026-tp1"):
+#   cd "Merlo Brac, Federico/Ejercicio 3"
+#   npm start
+#
+# DÓNDE VER LOS RESULTADOS:
+#   * En el navegador: http://localhost:3003
+#   * Ver todas las tareas: http://localhost:3003/tareas
+#   * Solo completadas: http://localhost:3003/tareas?completada=true
+#
+# PRUEBAS AUTOMÁTICAS:
+#   npm test  (o desde la raíz: npm run test:3)
+#
+# PRUEBAS INTERACTIVAS EN ESTE ARCHIVO:
+#   Haz clic en "Send Request" encima de cada petición de abajo.
+###############################################################################
+
+### Variables
+@baseUrl = http://localhost:3003
+
+### 1. Consultar endpoint raíz
+GET {{baseUrl}}/
+Accept: application/json
+
+### 2. Listar todas las tareas
+GET {{baseUrl}}/tareas
+Accept: application/json
+
+### 3. Diferenciar tareas: filtrar solo tareas completadas (?completada=true)
+GET {{baseUrl}}/tareas?completada=true
+Accept: application/json
+
+### 4. Diferenciar tareas: filtrar solo tareas pendientes (?completada=false)
+GET {{baseUrl}}/tareas?completada=false
+Accept: application/json
+
+### 5. Diferenciar tareas por estado textual (?estado=completada)
+GET {{baseUrl}}/tareas?estado=completada
+Accept: application/json
+
+### 6. Diferenciar tareas por estado textual (?estado=pendiente)
+GET {{baseUrl}}/tareas?estado=pendiente
+Accept: application/json
+
+### 7. Consultar tarea por ID
+GET {{baseUrl}}/tareas/1
+Accept: application/json
+
+### 8. Crear nueva tarea pendiente (POST - estado por defecto completada=false)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Realizar pruebas integrales de la API"
+}
+
+### 9. Crear nueva tarea completada (POST)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Revisar pautas de entrega",
+  "completada": true
+}
+
+### 10. Error al crear: nombre duplicado (debe retornar 409 Conflict)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Instalar dependencias de Node.js"
+}
+
+### 11. Error al crear: nombre vacío (debe retornar 400 Bad Request)
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "   "
+}
+
+### 12. Modificar tarea (PUT - actualizar nombre y marcar completada)
+PUT {{baseUrl}}/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Escribir endpoints de tareas y validaciones",
+  "completada": true
+}
+
+### 13. Marcar rápidamente una tarea como completada (PATCH)
+PATCH {{baseUrl}}/tareas/3/completar
+Accept: application/json
+
+### 14. Error al modificar: nombre duplicado (debe retornar 409 Conflict)
+PUT {{baseUrl}}/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Instalar dependencias de Node.js"
+}
+
+### 15. Eliminar una tarea (DELETE)
+DELETE {{baseUrl}}/tareas/4
+Accept: application/json

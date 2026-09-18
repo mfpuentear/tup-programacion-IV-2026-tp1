@@ -1,0 +1,110 @@
+###############################################################################
+# TRABAJO PRÁCTICO N° 1 - PROGRAMACIÓN IV (2026)
+# Alumno: Federico Merlo Brac
+# EJERCICIO 2: API de Gestión Académica de Alumnos y Calificaciones
+#
+# =============================================================================
+# INSTRUCCIONES (CÓMO INICIALIZAR ESTE EJERCICIO):
+# =============================================================================
+# 1. Abrir una terminal en la carpeta de este ejercicio:
+#    cd "Merlo Brac, Federico/Ejercicio 2"
+#
+# 2. Instalar dependencias (solo si no están instaladas):
+#    npm install
+#
+# 3. Iniciar el servidor Express:
+#    npm start
+#
+# 4. El servidor quedará escuchando en:
+#    http://localhost:3002
+#    (Puede abrirse en el navegador para ver la página interactiva con links).
+#
+# 5. Para ejecutar los tests automáticos integrados:
+#    npm test
+###############################################################################
+
+### Variables
+@baseUrl = http://localhost:3002
+
+### 1. Consultar endpoint raíz
+GET {{baseUrl}}/
+Accept: application/json
+
+### 2. Listar todos los alumnos
+GET {{baseUrl}}/alumnos
+Accept: application/json
+
+### 3. Filtrar alumnos promocionados (promedio >= 8)
+GET {{baseUrl}}/alumnos?condicion=promocionado
+Accept: application/json
+
+### 4. Filtrar alumnos aprobados (promedio 6 o 7)
+GET {{baseUrl}}/alumnos?condicion=aprobado
+Accept: application/json
+
+### 5. Filtrar alumnos reprobados (promedio < 6)
+GET {{baseUrl}}/alumnos?condicion=reprobado
+Accept: application/json
+
+### 6. Consultar alumno por ID
+GET {{baseUrl}}/alumnos/1
+Accept: application/json
+
+### 7. Consultar notas, promedio y condición de alumno 1 (Promocionado)
+GET {{baseUrl}}/alumnos/1/notas
+Accept: application/json
+
+### 8. Consultar notas, promedio y condición de alumno 2 (Aprobado)
+GET {{baseUrl}}/alumnos/2/notas
+Accept: application/json
+
+### 9. Consultar notas, promedio y condición de alumno 3 (Reprobado)
+GET {{baseUrl}}/alumnos/3/notas
+Accept: application/json
+
+### 10. Registrar nuevo alumno (POST)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Lucía Fernández",
+  "notas": [9, 8.5, 10]
+}
+
+### 11. Error al crear: nombre duplicado (debe retornar 409 Conflict)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "notas": [7, 7, 7]
+}
+
+### 12. Error al crear: calificación mayor a 10 o negativa (debe retornar 400)
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Esteban Quito",
+  "notas": [8, 12, 9]
+}
+
+### 13. Modificar calificaciones de un alumno (PUT)
+PUT {{baseUrl}}/alumnos/3
+Content-Type: application/json
+
+{
+  "notas": [9, 8, 8.5]
+}
+
+### 14. Error al modificar: intentar asignar un nombre ya utilizado (409 Conflict)
+PUT {{baseUrl}}/alumnos/3
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez"
+}
+
+### 15. Eliminar un alumno (DELETE)
+DELETE {{baseUrl}}/alumnos/2
+Accept: application/json
