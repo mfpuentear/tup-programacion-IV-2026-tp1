@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:3001
+
+### Caso normal: rectángulo (no cuadrado)
+GET {{baseUrl}}/rectangulos?base=4&altura=6
+
+### Caso cuadrado: base y altura iguales
+GET {{baseUrl}}/rectangulos?base=5&altura=5
+
+### Error: falta la altura
+GET {{baseUrl}}/rectangulos?base=4
+
+### Error: valor no numérico
+GET {{baseUrl}}/rectangulos?base=abc&altura=4
+
+### Error: valor negativo o cero
+GET {{baseUrl}}/rectangulos?base=0&altura=-3
