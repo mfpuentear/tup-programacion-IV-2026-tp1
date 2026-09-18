@@ -1,0 +1,75 @@
+### Obtener todas las tareas
+GET http://localhost:3000/tareas
+
+
+### Crear tarea pendiente
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Express",
+    "completada": false
+}
+
+
+### Crear tarea completada
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicio",
+    "completada": true
+}
+
+
+### Crear otra tarea pendiente
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Leer documentación",
+    "completada": false
+}
+
+
+### Crear otra tarea completada
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar trabajo",
+    "completada": true
+}
+
+
+### Obtener tareas completadas
+GET http://localhost:3000/tareas/completadas
+
+
+### Obtener tareas pendientes
+GET http://localhost:3000/tareas/pendientes
+
+
+### Modificar una tarea
+PUT http://localhost:3000/tareas/Estudiar%20Express
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Express",
+    "completada": true
+}
+
+
+### Intentar crear una tarea repetida
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Express",
+    "completada": false
+}
+
+
+### Eliminar una tarea
+DELETE http://localhost:3000/tareas/Leer%20documentaci%C3%B3n
+
