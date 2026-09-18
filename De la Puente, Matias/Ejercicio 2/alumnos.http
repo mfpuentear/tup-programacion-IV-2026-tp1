@@ -1,0 +1,107 @@
+@url=http://localhost:3002
+
+
+### Crear alumno reprobado
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Fabricio",
+    "notas": [4, 5, 5]
+}
+
+
+### Crear alumno aprobado
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Fiorella",
+    "notas": [6, 7, 7]
+}
+
+
+### Crear alumno promocionado
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "notas": [8, 9, 10]
+}
+
+
+### Listar alumnos
+GET {{url}}/alumnos
+
+
+### Consultar alumno por id
+GET {{url}}/alumnos/1
+
+
+### Modificar alumno
+PUT {{url}}/alumnos/1
+Content-Type: application/json
+
+{
+    "nombre": "Fabricio Ponce",
+    "notas": [7, 8, 9]
+}
+
+
+### Error - nombre duplicado
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Fiorella",
+    "notas": [8, 8, 8]
+}
+
+
+### Error - faltan notas
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos",
+    "notas": [7, 8]
+}
+
+
+### Error - notas no numéricas
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana",
+    "notas": [7, "hola", 9]
+}
+
+
+### Error - alumno inexistente
+GET {{url}}/alumnos/999
+
+
+### Error - id inválido
+GET {{url}}/alumnos/abc
+
+
+### Error - nota menor que 0
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Florencia",
+    "notas": [-1, 7, 8]
+}
+
+
+### Error - nota mayor que 10
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Antonella",
+    "notas": [8, 11, 9]
+}

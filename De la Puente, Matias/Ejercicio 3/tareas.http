@@ -1,0 +1,40 @@
+@url=http://localhost:3003
+
+### Crear tarea pendiente
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para aprobar el primer parcial",
+    "completada": false
+}
+
+### Crear tarea completada
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar el TP",
+    "completada": true
+}
+
+### Listar tareas
+GET {{url}}/tareas
+
+### Filtrar pendientes
+GET {{url}}/tareas?estado=pendientes
+
+### Filtrar completadas
+GET {{url}}/tareas?estado=completadas
+
+### Error - nombre duplicado
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar el TP",
+    "completada": false
+}
+
+### Error - estado inválido
+GET {{url}}/tareas?estado=otra-cosa
