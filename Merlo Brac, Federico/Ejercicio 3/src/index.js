@@ -35,8 +35,46 @@ function formatearTarea(tarea) {
 // RUTAS DE LA API
 // ==========================================
 
-// Ruta raíz informativa
+// Ruta raíz: si se abre en navegador responde HTML con enlaces; si es petición API devuelve JSON
 app.get('/', (req, res) => {
+  const esNavegador = req.headers.accept && req.headers.accept.includes('text/html') && !req.headers.accept.includes('application/json');
+  if (esNavegador) {
+    return res.send(`
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 3 - Administración de Tareas</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 30px; line-height: 1.6; background: #f8fafc; color: #1e293b; max-width: 800px; margin: 0 auto; }
+          h1 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+          .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px; }
+          ul { list-style: none; padding: 0; }
+          li { margin: 12px 0; }
+          a { color: #2563eb; text-decoration: none; font-weight: 600; font-size: 16px; }
+          a:hover { text-decoration: underline; color: #1d4ed8; }
+          .desc { color: #64748b; font-size: 14px; margin-left: 8px; }
+          .badge { background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <h1>Ejercicio 3: Administración de Tareas <span class="badge">Puerto 3003</span></h1>
+        <p><strong>Autor:</strong> Federico Merlo Brac | <strong>Estado:</strong> Activo</p>
+        <div class="card">
+          <h3>Enlaces para probar en el navegador:</h3>
+          <ul>
+            <li><a href="/tareas">/tareas</a> <span class="desc">&rarr; Ver todas las tareas precargadas</span></li>
+            <li><a href="/tareas?completada=true">/tareas?completada=true</a> <span class="desc">&rarr; Filtrar solo tareas completadas</span></li>
+            <li><a href="/tareas?completada=false">/tareas?completada=false</a> <span class="desc">&rarr; Filtrar solo tareas pendientes</span></li>
+            <li><a href="/tareas?estado=completada">/tareas?estado=completada</a> <span class="desc">&rarr; Filtrar por estado semántico</span></li>
+            <li><a href="/tareas/1">/tareas/1</a> <span class="desc">&rarr; Ver detalle de tarea ID 1</span></li>
+          </ul>
+        </div>
+      </body>
+      </html>
+    `);
+  }
+
   res.json({
     mensaje: 'API de Administración de Tareas - Ejercicio 3 (TP1)',
     autor: 'Federico Merlo Brac',
@@ -175,7 +213,7 @@ app.delete('/tareas/:id', (req, res) => {
     return res.status(400).json({ error: 'El ID debe ser un número entero positivo.' });
   }
 
-  const index = tareas.findIndex((t) => t.id === id);
+  const index = tareas.findIndex((r) => r.id === id);
   if (index === -1) {
     return res.status(404).json({ error: 'Tarea no encontrada.' });
   }
@@ -203,13 +241,19 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Error interno del servidor.' });
 });
 
-// Inicio del servidor (solo si se ejecuta directamente este archivo)
-const PORT = process.env.PORT || 3000;
+// Inicio del servidor en puerto 3003 por defecto (o process.env.PORT si se especifica)
+const PORT = process.env.PORT || 3003;
 if (process.argv[1] && process.argv[1].endsWith('index.js')) {
-  app.listen(PORT, () => {
-    console.log(`\n Servidor de Ejercicio 3 iniciado en: http://localhost:${PORT}`);
-    console.log(` Consulta todas las tareas en: http://localhost:${PORT}/tareas`);
-    console.log(` Consulta tareas completadas en: http://localhost:${PORT}/tareas?completada=true`);
-    console.log(` Consulta tareas pendientes en: http://localhost:${PORT}/tareas?completada=false\n`);
+  const server = app.listen(PORT, () => {
+    console.log(`\n===============================================================`);
+    console.log(`  Ejercicio 3 iniciado en: http://localhost:${PORT}`);
+    console.log(`  Abre en tu navegador:    http://localhost:${PORT}`);
+    console.log(`  Ver todas las tareas:    http://localhost:${PORT}/tareas`);
+    console.log(`===============================================================\n`);
+  });
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`\n [AVISO] El puerto ${PORT} está ocupado. Cerrá el proceso anterior con Ctrl+C.\n`);
+    }
   });
 }
