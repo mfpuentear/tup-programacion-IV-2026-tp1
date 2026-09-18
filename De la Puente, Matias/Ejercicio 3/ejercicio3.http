@@ -3,7 +3,7 @@ POST http://localhost:3000/tareas
 Content-Type: application/json
 
 {
-    "nombre": "Estudiar Arquitectura de Sistemas"
+    "nombre": "TRABAJAR EN EL TP DE PROGRAMACION IV"
 }
 
 ### 2. Crear una tarea (marcada como completada desde el inicio)
@@ -20,7 +20,7 @@ POST http://localhost:3000/tareas
 Content-Type: application/json
 
 {
-    "nombre": "estudiar arquitectura de sistemas"
+    "nombre": "TRABAJAR EN EL TP DE PROGRAMACION IV"
 }
 
 ### 4. Consultar todas las tareas
@@ -40,7 +40,7 @@ PUT http://localhost:3000/tareas/1
 Content-Type: application/json
 
 {
-    "nombre": "Estudiar Arquitectura de Sistemas y Redes",
+    "nombre": "TRABAJAR EN EL TP DE PROGRAMACION IV",
     "completada": true
 }
 
