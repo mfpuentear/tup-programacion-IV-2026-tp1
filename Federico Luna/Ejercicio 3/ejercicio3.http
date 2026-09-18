@@ -1,0 +1,83 @@
+### Obtener todas las tareas
+GET http://localhost:3000/tareas
+
+### Obtener tareas pendientes
+GET http://localhost:3000/tareas?completada=false
+
+### Obtener tareas completadas
+GET http://localhost:3000/tareas?completada=true
+
+### Obtener una tarea
+GET http://localhost:3000/tareas/Estudiar%20JavaScript
+
+### Obtener tarea inexistente
+GET http://localhost:3000/tareas/TareaInexistente
+
+### Crear una tarea pendiente
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar Express",
+    "completada": false
+}
+
+### Intentar crear una tarea repetida
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar JavaScript",
+    "completada": true
+}
+
+### Crear tarea con nombre vacío
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "",
+    "completada": false
+}
+
+### Crear tarea con estado inválido
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Aprender Node",
+    "completada": "si"
+}
+
+### Modificar estado de una tarea
+PUT http://localhost:3000/tareas/Estudiar%20JavaScript
+Content-Type: application/json
+
+{
+    "completada": true
+}
+
+### Modificar tarea inexistente
+PUT http://localhost:3000/tareas/TareaInexistente
+Content-Type: application/json
+
+{
+    "completada": true
+}
+
+### Modificar con estado inválido
+PUT http://localhost:3000/tareas/Estudiar%20Express
+Content-Type: application/json
+
+{
+    "completada": "si"
+}
+
+### Eliminar una tarea
+DELETE http://localhost:3000/tareas/Estudiar%20Express
+
+### Eliminar tarea inexistente
+DELETE http://localhost:3000/tareas/TareaInexistente
+
+### Verificar tareas después de eliminar
+GET http://localhost:3000/tareas
