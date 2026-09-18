@@ -1,0 +1,30 @@
+### Calcular un rectangulo comun
+GET http://localhost:3000/api/rectangulos/calculo?base=10&altura=5
+
+
+### Calcular un cuadrado
+GET http://localhost:3000/api/rectangulos/calculo?base=6&altura=6
+
+
+### Error: falta el parametro altura
+GET http://localhost:3000/api/rectangulos/calculo?base=10
+
+
+### Error: falta el parametro base
+GET http://localhost:3000/api/rectangulos/calculo?altura=8
+
+
+### Error: base negativa
+GET http://localhost:3000/api/rectangulos/calculo?base=-2&altura=5
+
+
+### Error: altura igual a cero
+GET http://localhost:3000/api/rectangulos/calculo?base=10&altura=0
+
+
+### Error: valor no numerico
+GET http://localhost:3000/api/rectangulos/calculo?base=abc&altura=5
+
+
+### Error: valor demasiado grande
+GET http://localhost:3000/api/rectangulos/calculo?base=100001&altura=5
