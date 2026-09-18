@@ -1,0 +1,81 @@
+### Crear una tarea válida (pendiente por defecto)
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Lavar los platos"
+}
+
+### Crear una tarea válida, ya marcada como completada
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Programacion IV",
+  "completada": true
+}
+
+### Crear otra tarea pendiente
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer las compras",
+  "completada": false
+}
+
+### Caso inválido - nombre duplicado
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Lavar los platos",
+  "completada": true
+}
+
+### Caso inválido - nombre vacío
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": ""
+}
+
+### Listar todas las tareas
+GET http://localhost:3002/tareas
+
+### Listar solo las tareas completadas
+GET http://localhost:3002/tareas?completada=true
+
+### Listar solo las tareas pendientes
+GET http://localhost:3002/tareas?completada=false
+
+### Consultar una tarea existente
+GET http://localhost:3002/tareas/Lavar los platos
+
+### Consultar una tarea inexistente
+GET http://localhost:3002/tareas/No Existe
+
+### Marcar una tarea como completada
+PUT http://localhost:3002/tareas/Lavar los platos
+Content-Type: application/json
+
+{
+  "nombre": "Lavar los platos",
+  "completada": true
+}
+
+### Caso inválido - modificar una tarea inexistente
+PUT http://localhost:3002/tareas/No Existe
+Content-Type: application/json
+
+{
+  "nombre": "No Existe",
+  "completada": true
+}
+
+### Eliminar una tarea existente
+DELETE http://localhost:3002/tareas/Estudiar Programacion IV
+
+### Eliminar una tarea inexistente
+DELETE http://localhost:3002/tareas/Estudiar Programacion IV
