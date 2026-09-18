@@ -19,8 +19,8 @@ información y exponer la funcionalidad requerida.
 ## Decisiones de Diseño y Fundamentación
 
 ### 1. Modelado de la Información y Datos Derivados
-- **Arreglo interno sin datos derivados:** Se modela la clase `Alumno` conservando en memoria únicamente `id`, `nombre` y `notas` (exactamente 3 números).
-- **Cálculo dinámico de Promedio y Condición:** En estricto cumplimiento de la consigna (*"El promedio y la condición son datos derivados, por lo que no deberán almacenarse en el arreglo interno"*), ambos valores se calculan al vuelo mediante getters:
+- **Arreglo interno sin datos derivados:** Se almacenan en el arreglo interno únicamente los datos elementales: `id`, `nombre` y `notas` (exactamente 3 números).
+- **Cálculo dinámico de Promedio y Condición:** En estricto cumplimiento de la consigna (*"El promedio y la condición son datos derivados, por lo que no deberán almacenarse en el arreglo interno"*), ambos valores se calculan al momento de responder:
   - $\text{Promedio} = \frac{\text{nota}_1 + \text{nota}_2 + \text{nota}_3}{3}$ (redondeado a 2 decimales).
   - **Condición Académica:**
     - `reprobado`: Promedio menor a 6.
@@ -41,7 +41,7 @@ información y exponer la funcionalidad requerida.
 
 ### 4. Validación de Entrada
 - `nombre`: Requerido, string no vacío.
-- `notas`: Exactamente 3 notas numéricas en rango 0 a 10.
+- `notas`: Exactamente 3 notas numéricas en rango 1 a 10.
 - `:id`: Entero positivo mayor a 0.
 
 ---
@@ -52,7 +52,7 @@ información y exponer la funcionalidad requerida.
    ```bash
    cd "Merlo Brac, Federico/Ejercicio 2"
    npm install
-   npm start
+   npm start  # Escuchando en http://localhost:3002
    ```
 
 2. Pruebas automáticas:
