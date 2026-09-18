@@ -1,0 +1,25 @@
+
+@url = http://localhost:3000
+
+### calcular
+POST {{url}}/posteos
+Content-Type: application/json
+
+{
+    "alto": 60,
+    "ancho": 45
+}
+
+### calcular números negativo
+
+POST {{url}}/posteos
+Content-Type: application/json
+
+{
+    "alto": 25,
+    "ancho": -45
+}
+
+### mostrar resultados 
+
+GET {{url}}/llamadas
