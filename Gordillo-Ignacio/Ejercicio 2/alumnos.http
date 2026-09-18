@@ -1,0 +1,73 @@
+@url = http://localhost:3000/alumnos
+
+### Crear alumno promocionado
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Juan Perez", "notas": [8, 9, 10] }
+
+### Crear alumno aprobado
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Ana Gomez", "notas": [6, 7, 6] }
+
+### Crear alumno reprobado
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Luis Diaz", "notas": [2, 5, 4] }
+
+### Nombre repetido (409)
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "juan perez", "notas": [5, 5, 5] }
+
+### Notas inválidas (400)
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Pedro", "notas": [11, 5] }
+
+### Sin nombre (400)
+POST {{url}}
+Content-Type: application/json
+
+{ "notas": [5, 5, 5] }
+
+### Listar alumnos
+GET {{url}}
+
+### Obtener alumno
+GET {{url}}/1
+
+### Notas con promedio y condición
+GET {{url}}/1/notas
+
+### Notas de aprobado
+GET {{url}}/2/notas
+
+### Notas de reprobado
+GET {{url}}/3/notas
+
+### Id inválido (400)
+GET {{url}}/abc/notas
+
+### No existe (404)
+GET {{url}}/999
+
+### Modificar
+PUT {{url}}/2
+Content-Type: application/json
+
+{ "nombre": "Ana Gomez", "notas": [9, 8, 8] }
+
+### Modificar con nombre de otro alumno (409)
+PUT {{url}}/2
+Content-Type: application/json
+
+{ "nombre": "Juan Perez", "notas": [9, 8, 8] }
+
+### Eliminar
+DELETE {{url}}/3
