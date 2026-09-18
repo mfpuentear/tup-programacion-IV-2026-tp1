@@ -1,0 +1,95 @@
+### ========================================
+### OBTENER INFORMACIÓN DE UN RECTÁNGULO
+### ========================================
+
+GET http://localhost:3000/rectangulos/10/5
+
+
+### ========================================
+### CALCULAR PERÍMETRO
+### ========================================
+
+GET http://localhost:3000/rectangulos/10/5/perimetro
+
+
+### ========================================
+### CALCULAR SUPERFICIE
+### ========================================
+
+GET http://localhost:3000/rectangulos/10/5/superficie
+
+
+### ========================================
+### VERIFICAR SI ES CUADRADO
+### ========================================
+
+GET http://localhost:3000/rectangulos/10/10/es-cuadrado
+
+
+### ========================================
+### VERIFICAR QUE NO SEA CUADRADO
+### ========================================
+
+GET http://localhost:3000/rectangulos/10/5/es-cuadrado
+
+
+### ========================================
+### CREAR RECTÁNGULO
+### ========================================
+
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 10,
+    "altura": 5
+}
+
+
+### ========================================
+### CREAR CUADRADO
+### ========================================
+
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 10,
+    "altura": 10
+}
+
+
+### ========================================
+### PRUEBA CON VALOR INVÁLIDO
+### ========================================
+
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": -10,
+    "altura": 5
+}
+
+
+### ========================================
+### PRUEBA CON CERO
+### ========================================
+
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 0,
+    "altura": 5
+}
+### ========================================
+### FALTA DE DATOS
+### ========================================
+
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 0
+}
