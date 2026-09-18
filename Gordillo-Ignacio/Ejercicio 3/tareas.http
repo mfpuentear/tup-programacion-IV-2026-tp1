@@ -1,0 +1,79 @@
+@url = http://localhost:3000/tareas
+
+### Crear tarea (pendiente por defecto)
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Estudiar Express" }
+
+### Crear tarea completada
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Hacer el fork", "completada": true }
+
+### Crear otra pendiente
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Crear el pull request" }
+
+### Nombre repetido (409)
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "estudiar express" }
+
+### Sin nombre (400)
+POST {{url}}
+Content-Type: application/json
+
+{ "completada": false }
+
+### completada inválida (400)
+POST {{url}}
+Content-Type: application/json
+
+{ "nombre": "Otra", "completada": "si" }
+
+### Listar todas
+GET {{url}}
+
+### Solo completadas
+GET {{url}}?completada=true
+
+### Solo pendientes
+GET {{url}}?completada=false
+
+### Query inválida (400)
+GET {{url}}?completada=tal-vez
+
+### Obtener por id
+GET {{url}}/1
+
+### Id inválido (400)
+GET {{url}}/abc
+
+### No existe (404)
+GET {{url}}/999
+
+### Marcar como completada (PATCH)
+PATCH {{url}}/1
+Content-Type: application/json
+
+{ "completada": true }
+
+### Modificar completa (PUT)
+PUT {{url}}/3
+Content-Type: application/json
+
+{ "nombre": "Crear el PR en GitHub", "completada": false }
+
+### Modificar con nombre de otra tarea (409)
+PUT {{url}}/3
+Content-Type: application/json
+
+{ "nombre": "Hacer el fork", "completada": false }
+
+### Eliminar
+DELETE {{url}}/2
