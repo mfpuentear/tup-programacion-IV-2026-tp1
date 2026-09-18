@@ -1,0 +1,34 @@
+### Rectangulo valido
+GET http://localhost:3000/rectangulos?base=8&altura=3
+
+
+### Cuadrado valido
+GET http://localhost:3000/rectangulos?base=6&altura=6
+
+
+### Rectangulo con decimales
+GET http://localhost:3000/rectangulos?base=7.5&altura=4.2
+
+
+### Base negativa
+GET http://localhost:3000/rectangulos?base=-4&altura=6
+
+
+### Altura igual a cero
+GET http://localhost:3000/rectangulos?base=10&altura=0
+
+
+### Base no numerica
+GET http://localhost:3000/rectangulos?base=abc&altura=5
+
+
+### Altura no numerica
+GET http://localhost:3000/rectangulos?base=10&altura=abc
+
+
+### Falta la base
+GET http://localhost:3000/rectangulos?altura=5
+
+
+### Falta la altura
+GET http://localhost:3000/rectangulos?base=9
