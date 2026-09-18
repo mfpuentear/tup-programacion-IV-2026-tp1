@@ -1,0 +1,60 @@
+@url=http://localhost:3000
+
+### Muestra todas las tareas
+GET {{url}}/tareas
+
+
+
+### Crea una tarea completa
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer trabajo práctico",
+    "completada": true
+}
+
+
+
+### Crea una tarea pendiente
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Crear base de datos",
+    "completada": false
+}
+
+
+
+### Tareas completadas
+GET {{url}}/tareas/completadas
+
+
+
+### Tareas pendientes
+GET {{url}}/tareas/pendientes
+
+
+
+### Muestra una tarea en especifico por id(si aún no se creó muestra un error)
+GET {{url}}/tareas/1
+
+### Muestra el error de cuando el id es invalido
+GET {{url}}/tareas/0
+
+
+
+### Modificar una tarea
+PUT {{url}}/tareas/1
+Content-Type: application/json
+
+{
+    "nombre": "Práctico de programación",
+    "completada": false
+}
+
+
+
+### Elimina una tarea
+DELETE {{url}}/tareas/1

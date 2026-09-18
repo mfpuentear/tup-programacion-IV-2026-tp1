@@ -1,0 +1,58 @@
+@url=http://localhost:3000
+
+### Obtener todos los alumnos
+GET {{url}}/alumnos
+
+### Encontrar un alumno por nombre
+GET {{url}}/alumnos/1
+
+#### Crear un nuevo alumno
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [8, 9, 7]
+}
+
+#### Crear un nuevo alumno
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Medina",
+  "notas": [6, 9, 7]
+}
+
+### Crear un alumno con nombre repetido aproposito
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [9, 4, 5]
+}
+
+
+### Probar la validación de notas
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Pedro Martinez",
+  "notas": [9, 7, 11]
+}
+
+
+### Actualizar un alumno existente
+PUT {{url}}/alumnos/1
+Content-Type: application/json
+
+{
+  "nombre": "Juan Carlos Perez",
+  "notas": [7, 8, 9]
+}
+
+
+### Eliminar un alumno existente
+DELETE {{url}}/alumnos/1

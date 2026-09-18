@@ -1,0 +1,10 @@
+@url=http://localhost:3000
+
+### Consulta sobre el perimetro
+GET {{url}}/rectangulo/perimetro?base=5&altura=10
+
+### Consulta sobre la superficie
+GET {{url}}/rectangulo/superficie?base=5&altura=10
+
+### Consulta general sobre el perimetro, superficie y si es cuadrado
+GET {{url}}/rectangulo?base=10&altura=10
