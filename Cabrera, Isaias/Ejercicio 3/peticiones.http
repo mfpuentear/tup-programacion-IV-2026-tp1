@@ -1,0 +1,45 @@
+### 1. Crear tarea pendiente
+POST http://localhost:3003/tareas HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Preparar trabajo de Programacion IV"
+}
+
+### 2. Crear tarea completada
+POST http://localhost:3003/tareas HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Configurar Git y repositorios",
+  "completada": true
+}
+
+### 3. Error 409: Duplicidad de tarea
+POST http://localhost:3003/tareas HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Configurar Git y repositorios"
+}
+
+### 4. Consultar todas las tareas
+GET http://localhost:3003/tareas HTTP/1.1
+
+### 5. Filtrar solo tareas completadas
+GET http://localhost:3003/tareas?completada=true HTTP/1.1
+
+### 6. Filtrar solo tareas pendientes
+GET http://localhost:3003/tareas?completada=false HTTP/1.1
+
+### 7. Modificar una tarea existente
+PUT http://localhost:3003/tareas/Preparar%20trabajo%20de%20Programacion%20IV HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Preparar trabajo de Programacion IV",
+  "completada": true
+}
+
+### 8. Eliminar una tarea
+DELETE http://localhost:3003/tareas/Configurar%20Git%20y%20repositorios HTTP/1.1
