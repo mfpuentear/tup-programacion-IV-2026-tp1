@@ -4,23 +4,25 @@
 # EJERCICIO 1: API de Rectángulos y Cuadrados
 #
 # =============================================================================
-# INSTRUCCIONES PARA EL PROFESOR (CÓMO INICIALIZAR ESTE EJERCICIO):
+# CÓMO INICIALIZAR Y VER ESTE EJERCICIO:
 # =============================================================================
-# 1. Abrir una terminal en la carpeta de este ejercicio:
-#    cd "Merlo Brac, Federico/Ejercicio 1"
+# OPCIÓN A (Desde la terminal principal "tp1 prog4"):
+#   npm run start:1
+#   (o: cd "tup-programacion-IV-2026-tp1/Merlo Brac, Federico/Ejercicio 1" && npm start)
 #
-# 2. Instalar dependencias (solo si no están instaladas):
-#    npm install
+# OPCIÓN B (Si tu terminal ya está dentro de "tup-programacion-IV-2026-tp1"):
+#   cd "Merlo Brac, Federico/Ejercicio 1"
+#   npm start
 #
-# 3. Iniciar el servidor Express:
-#    npm start
+# DÓNDE VER LOS RESULTADOS:
+#   * En el navegador: http://localhost:3001
+#   * Ver rectángulos: http://localhost:3001/rectangulos
 #
-# 4. El servidor quedará escuchando en:
-#    http://localhost:3001
-#    (Puede abrirse en el navegador para ver la página interactiva con links).
+# PRUEBAS AUTOMÁTICAS:
+#   npm test  (o desde la raíz: npm run test:1)
 #
-# 5. Para ejecutar los tests automáticos integrados:
-#    npm test
+# PRUEBAS INTERACTIVAS EN ESTE ARCHIVO:
+#   Haz clic en "Send Request" encima de cada petición de abajo.
 ###############################################################################
 
 ### Variables
