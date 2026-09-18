@@ -1,0 +1,16 @@
+@URL = http://localhost:3000
+
+### GET {{URL}}
+GET  {{URL}}/Alumnos
+
+### POST {{URL}}/guardar un nuevo alumno
+POST {{URL}}/Alumno
+Content-Type: application/json
+
+{
+    "nombre": "carlos",
+    "notas": [6, 2, 5]
+}
+
+### Consultar condicion academica y promedio
+GET {{URL}}/condicion
