@@ -1,0 +1,68 @@
+### Obtener todos los alumnos
+GET http://localhost:3000/alumnos
+
+
+### Crear alumno
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan Perez",
+    "notas": [8, 7, 9]
+}
+
+
+### Crear otro alumno
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Maria Lopez",
+    "notas": [5, 6, 4]
+}
+
+
+### Crear alumno promocionado
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro Gomez",
+    "notas": [9, 10, 8]
+}
+
+
+### Consultar un alumno
+GET http://localhost:3000/alumnos/Juan%20Perez
+
+
+### Consultar otro alumno
+GET http://localhost:3000/alumnos/Maria%20Lopez
+
+
+### Modificar alumno
+PUT http://localhost:3000/alumnos/Juan%20Perez
+Content-Type: application/json
+
+{
+    "nombre": "Juan Perez",
+    "notas": [10, 9, 8]
+}
+
+
+### Intentar crear alumno con nombre repetido
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan Perez",
+    "notas": [6, 6, 6]
+}
+
+
+### Eliminar alumno
+DELETE http://localhost:3000/alumnos/Maria%20Lopez
+
+
+### Consultar alumno inexistente
+GET http://localhost:3000/alumnos/Carlos%20Gomezs

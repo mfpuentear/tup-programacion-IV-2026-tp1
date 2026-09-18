@@ -1,0 +1,30 @@
+### Obtener un rectángulo
+GET http://localhost:3000/rectangulos?base=10&altura=5
+
+
+### Obtener un cuadrado
+GET http://localhost:3000/rectangulos?base=8&altura=8
+
+
+### Rectángulo mediante POST
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 12,
+    "altura": 6
+}
+
+
+### Cuadrado mediante POST
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 7,
+    "altura": 7
+}
+
+
+### Error - medidas inválidas
+GET http://localhost:3000/rectangulos?base=-5&altura=10
