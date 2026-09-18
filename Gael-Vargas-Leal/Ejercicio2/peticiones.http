@@ -1,0 +1,47 @@
+### Listar todos los alumnos con promedio y condicion
+GET http://localhost:3000/api/alumnos
+
+### Consultar notas de un alumno por ID
+GET http://localhost:3000/api/alumnos/1
+
+### Consultar notas de un alumno por nombre
+GET http://localhost:3000/api/alumnos/Maria Gomez
+
+### Crear alumno promocionado (promedio >= 8)
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Lopez",
+  "notas": [8, 9, 10]
+}
+
+### Intentar crear alumno con un nombre repetido
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [6, 6, 6]
+}
+
+### Intentar crear alumno con menos de 3 notas 
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Lucas Diaz",
+  "notas": [7, 8]
+}
+
+### Modificar alumno existente
+PUT http://localhost:3000/api/alumnos/1
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez Modificado",
+  "notas": [6, 6, 7]
+}
+
+### Eliminar alumno
+DELETE http://localhost:3000/api/alumnos/2

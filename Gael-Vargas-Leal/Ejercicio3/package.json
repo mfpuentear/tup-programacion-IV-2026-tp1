@@ -1,0 +1,16 @@
+{
+  "name": "ejercicio3",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Gael Vargas Leal",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

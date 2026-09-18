@@ -1,0 +1,37 @@
+### Test de un rectangulo normal
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "alto": 10,
+  "ancho": 5
+}
+
+### Prueba para ver si detecta que es cuadrado
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "alto": 6,
+  "ancho": 6
+}
+
+### Probar la peticion GET con parametros por url
+GET http://localhost:3000/api/rectangulos/calcular?alto=4&ancho=4
+
+### Test de error si mando un numero negativo
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "alto": -2,
+  "ancho": 5
+}
+
+### Test de error si no mando el ancho
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "alto": 10
+}
