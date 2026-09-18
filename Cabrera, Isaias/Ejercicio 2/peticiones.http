@@ -1,0 +1,53 @@
+### 1. Crear alumno promocionado (promedio >= 8)
+POST http://localhost:3002/alumnos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Sofia Gomez",
+  "notas": [8, 9, 10]
+}
+
+### 2. Crear alumno aprobado (promedio entre 6 y 7.99)
+POST http://localhost:3002/alumnos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Lucas Diaz",
+  "notas": [6, 7, 7]
+}
+
+### 3. Crear alumno reprobado (promedio < 6)
+POST http://localhost:3002/alumnos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Martin Paez",
+  "notas": [4, 5, 5]
+}
+
+### 4. Error 409: Duplicidad de nombre
+POST http://localhost:3002/alumnos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Lucas Diaz",
+  "notas": [10, 10, 10]
+}
+
+### 5. Consultar todos los alumnos con promedio y condición
+GET http://localhost:3002/alumnos HTTP/1.1
+
+### 6. Consultar un alumno por parámetro de ruta
+GET http://localhost:3002/alumnos/Lucas%20Diaz HTTP/1.1
+
+### 7. Modificar calificaciones de un alumno
+PUT http://localhost:3002/alumnos/Martin%20Paez HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Martin Paez",
+  "notas": [7, 7, 8]
+}
+
+### 8. Eliminar un alumno
+DELETE http://localhost:3002/alumnos/Martin%20Paez HTTP/1.1
