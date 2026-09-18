@@ -51,7 +51,7 @@ POST {{baseUrl}}/tareas
 Content-Type: application/json
 
 {
-  "nombre": "Configurar entorno de desarrollo"
+  "nombre": "Instalar dependencias de Node.js"
 }
 
 ### 11. Error al crear: nombre vacío (debe retornar 400 Bad Request)
@@ -71,14 +71,18 @@ Content-Type: application/json
   "completada": true
 }
 
-### 13. Error al modificar: nombre duplicado (debe retornar 409 Conflict)
+### 13. Marcar rápidamente una tarea como completada (PATCH)
+PATCH {{baseUrl}}/tareas/3/completar
+Accept: application/json
+
+### 14. Error al modificar: nombre duplicado (debe retornar 409 Conflict)
 PUT {{baseUrl}}/tareas/3
 Content-Type: application/json
 
 {
-  "nombre": "Configurar entorno de desarrollo"
+  "nombre": "Instalar dependencias de Node.js"
 }
 
-### 14. Eliminar una tarea (DELETE)
+### 15. Eliminar una tarea (DELETE)
 DELETE {{baseUrl}}/tareas/4
 Accept: application/json

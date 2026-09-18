@@ -1,4 +1,4 @@
-import { app } from './src/app.js';
+import { app } from './src/index.js';
 
 const PORT = 3997;
 const server = app.listen(PORT, async () => {
@@ -15,19 +15,23 @@ const server = app.listen(PORT, async () => {
     // 2. Diferenciación de tareas completadas y pendientes
     res = await fetch(`${baseUrl}/tareas?completada=true`);
     data = await res.json();
-    console.assert(data.tareas.every((t) => t.completada === true && t.estado === 'completada'), 'Filtro completadas OK');
+    let lista = Array.isArray(data) ? data : data.tareas;
+    console.assert(lista.every((t) => t.completada === true && t.estado === 'completada'), 'Filtro completadas OK');
 
     res = await fetch(`${baseUrl}/tareas?completada=false`);
     data = await res.json();
-    console.assert(data.tareas.every((t) => t.completada === false && t.estado === 'pendiente'), 'Filtro pendientes OK');
+    lista = Array.isArray(data) ? data : data.tareas;
+    console.assert(lista.every((t) => t.completada === false && t.estado === 'pendiente'), 'Filtro pendientes OK');
 
     res = await fetch(`${baseUrl}/tareas?estado=completada`);
     data = await res.json();
-    console.assert(data.tareas.every((t) => t.completada === true), 'Filtro estado completada OK');
+    lista = Array.isArray(data) ? data : data.tareas;
+    console.assert(lista.every((t) => t.completada === true), 'Filtro estado completada OK');
 
     res = await fetch(`${baseUrl}/tareas?estado=pendiente`);
     data = await res.json();
-    console.assert(data.tareas.every((t) => t.completada === false), 'Filtro estado pendiente OK');
+    lista = Array.isArray(data) ? data : data.tareas;
+    console.assert(lista.every((t) => t.completada === false), 'Filtro estado pendiente OK');
 
     // 3. Creación (POST)
     res = await fetch(`${baseUrl}/tareas`, {
@@ -36,8 +40,9 @@ const server = app.listen(PORT, async () => {
       body: JSON.stringify({ nombre: 'Realizar despliegue en servidor' })
     });
     data = await res.json();
-    console.assert(res.status === 201 && data.tarea.completada === false, 'Creación OK');
-    const nuevoId = data.tarea.id;
+    const tareaCreada = data.tarea || data;
+    console.assert(res.status === 201 && tareaCreada.completada === false, 'Creación OK');
+    const nuevoId = tareaCreada.id;
 
     // 4. Unicidad de nombres (409 Conflict)
     res = await fetch(`${baseUrl}/tareas`, {
@@ -69,13 +74,14 @@ const server = app.listen(PORT, async () => {
       body: JSON.stringify({ nombre: 'Nombre de tarea actualizado', completada: true })
     });
     data = await res.json();
-    console.assert(res.status === 200 && data.tarea.completada === true, 'Modificación OK');
+    const tareaModificada = data.tarea || data;
+    console.assert(res.status === 200 && tareaModificada.completada === true, 'Modificación OK');
 
     // Modificar a duplicado (409)
     res = await fetch(`${baseUrl}/tareas/${nuevoId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: 'Configurar entorno de desarrollo' })
+      body: JSON.stringify({ nombre: 'Instalar dependencias de Node.js' })
     });
     console.assert(res.status === 409, 'Modificar a nombre duplicado retorna 409');
 
