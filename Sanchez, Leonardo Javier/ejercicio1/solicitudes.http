@@ -9,6 +9,6 @@ POST {{URL}}/rectangulo
 Content-Type: application/json
 
 {
-    "base": 5,
-    "altura": 10
+    "base": 20,
+    "altura": 20
 }
