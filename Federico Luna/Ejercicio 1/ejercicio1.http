@@ -1,0 +1,11 @@
+### Rectángulo
+GET http://localhost:3000/rectangulos?base=10&altura=5
+
+### Cuadrado
+GET http://localhost:3000/rectangulos?base=5&altura=5
+
+### Valor inválido
+GET http://localhost:3000/rectangulos?base=-10&altura=5
+
+### Falta la base
+GET http://localhost:3000/rectangulos?altura=5
