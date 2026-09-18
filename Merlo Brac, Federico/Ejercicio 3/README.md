@@ -15,11 +15,11 @@ información y exponer la funcionalidad requerida.
 ## Decisiones de Diseño y Fundamentación
 
 ### 1. Modelado de la Información y Estados de Avance
-- **Estructura de la Entidad `Tarea`:** Se modela una clase `Tarea` conservando en el arreglo interno:
+- **Estructura del arreglo interno:** Se almacena en el arreglo interno:
   - `id`: Identificador numérico único correlativo.
   - `nombre`: Cadena de texto descriptiva de la tarea.
   - `completada`: Indicador booleano (`true` o `false`).
-- **Propiedad Derivada `estado`:** Se añade un getter que proyecta `'completada'` si `completada === true`, o `'pendiente'` si `completada === false`.
+- **Propiedad Derivada `estado`:** Al responder, se incluye el campo `estado` que proyecta `'completada'` si `completada === true`, o `'pendiente'` si `completada === false`.
 - **Fundamentación:** El tipo booleano es la representación más precisa y eficiente para estados binarios (cumplida vs. pendiente), mientras que la propiedad derivada textual ofrece claridad e interoperabilidad.
 
 ### 2. Control Estricto de Unicidad de Nombres
@@ -52,7 +52,7 @@ información y exponer la funcionalidad requerida.
    ```bash
    cd "Merlo Brac, Federico/Ejercicio 3"
    npm install
-   npm start
+   npm start  # Escuchando en http://localhost:3003
    ```
 
 2. Pruebas automáticas:
