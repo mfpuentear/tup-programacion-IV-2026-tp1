@@ -1,4 +1,4 @@
-import { app } from './src/app.js';
+import { app } from './src/index.js';
 
 const PORT = 3999;
 const server = app.listen(PORT, async () => {
@@ -15,15 +15,15 @@ const server = app.listen(PORT, async () => {
     // 2. Listado y filtrado
     res = await fetch(`${baseUrl}/rectangulos`);
     data = await res.json();
-    console.assert(res.status === 200 && data.rectangulos.length >= 4, 'Listado OK');
+    console.assert(res.status === 200 && data.length >= 4, 'Listado OK');
 
     res = await fetch(`${baseUrl}/rectangulos?esCuadrado=true`);
     data = await res.json();
-    console.assert(data.rectangulos.every((r) => r.esCuadrado === true), 'Filtro cuadrados OK');
+    console.assert(data.every((r) => r.esCuadrado === true), 'Filtro cuadrados OK');
 
     res = await fetch(`${baseUrl}/rectangulos?esCuadrado=false`);
     data = await res.json();
-    console.assert(data.rectangulos.every((r) => r.esCuadrado === false), 'Filtro no-cuadrados OK');
+    console.assert(data.every((r) => r.esCuadrado === false), 'Filtro no-cuadrados OK');
 
     // 3. Subrecursos
     res = await fetch(`${baseUrl}/rectangulos/1/perimetro`);
@@ -46,8 +46,8 @@ const server = app.listen(PORT, async () => {
       body: JSON.stringify({ base: 8, altura: 8, nombre: 'Cuadrado 8x8' })
     });
     data = await res.json();
-    console.assert(res.status === 201 && data.rectangulo.esCuadrado === true, 'Creación OK');
-    const nuevoId = data.rectangulo.id;
+    console.assert(res.status === 201 && data.esCuadrado === true, 'Creación OK');
+    const nuevoId = data.id;
 
     // 6. Validación de errores (400)
     res = await fetch(`${baseUrl}/rectangulos`, {
@@ -64,7 +64,7 @@ const server = app.listen(PORT, async () => {
       body: JSON.stringify({ base: 10, altura: 5 })
     });
     data = await res.json();
-    console.assert(res.status === 200 && data.rectangulo.esCuadrado === false, 'Modificación OK');
+    console.assert(res.status === 200 && data.esCuadrado === false, 'Modificación OK');
 
     // 8. Eliminación (DELETE) y 404
     res = await fetch(`${baseUrl}/rectangulos/${nuevoId}`, { method: 'DELETE' });
