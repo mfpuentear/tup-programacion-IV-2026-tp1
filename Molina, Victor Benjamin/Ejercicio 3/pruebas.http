@@ -1,0 +1,88 @@
+### Crear tarea pendiente
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar programación",
+    "completada": false
+}
+
+
+### Crear tarea completada
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicio",
+    "completada": true
+}
+
+
+### Intentar crear tarea repetida
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar programación",
+    "completada": true
+}
+
+
+### Estado inválido
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Ordenar habitación",
+    "completada": "no"
+}
+
+### Consultar todas las tareas
+GET http://localhost:3000/tareas
+
+
+### Consultar tareas completadas
+GET http://localhost:3000/tareas?completada=true
+
+
+### Consultar tareas pendientes
+GET http://localhost:3000/tareas?completada=false
+
+
+### Filtro inválido
+GET http://localhost:3000/tareas?completada=hola
+
+
+### Consultar una tarea
+GET http://localhost:3000/tareas/Estudiar%20programaci%C3%B3n
+
+
+### Consultar tarea inexistente
+GET http://localhost:3000/tareas/Tarea%20inexistente
+
+### Modificar tarea
+PUT http://localhost:3000/tareas/Estudiar%20programaci%C3%B3n
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar programación",
+    "completada": true
+}
+
+
+### Intentar modificar tarea inexistente
+PUT http://localhost:3000/tareas/Tarea%20inexistente
+Content-Type: application/json
+
+{
+    "nombre": "Tarea inexistente",
+    "completada": true
+}
+
+
+### Eliminar tarea
+DELETE http://localhost:3000/tareas/Estudiar%20programaci%C3%B3n
+
+
+### Intentar eliminar tarea inexistente
+DELETE http://localhost:3000/tareas/Tarea%20inexistente
