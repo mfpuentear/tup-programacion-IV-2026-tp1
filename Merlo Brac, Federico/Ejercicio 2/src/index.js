@@ -1,0 +1,8 @@
+import { app } from './app.js';
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor de Ejercicio 2 escuchando en http://localhost:${PORT}`);
+  console.log(`Recurso principal: http://localhost:${PORT}/alumnos`);
+});
