@@ -1,0 +1,32 @@
+### 1. Crear un rectángulo común (Base 10, Altura 5)
+POST http://localhost:3000/api/rectangulos
+Content-Type: application/json
+
+{
+  "base": 10,
+  "altura": 5
+}
+
+### 2. Crear un cuadrado (Base 4, Altura 4)
+POST http://localhost:3000/api/rectangulos
+Content-Type: application/json
+
+{
+  "base": 4,
+  "altura": 4
+}
+
+### 3. Obtener todos los cálculos
+GET http://localhost:3000/api/rectangulos
+
+### 4. Obtener cálculo por ID
+GET http://localhost:3000/api/rectangulos/1
+
+### 5. Validación: Error por número negativo o cero
+POST http://localhost:3000/api/rectangulos
+Content-Type: application/json
+
+{
+  "base": -5,
+  "altura": 10
+}
