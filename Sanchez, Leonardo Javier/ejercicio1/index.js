@@ -3,6 +3,9 @@ import express from "express"
 //crear una instancia de aplicacion express
 const app = express()
 
+//Middleware para parsear el cuerpo de las solicitudes como JSON
+app.use(express.json())
+
 //definimos primera ruta
 app.get("/", (req, res) => {
     res.send("Hola mundo")
