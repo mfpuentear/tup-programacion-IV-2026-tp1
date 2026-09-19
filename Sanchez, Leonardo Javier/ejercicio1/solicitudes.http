@@ -1,0 +1,14 @@
+@URL = http://localhost:3000
+
+### GET {{URL}}
+Send Request
+GET  {{URL}}
+
+### POST {{URL}}/rectangulo
+POST {{URL}}/rectangulo
+Content-Type: application/json
+
+{
+    "base": 20,
+    "altura": 20
+}

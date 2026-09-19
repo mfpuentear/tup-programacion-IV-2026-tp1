@@ -1,0 +1,28 @@
+@URL = http://localhost:3000
+
+### GET de todas las tareas
+GET {{URL}}/tareas
+
+### GET de las tareas completadas
+GET {{URL}}/tareas?estado=completado
+
+### GET de las tareas pendientes
+GET {{URL}}/tareas?estado=pendiente
+
+### POST crear una tarea completada
+POST {{URL}}/tareas
+Content-Type: application/json
+
+{
+    "nombreTarea": "tarea 5",
+    "estado": "completado"
+}
+
+### POST crear una tarea pendiente
+POST {{URL}}/tareas
+Content-Type: application/json
+
+{
+    "nombreTarea": "tarea 4",
+    "estado": "pendiente"
+}
