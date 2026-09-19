@@ -1,0 +1,82 @@
+### Obtener todos los alumnos
+GET http://localhost:3000/alumnos
+
+### Obtener un alumno
+GET http://localhost:3000/alumnos/Juan
+
+### Obtener otro alumno
+GET http://localhost:3000/alumnos/Maria
+
+### Crear un alumno
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "notas": [7, 8, 9]
+}
+
+### Intentar crear un alumno repetido
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan",
+    "notas": [5, 5, 5]
+}
+
+### Crear alumno con cantidad incorrecta de notas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos",
+    "notas": [7, 8]
+}
+
+### Crear alumno con nota no numérica
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Luis",
+    "notas": [7, "hola", 9]
+}
+
+### Modificar las notas de Juan
+PUT http://localhost:3000/alumnos/Juan
+Content-Type: application/json
+
+{
+    "notas": [5, 6, 7]
+}
+
+### Modificar alumno inexistente
+PUT http://localhost:3000/alumnos/Pedro123
+Content-Type: application/json
+
+{
+    "notas": [8, 8, 8]
+}
+
+### Modificar con cantidad incorrecta de notas
+PUT http://localhost:3000/alumnos/Juan
+Content-Type: application/json
+
+{
+    "notas": [8, 9]
+}
+
+### Modificar con una nota no numérica
+PUT http://localhost:3000/alumnos/Juan
+Content-Type: application/json
+
+{
+    "notas": [8, "hola", 9]
+}
+
+### Eliminar alumno
+DELETE http://localhost:3000/alumnos/Maria
+
+### Verificar alumnos despues de eliminar
+GET http://localhost:3000/alumnos
