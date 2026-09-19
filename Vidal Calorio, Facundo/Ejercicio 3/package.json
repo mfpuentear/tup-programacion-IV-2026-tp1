@@ -1,0 +1,13 @@
+{
+  "name": "ejercicio-3-api-tareas",
+  "version": "1.0.0",
+  "description": "API REST para administrar tareas y su estado de avance",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
