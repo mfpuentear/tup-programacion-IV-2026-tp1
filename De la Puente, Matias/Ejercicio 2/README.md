@@ -1,15 +1,19 @@
-# Ejercicio 2
+# Ejercicio 2 
 
-Desarrollar una API con ExpressJS para administrar la información académica de
-los alumnos de una materia y sus calificaciones. Cada alumno deberá contar con
-un nombre y tres notas, que se conservarán en un arreglo interno. No podrán
-existir alumnos con el mismo nombre al crear o modificar los registros.
+API REST desarrollada con ExpressJS para gestionar las calificaciones de alumnos de una materia.
 
-Al consultar las notas de un alumno, la API deberá informar su promedio y su
-condición académica: reprobado para promedios menores a 6, aprobado para
-promedios de 6 o 7 y promocionado para promedios de 8 o más. El promedio y la
-condición son datos derivados, por lo que no deberán almacenarse en el arreglo
-interno.
+##  Decisiones de Diseño
 
-Definir y fundamentar las decisiones de diseño necesarias para modelar la
-información y exponer la funcionalidad requerida.
+
+ **Almacenamiento:** Los registros se guardan en un arreglo en memoria con formato `{ id, nombre, notas }`.
+ **Datos Derivados:** El **promedio** y la **condición** (`Reprobado`, `Aprobado`, `Promocionado`) no se persisten en el arreglo, sino que se calculan al momento de responder la consulta.
+ **Validación de Unicidad:** No se permite guardar o actualizar un registro si el nombre del alumno ya existe en el sistema.
+ **Métodos HTTP Utilizados:**
+   `GET /api/alumnos`: Lista todos los alumnos con sus notas, promedio y condición.
+   `GET /api/alumnos/:id`: Obtiene el detalle de un alumno en particular.
+
+   `POST /api/alumnos`: Registra un nuevo alumno.
+
+   `PUT /api/alumnos/:id`: Actualiza la información de un alumno.
+   
+   `DELETE /api/alumnos/:id`: Elimina a un alumno por su ID.

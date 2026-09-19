@@ -1,0 +1,35 @@
+###
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "base": 10,
+  "altura": 5
+
+}
+
+###
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "base": 4,
+  "altura": 4
+
+
+}
+
+###
+POST http://localhost:3000/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "base": -5,
+  "altura": 10
+  
+}
+
+###
+GET http://localhost:3000/api/rectangulos/calcular?base=6&altura=6
+
+###S

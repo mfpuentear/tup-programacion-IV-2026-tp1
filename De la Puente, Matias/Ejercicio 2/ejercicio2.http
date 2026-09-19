@@ -1,0 +1,74 @@
+###
+@host = http://localhost:3000/api/alumnos
+
+### 
+GET {{host}}
+
+###
+POST {{host}}
+Content-Type: application/json
+
+{
+  "nombre": "Ana Gómez",
+  "notas": [8, 9, 10]
+
+
+}
+
+### 
+POST {{host}}
+Content-Type: application/json
+
+
+{
+  "nombre": "Carlos Pérez",
+  "notas": [6, 7, 6]
+}
+
+###
+POST {{host}}
+Content-Type: application/json
+
+{
+  "nombre": "Lucía Fernández",
+  "notas": [4, 5, 3]
+
+}
+
+###
+POST {{host}}
+Content-Type: application/json
+
+
+{
+  "nombre": "Ana Gómez",
+  "notas": [7, 7, 7]
+
+}
+
+###
+POST {{host}}
+Content-Type: application/json
+
+{
+  "nombre": "Pedro López",
+  "notas": [8, 9]
+
+}
+
+###
+GET {{host}}/1
+
+
+###
+PUT {{host}}/2
+Content-Type: application/json
+
+{
+  "notas": [9, 9, 10]
+}
+
+###
+DELETE {{host}}/3
+
+###
