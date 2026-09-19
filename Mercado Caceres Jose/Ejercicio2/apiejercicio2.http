@@ -1,0 +1,23 @@
+### 1. Crear un alumno válido con nombre y 3 notas
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana",
+    "notas": [8, 9, 10]
+}
+
+### 2. Intentar crear el mismo alumno (Debe fallar y tirar error 400 por duplicado)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana",
+    "notas": [6, 6, 6]
+}
+
+### 3. Consultar a la alumna "Ana" (Debe devolver sus datos, calcular promedio y mostrar condición)
+GET http://localhost:3000/alumnos/Ana
+
+### 4. Consultar a un alumno que no existe (Debe fallar y tirar error 404)
+GET http://localhost:3000/alumnos/Carlos
