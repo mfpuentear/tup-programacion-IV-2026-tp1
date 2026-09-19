@@ -1,0 +1,25 @@
+@url=http://localhost:3000
+
+
+### RECTÁNGULO
+
+### Calcular perímetro y superficie de un rectángulo
+GET {{url}}/rectangulo?base=5&altura=3
+
+
+### CUADRADO
+
+### Calcular perímetro y superficie de un cuadrado
+GET {{url}}/rectangulo?base=5&altura=5
+
+
+### CASO DE ERROR
+
+### Base inválida
+GET {{url}}/rectangulo?base=-5&altura=3
+
+### Altura inválida
+GET {{url}}/rectangulo?base=5&altura=0
+
+### Datos no numéricos
+GET {{url}}/rectangulo?base=abc&altura=3

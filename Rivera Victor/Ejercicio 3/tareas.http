@@ -1,0 +1,94 @@
+@url=http://localhost:3000
+
+
+### CREAR TAREAS
+
+### Crear tarea pendiente
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para el parcial",
+    "completada": false
+}
+
+### Crear tarea completada
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar trabajo práctico",
+    "completada": true
+}
+
+### Crear otra tarea pendiente
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Preparar presentación",
+    "completada": false
+}
+
+
+### CREAR - CASO DE ERROR
+
+### Intentar crear una tarea con nombre repetido
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para el parcial",
+    "completada": true
+}
+
+
+### CONSULTAR TAREAS
+
+### Consultar todas las tareas
+GET {{url}}/tareas
+
+### Consultar tareas completadas
+GET {{url}}/tareas/completadas
+
+### Consultar tareas pendientes
+GET {{url}}/tareas/pendientes
+
+
+### MODIFICAR TAREA
+
+### Marcar como completada la tarea de estudiar
+PUT {{url}}/tareas/Estudiar%20para%20el%20parcial
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para el parcial",
+    "completada": true
+}
+
+### Consultar tareas pendientes después de modificar
+GET {{url}}/tareas/pendientes
+
+### Consultar tareas completadas después de modificar
+GET {{url}}/tareas/completadas
+
+
+### MODIFICAR - CASO DE ERROR
+
+### Intentar modificar una tarea con un nombre existente
+PUT {{url}}/tareas/Estudiar%20para%20el%20parcial
+Content-Type: application/json
+
+{
+    "nombre": "Entregar trabajo práctico",
+    "completada": false
+}
+
+
+### ELIMINAR TAREA
+
+### Eliminar tarea
+DELETE {{url}}/tareas/Preparar%20presentaci%C3%B3n
+
+### Consultar todas las tareas después de eliminar
+GET {{url}}/tareas

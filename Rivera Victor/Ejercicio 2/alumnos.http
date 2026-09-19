@@ -1,0 +1,93 @@
+@url=http://localhost:3000
+
+### CREAR ALUMNOS
+
+### Crear alumno aprobado
+
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Juan",
+"notas": [7, 8, 6]
+}
+
+### Crear alumno promocionado
+
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Maria",
+"notas": [8, 9, 10]
+}
+
+### Crear alumno reprobado
+
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Pedro",
+"notas": [4, 5, 3]
+}
+
+### CREAR - CASO DE ERROR
+
+### Intentar crear alumno con nombre repetido
+
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+"nombre": "Juan",
+"notas": [10, 10, 10]
+}
+
+### CONSULTAR ALUMNOS
+
+### Consultar alumno
+
+GET {{url}}/alumnos/Juan
+
+### Consultar todos los alumnos
+
+GET {{url}}/alumnos
+
+### MODIFICAR ALUMNO
+
+### Modificar las notas de Juan
+
+PUT {{url}}/alumnos/Juan
+Content-Type: application/json
+
+{
+"nombre": "Juan",
+"notas": [9, 9, 8]
+}
+
+### Consultar alumno modificado
+
+GET {{url}}/alumnos/Juan
+
+### MODIFICAR - CASO DE ERROR
+
+### Intentar modificar Juan con un nombre existente
+
+PUT {{url}}/alumnos/Juan
+Content-Type: application/json
+
+{
+"nombre": "Maria",
+"notas": [10, 10, 10]
+}
+
+### ELIMINAR ALUMNO
+
+### Eliminar Juan
+
+DELETE {{url}}/alumnos/Juan
+
+### Intentar consultar alumno eliminado
+
+GET {{url}}/alumnos/Juan

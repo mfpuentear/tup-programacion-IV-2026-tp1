@@ -1,0 +1,14 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "description": "Desarrollar una API con ExpressJS para resolver consultas sobre perímetros y\r superficies de rectángulos. La solución deberá permitir distinguir, cuando\r corresponda, los casos que también constituyen cuadrados.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
