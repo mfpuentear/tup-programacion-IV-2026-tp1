@@ -1,0 +1,16 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "La información se modela mediante un arreglo interno llamado rectangulos. Cada rectángulo contiene un id, una base y una altura.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Marquiol Jose",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

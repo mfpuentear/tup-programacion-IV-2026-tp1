@@ -1,0 +1,68 @@
+### Obtener todas las tareas
+GET http://localhost:3003/tareas
+
+
+### Obtener tareas completadas
+GET http://localhost:3003/tareas?completada=true
+
+
+### Obtener tareas pendientes
+GET http://localhost:3003/tareas?completada=false
+
+
+### Obtener una tarea
+GET http://localhost:3003/tareas/1
+
+
+### Crear tarea pendiente
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicios",
+    "completada": false
+}
+
+
+### Crear tarea completada
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar trabajo",
+    "completada": true
+}
+
+
+### Modificar tarea
+PUT http://localhost:3003/tareas/1
+Content-Type: application/json
+
+{
+    "nombre": "Hacer TP de JavaScript",
+    "completada": true
+}
+
+
+### Eliminar tarea
+DELETE http://localhost:3003/tareas/3
+
+
+### Prueba: nombre repetido
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer TP",
+    "completada": false
+}
+
+
+### Prueba: estado inválido
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Nueva tarea",
+    "completada": "si"
+}

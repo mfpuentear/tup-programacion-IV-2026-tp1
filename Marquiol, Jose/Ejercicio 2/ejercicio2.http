@@ -1,0 +1,80 @@
+### Obtener todos los alumnos
+GET http://localhost:3002/alumnos
+
+
+### Obtener un alumno
+GET http://localhost:3002/alumnos/1
+
+
+### Crear alumno
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "José",
+    "notas": [8, 7, 9]
+}
+
+
+### Crear alumno reprobado
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Lucia",
+    "notas": [4, 5, 3]
+}
+
+
+### Crear alumno aprobado
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana",
+    "notas": [6, 7, 6]
+}
+
+
+### Modificar alumno
+PUT http://localhost:3002/alumnos/1
+Content-Type: application/json
+
+{
+    "nombre": "Juan",
+    "notas": [10, 9, 8]
+}
+
+
+### Eliminar alumno
+DELETE http://localhost:3002/alumnos/3
+
+
+### Prueba: nombre repetido
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan",
+    "notas": [7, 7, 7]
+}
+
+
+### Prueba: solamente 2 notas
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "notas": [8, 9]
+}
+
+
+### Prueba: nota inválida
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Sofia",
+    "notas": [-3, 11, 7]
+}

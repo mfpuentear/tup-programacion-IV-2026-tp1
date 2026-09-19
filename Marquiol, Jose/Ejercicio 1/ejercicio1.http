@@ -1,0 +1,62 @@
+### Obtener todos los rectángulos
+GET http://localhost:3001/rectangulos
+
+
+### Obtener solamente los cuadrados
+GET http://localhost:3001/rectangulos?cuadrado=true
+
+
+### Obtener solamente los que no son cuadrados
+GET http://localhost:3001/rectangulos?cuadrado=false
+
+
+### Obtener un rectángulo por id
+GET http://localhost:3001/rectangulos/1
+
+
+### Crear un rectángulo
+POST http://localhost:3001/rectangulos
+Content-Type: application/json
+
+{
+    "base": 15,
+    "altura": 6
+}
+
+
+### Crear un cuadrado
+POST http://localhost:3001/rectangulos
+Content-Type: application/json
+
+{
+    "base": 7,
+    "altura": 7
+}
+
+
+### Modificar un rectángulo
+PUT http://localhost:3001/rectangulos/1
+Content-Type: application/json
+
+{
+    "base": 20,
+    "altura": 10
+}
+
+
+### Eliminar un rectángulo
+DELETE http://localhost:3001/rectangulos/3
+
+
+### Prueba de id inválido
+GET http://localhost:3001/rectangulos/abc
+
+
+### Prueba de medidas inválidas
+POST http://localhost:3001/rectangulos
+Content-Type: application/json
+
+{
+    "base": -5,
+    "altura": 10
+}
