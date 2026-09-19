@@ -1,0 +1,15 @@
+{
+  "name": "Trabajo Practico N°1 programacion 4",
+  "version": "1.0.0",
+  "description": "Ejercicio 2",
+  "license": "ISC",
+  "author": "Pablo Fuentes",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
