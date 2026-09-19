@@ -1,0 +1,51 @@
+### Comprobar que la API funciona
+GET http://localhost:3000
+
+
+### Rectángulo
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 10,
+    "altura": 5
+}
+
+
+### Cuadrado
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 8,
+    "altura": 8
+}
+
+
+### Error: falta la altura
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": 10
+}
+
+
+### Error: valores negativos
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": -5,
+    "altura": 8
+}
+
+
+### Error: valores que no son números
+POST http://localhost:3000/rectangulos
+Content-Type: application/json
+
+{
+    "base": "diez",
+    "altura": 8
+}

@@ -1,0 +1,78 @@
+### Ver todos los alumnos
+GET http://localhost:3001/alumnos
+
+
+### Crear alumno - Reprobado
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan",
+    "notas": [4, 5, 3]
+}
+
+
+### Crear alumno - Aprobado
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Maria",
+    "notas": [6, 7, 7]
+}
+
+
+### Crear alumno - Promocionado
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "notas": [8, 9, 10]
+}
+
+
+### Consultar alumno
+GET http://localhost:3001/alumnos/Pedro
+
+
+### Intentar crear alumno con nombre repetido
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "notas": [10, 10, 10]
+}
+
+
+### Modificar alumno
+PUT http://localhost:3001/alumnos/Pedro
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "notas": [6, 6, 6]
+}
+
+
+### Consultar alumno modificado
+GET http://localhost:3001/alumnos/Pedro
+
+
+### Intentar modificar usando un nombre existente
+PUT http://localhost:3001/alumnos/Pedro
+Content-Type: application/json
+
+{
+    "nombre": "Juan",
+    "notas": [8, 8, 8]
+}
+
+
+### Eliminar alumno
+DELETE http://localhost:3001/alumnos/Juan
+
+
+### Ver alumnos después de eliminar
+GET http://localhost:3001/alumnos

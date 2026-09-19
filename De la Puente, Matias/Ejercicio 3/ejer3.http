@@ -1,0 +1,86 @@
+### Ver todas las tareas
+GET http://localhost:3002/tareas
+
+
+### Crear tarea pendiente
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar JavaScript",
+    "completada": false
+}
+
+
+### Crear tarea completada
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicio",
+    "completada": true
+}
+
+
+### Crear otra tarea pendiente
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar TP",
+    "completada": false
+}
+
+
+### Ver tareas completadas
+GET http://localhost:3002/tareas/completadas
+
+
+### Ver tareas pendientes
+GET http://localhost:3002/tareas/pendientes
+
+
+### Consultar una tarea
+GET http://localhost:3002/tareas/Estudiar%20JavaScript
+
+
+### Intentar crear tarea con nombre repetido
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar JavaScript",
+    "completada": true
+}
+
+
+### Modificar una tarea
+PUT http://localhost:3002/tareas/Estudiar%20JavaScript
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar JavaScript",
+    "completada": true
+}
+
+
+### Ver tarea modificada
+GET http://localhost:3002/tareas/Estudiar%20JavaScript
+
+
+### Intentar modificar usando un nombre existente
+PUT http://localhost:3002/tareas/Estudiar%20JavaScript
+Content-Type: application/json
+
+{
+    "nombre": "Hacer ejercicio",
+    "completada": false
+}
+
+
+### Eliminar una tarea
+DELETE http://localhost:3002/tareas/Entregar%20TP
+
+
+### Ver tareas después de eliminar
+GET http://localhost:3002/tareas
