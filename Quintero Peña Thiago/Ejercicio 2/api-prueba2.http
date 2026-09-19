@@ -1,0 +1,23 @@
+### Ver todos los alumnos
+GET http://localhost:3000/api/v1/alumnos
+
+### Ver alumno por ID
+GET http://localhost:3000/api/v1/alumnos/1
+
+### Crear un nuevo alumno
+POST http://localhost:3000/api/v1/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos López",
+  "notas": [7, 8, 9]
+}
+
+### Probar error de duplicado
+POST http://localhost:3000/api/v1/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "notas": [6, 6, 6]
+}
