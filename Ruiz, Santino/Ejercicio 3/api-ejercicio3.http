@@ -1,0 +1,41 @@
+@url=http://localhost:3000
+
+### 1. Listado general de tareas
+GET {{url}}/tareas
+
+### 2. Consultar solo tareas COMPLETADAS
+GET {{url}}/tareas?completada=true
+
+### 3. Consultar solo tareas PENDIENTES
+GET {{url}}/tareas?completada=false
+
+### 4. Detalles de una tarea en particular
+GET {{url}}/tareas/1
+
+### 5. Crear una nueva tarea (Por defecto será completada: false)
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar bases de datos"
+}
+
+### 6. Intentar crear una tarea duplicada (Dará error 400)
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": " Hacer las Compras "
+}
+
+### 7. Actualizar una tarea (marcar como completada y cambiar nombre)
+PUT {{url}}/tareas/2
+Content-Type: application/json
+
+{
+  "nombre": "Hacer las compras del mes",
+  "completada": true
+}
+
+### 8. Eliminar una tarea
+DELETE {{url}}/tareas/1
