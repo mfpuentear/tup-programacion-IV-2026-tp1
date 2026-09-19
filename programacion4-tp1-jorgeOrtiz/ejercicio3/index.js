@@ -17,23 +17,32 @@ let tareas = [];
 // Se devuelve recurso creado en JSON, coherente con convención REST.
 
 app.post("/tareas", (req, res) => {
+  const { nombre, lista } = req.body;
 
-  const {nombre, lista} = req.body
-if (!nombre || (lista !== true && lista !== false ) ){
-  return res
+  // Validación 
+  if (!nombre || (lista !== true && lista !== false)) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Error, se necesita nombre y estado" });
+  }
 
-.status(400)
-  .json({success: false, message:"Error, se necesita nombre y estado"})
-}
+  // Validación de duplicados
+  const existente = tareas.find(
+    (t) => t.nombre.trim().toLocaleLowerCase() === nombre.toLocaleLowerCase()
+  );
+  if (existente) {
+    return res
+      .status(400)
+      .json({ success: false, message: "ERROR, tarea existente" });
+  }
 
-const exsitente = tareas.find((t) => t.nombre.trim().tolocalelowerCase()===nombre.tolocalelowerCase());
-if(existente){
-  return res
-  .status(400)
-  .json({success: false, message:"ERROR, tarea existente"});
-}
-const nuevo= {nombre: nombre, lista}
-})
+  
+  const nuevo = { nombre: nombre.trim(), lista };
+  tareas.push(nuevo);
+
+
+  res.status(201).json(nuevo);
+});
 
 
 
@@ -42,7 +51,7 @@ const nuevo= {nombre: nombre, lista}
 // Se devuelve colección parcial o completa en JSON, coherente con diseño REST.
 
 app.get("/tareas", (req, res) => {
-  const{estado} = req.quiery;
+  const{estado} = req.query;
 
   let validar = tareas;
 
