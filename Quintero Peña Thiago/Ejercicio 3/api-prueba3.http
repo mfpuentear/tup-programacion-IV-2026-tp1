@@ -1,0 +1,21 @@
+### Obtener todas las tareas
+GET http://localhost:3000/api/v1/tareas
+
+### Filtrar por pendientes
+GET http://localhost:3000/api/v1/tareas?completada=false
+
+### Crear tarea nueva
+POST http://localhost:3000/api/v1/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Entregar Trabajo Practico 1"
+}
+
+### Cambiar estado de tarea
+PATCH http://localhost:3000/api/v1/tareas/2/estado
+Content-Type: application/json
+
+{
+  "completada": true
+}

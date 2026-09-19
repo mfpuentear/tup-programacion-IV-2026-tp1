@@ -1,0 +1,8 @@
+### Probar con un rectángulo
+GET http://localhost:3000/api/v1/rectangulos/calcular?base=10&altura=5
+
+### Probar con un cuadrado
+GET http://localhost:3000/api/v1/rectangulos/calcular?base=8&altura=8
+
+### Error por valor negativo
+GET http://localhost:3000/api/v1/rectangulos/calcular?base=-5&altura=10
