@@ -1,0 +1,30 @@
+### 1. Crear una tarea nueva (toma estado "pendiente" por defecto)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "titulo": "Estudiar Node.js"
+}
+
+### 2. Crear una tarea marcándola como "completada"
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "titulo": "Hacer las compras",
+    "estado": "completada"
+}
+
+### 3. Intentar crear una tarea repetida (Debe fallar)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "titulo": "Estudiar Node.js"
+}
+
+### 4. Consultar TODAS las tareas
+GET http://localhost:3000/tareas
+
+### 5. Consultar SOLO las tareas completadas (Probando el filtro)
+GET http://localhost:3000/tareas?estado=completada
