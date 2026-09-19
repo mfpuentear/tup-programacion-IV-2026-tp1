@@ -1,0 +1,56 @@
+
+### EJERCICIO 1 - Cálculos de rectángulos
+
+### 1. Rectángulo 10 x 5
+
+GET http://localhost:3001/rectangulos?ancho=10&alto=5
+
+
+### 2. Cuadrado 5 x 5
+
+GET http://localhost:3001/rectangulos?ancho=5&alto=5
+
+
+### 3. Rectángulo con valores decimales
+
+GET http://localhost:3001/rectangulos?ancho=2.5&alto=3
+
+
+### 4. Falta el parámetro alto
+
+GET http://localhost:3001/rectangulos?ancho=10
+
+
+### 5. Falta el parámetro ancho
+
+GET http://localhost:3001/rectangulos?alto=10
+
+
+### 6. Ancho igual a cero
+
+GET http://localhost:3001/rectangulos?ancho=0&alto=10
+
+
+### 7. Alto igual a cero
+
+GET http://localhost:3001/rectangulos?ancho=10&alto=0
+
+
+### 8. Ancho negativo
+
+GET http://localhost:3001/rectangulos?ancho=-5&alto=10
+
+
+### 9. Alto negativo
+
+GET http://localhost:3001/rectangulos?ancho=5&alto=-10
+
+
+### 10. Valores no numéricos
+
+GET http://localhost:3001/rectangulos?ancho=hola&alto=10
+
+
+### 11. Endpoint inexistente
+
+GET http://localhost:3001/otro-recurso
