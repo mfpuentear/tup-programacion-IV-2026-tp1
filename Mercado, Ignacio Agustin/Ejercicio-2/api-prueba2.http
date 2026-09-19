@@ -1,0 +1,70 @@
+@url=http://localhost:3000
+
+### Listar todos los Alumnos
+GET {{url}}/alumnos
+
+### Listar alumnos filtrando por nombre
+GET {{url}}/alumnos?nombre=Santino
+
+### Obtener detalle de un alumno (ID existenten)
+GET {{url}}/alumnos/1
+
+### Obtener Detalle de un alumno (ID inexistente)
+GET {{url}}/alumnos/99
+
+### Crear un nuevo alumno
+POST {{url}}/alumnos
+Content-Type : application/json
+
+{
+  "nombre": "Leonel Ochoa",
+  "notas": [7, 6, 8]
+}
+
+### ERROR al crear - Nombre Duplicado
+POST {{url}}/alumnos
+Content-Type : application/json
+
+{
+    "nombre": "Santino Ruiz",
+    "notas": [7, 7, 7]
+}
+
+### ERROR al crear - Cantidad de notas invalidas
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Peter Languila",
+    "notas": [8, 8]
+}
+
+### Error al crear - Nota fuera de rango (1-10)
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana Santillan",
+  "notas": [10, 12, 8]
+}
+
+### Modificar un alumno existente
+PUT {{url}}/alumnos/2
+Content-Type: application/json
+
+{
+  "nombre": "Thiago Quintero",
+  "notas": [9, 9, 10]
+}
+
+### Error al modificar - Intentar usar el nombre de otro alumno
+PUT {{url}}/alumnos/2
+Content-Type: application/json
+
+{
+  "nombre": "Jose Mercado",
+  "notas": [8, 8, 8]
+}
+
+### Eliminar un alumno
+DELETE {{url}}/alumnos/3
