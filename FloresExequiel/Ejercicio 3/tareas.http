@@ -1,0 +1,146 @@
+### Listar todas las tareas
+GET http://localhost:3002/tareas
+
+### Listar solo las tareas completadas
+GET http://localhost:3002/tareas?completada=true
+
+### Listar solo las tareas pendientes
+GET http://localhost:3002/tareas?completada=false
+
+### Consultar una tarea
+GET http://localhost:3002/tareas/2
+
+### Crear una tarea (queda pendiente por defecto)
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Subir el TP a GitHub"
+}
+
+### Crear una tarea ya completada
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Leer el enunciado",
+  "completada": true
+}
+
+### Marcar una tarea como completada (modificación parcial)
+PATCH http://localhost:3002/tareas/2
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### Renombrar una tarea (modificación parcial)
+PATCH http://localhost:3002/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Preparar la defensa del TP"
+}
+
+### Reemplazar una tarea completa
+PUT http://localhost:3002/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Preparar la presentación final",
+  "completada": false
+}
+
+### Eliminar una tarea
+DELETE http://localhost:3002/tareas/1
+
+### ERROR 409: nombre repetido al crear
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "hacer el tp"
+}
+
+### ERROR 409: nombre repetido al reemplazar
+PUT http://localhost:3002/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP",
+  "completada": false
+}
+
+### ERROR 409: nombre repetido al modificar parcialmente
+PATCH http://localhost:3002/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP"
+}
+
+### ERROR 400: falta el nombre
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "completada": false
+}
+
+### ERROR 400: nombre vacío
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "   "
+}
+
+### ERROR 400: completada no es booleano
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Tarea con estado inválido",
+  "completada": "si"
+}
+
+### ERROR 400: PUT sin el campo completada
+PUT http://localhost:3002/tareas/2
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP"
+}
+
+### ERROR 400: PATCH sin campos
+PATCH http://localhost:3002/tareas/2
+Content-Type: application/json
+
+{}
+
+### ERROR 400: JSON inválido
+POST http://localhost:3002/tareas
+Content-Type: application/json
+
+{ "nombre": "Tarea rota"
+
+### ERROR 400: id inválido
+GET http://localhost:3002/tareas/abc
+
+### ERROR 400: filtro inválido
+GET http://localhost:3002/tareas?completada=quizas
+
+### ERROR 404: tarea inexistente
+GET http://localhost:3002/tareas/999
+
+### ERROR 404: modificar tarea inexistente
+PATCH http://localhost:3002/tareas/999
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### ERROR 404: eliminar tarea inexistente
+DELETE http://localhost:3002/tareas/999
