@@ -1,0 +1,16 @@
+{
+  "name": "ejercicio-3",
+  "version": "1.0.0",
+  "description": "Resolucion del Ejercicio 3 Programacion IV",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "Ignacio Mercado",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
