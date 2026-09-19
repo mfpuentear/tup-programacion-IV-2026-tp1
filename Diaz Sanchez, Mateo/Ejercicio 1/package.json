@@ -1,0 +1,12 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "Rectangulo.js",
+  "scripts": {
+    "start": "node Rectangulo.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

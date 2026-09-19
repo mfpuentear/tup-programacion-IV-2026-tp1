@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:3000
+
+### Obtener todos los rectángulos
+GET {{baseUrl}}/rectangulos
+
+### Crear un rectángulo
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 8,
+  "altura": 5
+}
+
+### Crear un cuadrado
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 6,
+  "altura": 6
+}
+
+### Consultar un rectángulo por id
+GET {{baseUrl}}/rectangulos/1
+
+### Modificar un rectángulo
+PUT {{baseUrl}}/rectangulos/1
+Content-Type: application/json
+
+{
+  "base": 10,
+  "altura": 4
+}
+
+### Eliminar un rectángulo
+DELETE {{baseUrl}}/rectangulos/1

@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:3000
+
+### Obtener todos los alumnos
+GET {{baseUrl}}/alumnos
+
+### Crear alumno
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "nota1": 8,
+  "nota2": 7,
+  "nota3": 9
+}
+
+### Crear otro alumno
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Luis",
+  "nota1": 5,
+  "nota2": 6,
+  "nota3": 4
+}
+
+### Consultar alumno por id
+GET {{baseUrl}}/alumnos/1
+
+### Modificar alumno
+PUT {{baseUrl}}/alumnos/1
+Content-Type: application/json
+
+{
+  "nombre": "Ana Paula",
+  "nota1": 9,
+  "nota2": 8,
+  "nota3": 7
+}
+
+### Eliminar alumno
+DELETE {{baseUrl}}/alumnos/2
