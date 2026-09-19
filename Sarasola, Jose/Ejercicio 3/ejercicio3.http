@@ -1,0 +1,148 @@
+@baseUrl = http://localhost:3003
+
+### Crear tarea pendiente sin indicar estado
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Express"
+}
+
+
+### Crear tarea pendiente explícitamente
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP",
+  "completada": false
+}
+
+
+### Crear tarea completada
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Instalar Node",
+  "completada": true
+}
+
+
+### Listar todas las tareas
+GET {{baseUrl}}/tareas
+
+
+### Listar solamente tareas completadas
+GET {{baseUrl}}/tareas?completada=true
+
+
+### Listar solamente tareas pendientes
+GET {{baseUrl}}/tareas?completada=false
+
+
+### Filtro inválido
+GET {{baseUrl}}/tareas?completada=hola
+
+
+### Consultar tarea existente
+GET {{baseUrl}}/tareas/Estudiar%20Express
+
+
+### Consultar tarea inexistente
+GET {{baseUrl}}/tareas/NoExiste
+
+
+### Intentar crear nombre duplicado
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP",
+  "completada": false
+}
+
+
+### Intentar duplicado con diferente mayúscula
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "hacer el tp",
+  "completada": false
+}
+
+
+### Nombre vacío
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "   ",
+  "completada": false
+}
+
+
+### Estado inválido porque es string
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Tarea inválida",
+  "completada": "false"
+}
+
+
+### Marcar una tarea como completada
+PUT {{baseUrl}}/tareas/Hacer%20el%20TP
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP",
+  "completada": true
+}
+
+
+### Ver tareas completadas luego de modificar
+GET {{baseUrl}}/tareas?completada=true
+
+
+### Intentar cambiar nombre por otro que ya existe
+PUT {{baseUrl}}/tareas/Hacer%20el%20TP
+Content-Type: application/json
+
+{
+  "nombre": "Instalar Node",
+  "completada": true
+}
+
+
+### Modificar tarea inexistente
+PUT {{baseUrl}}/tareas/NoExiste
+Content-Type: application/json
+
+{
+  "nombre": "Otra tarea",
+  "completada": true
+}
+
+
+### PUT sin estado
+PUT {{baseUrl}}/tareas/Hacer%20el%20TP
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP"
+}
+
+
+### Eliminar tarea
+DELETE {{baseUrl}}/tareas/Estudiar%20Express
+
+
+### Consultar tarea eliminada
+GET {{baseUrl}}/tareas/Estudiar%20Express
+
+
+### Eliminar tarea inexistente
+DELETE {{baseUrl}}/tareas/NoExiste
