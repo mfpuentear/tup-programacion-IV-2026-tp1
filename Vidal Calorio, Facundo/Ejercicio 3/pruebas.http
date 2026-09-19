@@ -1,0 +1,271 @@
+### ==========================================
+### EJERCICIO 3 - TAREAS
+### ==========================================
+
+
+### 1. Obtener todas las tareas
+### Inicialmente debería devolver un arreglo vacío.
+
+GET http://localhost:3003/tareas
+
+
+### ==========================================
+### CREACIÓN
+### ==========================================
+
+
+### 2. Crear tarea pendiente
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Express",
+  "completada": false
+}
+
+
+### 3. Crear tarea completada
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Hacer TP",
+  "completada": true
+}
+
+
+### 4. Crear otra tarea pendiente
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Git",
+  "completada": false
+}
+
+
+### 5. Crear otra tarea completada
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Crear repositorio",
+  "completada": true
+}
+
+
+### ==========================================
+### CONSULTAS
+### ==========================================
+
+
+### 6. Obtener todas las tareas
+
+GET http://localhost:3003/tareas
+
+
+### 7. Obtener una tarea específica
+
+GET http://localhost:3003/tareas/Estudiar%20Express
+
+
+### 8. Obtener tarea inexistente
+### Resultado esperado: 404
+
+GET http://localhost:3003/tareas/TareaInexistente
+
+
+### ==========================================
+### FILTROS
+### ==========================================
+
+
+### 9. Obtener tareas completadas
+### Resultado esperado:
+### Hacer TP
+### Crear repositorio
+
+GET http://localhost:3003/tareas?completada=true
+
+
+### 10. Obtener tareas pendientes
+### Resultado esperado:
+### Estudiar Express
+### Estudiar Git
+
+GET http://localhost:3003/tareas?completada=false
+
+
+### 11. Filtro inválido
+### Resultado esperado: 400 Bad Request
+
+GET http://localhost:3003/tareas?completada=hola
+
+
+### 12. Otro filtro inválido
+
+GET http://localhost:3003/tareas?completada=1
+
+
+### ==========================================
+### VALIDACIONES DE CREACIÓN
+### ==========================================
+
+
+### 13. Nombre vacío
+### Resultado esperado: 400
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "completada": false
+}
+
+
+### 14. Nombre ausente
+### Resultado esperado: 400
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "completada": false
+}
+
+
+### 15. Estado inválido
+### Resultado esperado: 400
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Tarea inválida",
+  "completada": "si"
+}
+
+
+### 16. Estado numérico
+### Resultado esperado: 400
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Otra tarea inválida",
+  "completada": 1
+}
+
+
+### 17. Estado ausente
+### Resultado esperado: 400
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Tarea sin estado"
+}
+
+
+### 18. Nombre duplicado
+### Resultado esperado: 409 Conflict
+
+POST http://localhost:3003/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Express",
+  "completada": true
+}
+
+
+### ==========================================
+### MODIFICACIÓN
+### ==========================================
+
+
+### 19. Marcar una tarea como completada
+
+PUT http://localhost:3003/tareas/Estudiar%20Express
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+
+### 20. Verificar tarea modificada
+
+GET http://localhost:3003/tareas/Estudiar%20Express
+
+
+### 21. Modificar nombre y estado
+
+PUT http://localhost:3003/tareas/Estudiar%20Git
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Git y GitHub",
+  "completada": true
+}
+
+
+### 22. Intentar cambiar a un nombre duplicado
+### Resultado esperado: 409
+
+PUT http://localhost:3003/tareas/Estudiar%20Git%20y%20GitHub
+Content-Type: application/json
+
+{
+  "nombre": "Hacer TP"
+}
+
+
+### 23. Estado inválido durante modificación
+### Resultado esperado: 400
+
+PUT http://localhost:3003/tareas/Hacer%20TP
+Content-Type: application/json
+
+{
+  "completada": "terminada"
+}
+
+
+### 24. Modificar tarea inexistente
+### Resultado esperado: 404
+
+PUT http://localhost:3003/tareas/NoExiste
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+
+### ==========================================
+### ELIMINACIÓN
+### ==========================================
+
+
+### 25. Eliminar una tarea
+
+DELETE http://localhost:3003/tareas/Crear%20repositorio
+
+
+### 26. Intentar eliminar una tarea inexistente
+### Resultado esperado: 404
+
+DELETE http://localhost:3003/tareas/NoExiste
+
+
+### 27. Verificar tareas restantes
+
+GET http://localhost:3003/tareas

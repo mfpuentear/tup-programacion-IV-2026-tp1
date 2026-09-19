@@ -1,0 +1,216 @@
+### EJERCICIO 2 - Alumnos
+
+
+### 1. Obtener todos los alumnos
+
+GET http://localhost:3002/alumnos
+
+### CREACIÓN DE ALUMNOS
+
+### 2. Crear alumno promocionado
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "notas": [8, 8, 8]
+}
+
+
+### 3. Crear alumno aprobado
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Pedro",
+  "notas": [6, 7, 8]
+}
+
+
+### 4. Crear alumno reprobado
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Maria",
+  "notas": [4, 5, 6]
+}
+
+### 5. Crear otro alumno
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "notas": [10, 9, 10]
+}
+
+### CONSULTAS
+
+### 6. Obtener todos los alumnos
+
+GET http://localhost:3002/alumnos
+
+
+### 7. Obtener alumno Juan
+
+GET http://localhost:3002/alumnos/Juan
+
+
+### 8. Obtener alumno inexistente
+
+GET http://localhost:3002/alumnos/AlumnoInexistente
+
+
+### VALIDACIONES
+
+### 9. Intentar crear alumno con nombre duplicado
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "notas": [5, 5, 5]
+}
+
+
+### 10. Cantidad incorrecta de notas
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Roberto",
+  "notas": [8, 7]
+}
+
+
+### 11. Demasiadas notas
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Roberto",
+  "notas": [8, 7, 9, 10]
+}
+
+
+### 12. Nota mayor que 10
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Roberto",
+  "notas": [11, 7, 8]
+}
+
+
+### 13. Nota negativa
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Roberto",
+  "notas": [-1, 7, 8]
+}
+
+
+### 14. Notas que no son números
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Roberto",
+  "notas": ["ocho", 7, 8]
+}
+
+
+### 15. Nombre vacío
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "notas": [8, 7, 9]
+}
+
+
+### 16. Notas no enviadas
+
+POST http://localhost:3002/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Roberto"
+}
+
+
+### MODIFICACIÓN
+
+
+### 17. Modificar las notas de Juan
+
+PUT http://localhost:3002/alumnos/Juan
+Content-Type: application/json
+
+{
+  "notas": [10, 10, 10]
+}
+
+
+### 18. Modificar nombre y notas
+
+PUT http://localhost:3002/alumnos/Juan
+Content-Type: application/json
+
+{
+  "nombre": "Juan Modificado",
+  "notas": [7, 7, 7]
+}
+
+
+### 19. Intentar modificar usando un nombre duplicado
+
+PUT http://localhost:3002/alumnos/Juan Modificado
+Content-Type: application/json
+
+{
+  "nombre": "Pedro",
+  "notas": [8, 8, 8]
+}
+
+### 20. Modificar alumno inexistente
+
+PUT http://localhost:3002/alumnos/NoExiste
+Content-Type: application/json
+
+{
+  "notas": [8, 8, 8]
+}
+
+
+### ELIMINACIÓN
+
+### 21. Eliminar alumno
+
+DELETE http://localhost:3002/alumnos/Juan Modificado
+
+
+### 22. Intentar eliminar alumno inexistente
+
+DELETE http://localhost:3002/alumnos/NoExiste
+
+
+### 23. Verificar alumnos restantes
+
+GET http://localhost:3002/alumnos
