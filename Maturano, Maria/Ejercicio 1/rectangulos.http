@@ -7,3 +7,11 @@ GET http://localhost:3000/rectangulos?base=4&altura=4
 ###
 
 GET http://localhost:3000/rectangulos?base=-5&altura=3
+
+###
+
+GET http://localhost:3000/rectangulos?base=5
+
+###
+
+GET http://localhost:3000/rectangulos?base=abc&altura=3
