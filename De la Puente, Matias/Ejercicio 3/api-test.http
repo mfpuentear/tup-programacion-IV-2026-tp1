@@ -1,0 +1,30 @@
+@url=http://localhost:3000
+
+GET {{url}}/tareas
+
+###
+
+GET {{url}}/tareas?estado=completadas
+
+###
+
+GET {{url}}/tareas?estado=pendientes
+
+###
+
+POST  {{url}}/tareas
+Content-Type:  application/json
+
+{
+  "nombre": "Ir al gimnasio"
+}
+
+###
+
+PUT   {{url}}/tareas/Comprar%20leche
+Content-Type:  application/json
+
+{
+  "completada": true
+}
+
