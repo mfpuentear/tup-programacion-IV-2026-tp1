@@ -1,0 +1,46 @@
+@url=http://localhost:3000
+
+##### Listar todos los alumnos con promedios y condición
+GET {{url}}/alumnos
+
+##### Filtrar promocionados
+GET {{url}}/alumnos?condicion=promocionado
+
+##### Filtrar aprobados
+GET {{url}}/alumnos?condicion=aprobado
+
+##### Filtrar reprobados
+GET {{url}}/alumnos?condicion=reprobado
+
+##### Consultar por ID
+GET {{url}}/alumnos/1
+
+##### Crear alumno válido
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Tiara Jaque",
+  "notas": [8, 8, 9]
+}
+
+##### Intentar crear alumno duplicado (Tiene que dar error 400)
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Lautaro Jover",
+  "notas": [7, 7, 7]
+}
+
+##### Modificar notas de un alumno
+PUT {{url}}/alumnos/2
+Content-Type: application/json
+
+{
+  "nombre": "Mateo Diaz",
+  "notas": [10, 9, 8]
+}
+
+##### Quitar alumno
+DELETE {{url}}/alumnos/3
