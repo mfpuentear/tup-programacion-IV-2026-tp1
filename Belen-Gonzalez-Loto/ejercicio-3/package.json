@@ -1,0 +1,16 @@
+{
+  "name": "ejercicio-3",
+  "version": "1.0.0",
+  "description": "API para administrar tareas y estados de avance",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Belén Gonzalez Loto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

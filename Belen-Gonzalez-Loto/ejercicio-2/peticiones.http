@@ -1,0 +1,103 @@
+### Crear alumno reprobado
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana Perez",
+    "notas": [4, 5, 6]
+}
+
+
+### Crear alumno aprobado
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan Gomez",
+    "notas": [6, 7, 7]
+}
+
+
+### Crear alumno promocionado
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Lucia Torres",
+    "notas": [8, 9, 10]
+}
+
+
+### Consultar todos los alumnos
+GET http://localhost:3001/api/alumnos
+
+
+### Consultar un alumno por nombre
+GET http://localhost:3001/api/alumnos/Ana%20Perez
+
+
+### Error: alumno duplicado
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ana Perez",
+    "notas": [7, 7, 7]
+}
+
+
+### Error: faltan notas
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos Diaz"
+}
+
+
+### Error: cantidad incorrecta de notas
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos Diaz",
+    "notas": [8, 9]
+}
+
+
+### Error: nota fuera de rango
+POST http://localhost:3001/api/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos Diaz",
+    "notas": [8, 11, 7]
+}
+
+
+### Modificar alumno
+PUT http://localhost:3001/api/alumnos/Ana%20Perez
+Content-Type: application/json
+
+{
+    "nombre": "Ana Perez",
+    "notas": [7, 8, 6]
+}
+
+
+### Error: modificar usando nombre repetido
+PUT http://localhost:3001/api/alumnos/Ana%20Perez
+Content-Type: application/json
+
+{
+    "nombre": "Juan Gomez",
+    "notas": [8, 8, 8]
+}
+
+
+### Eliminar alumno
+DELETE http://localhost:3001/api/alumnos/Lucia%20Torres
+
+
+### Error: consultar alumno inexistente
+GET http://localhost:3001/api/alumnos/Alumno%20Inexistente
