@@ -1,0 +1,15 @@
+
+
+### Calcular Rectangulo
+
+GET http://localhost:3000/calculos/rectangulo?base=10&altura=5
+
+
+### Calcular cuadrado 
+
+GET http://localhost:3000/calculos/rectangulo?base=7&altura=7
+
+### Prueba Validacion 
+
+GET http://localhost:3000/calculos/rectangulo?base=10
+
