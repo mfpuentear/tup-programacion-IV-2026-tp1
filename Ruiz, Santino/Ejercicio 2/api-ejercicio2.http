@@ -1,0 +1,37 @@
+@url=http://localhost:3000
+
+### 1. Listado general
+GET {{url}}/alumnos
+
+### 2. Detalles de un alumno en particular
+GET {{url}}/alumnos/1
+
+### 3. Crear un alumno nuevo (Promocionado)
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Carlos Lopez",
+    "notas": [8, 9, 8]
+}
+
+### 4. Intentar crear un alumno con nombre duplicado 
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan Perez",
+    "notas": [6, 6, 6]
+}
+
+### 5. Modificar notas de un alumno (Cambiará su promedio y condición a "reprobado")
+PUT {{url}}/alumnos/1
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [2, 4, 3]
+}
+
+### 6. Eliminar un alumno
+DELETE {{url}}/alumnos/2

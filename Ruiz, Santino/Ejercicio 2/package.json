@@ -1,0 +1,15 @@
+{
+  "name": "ejercicio-2",
+  "version": "1.0.0",
+  "description": "Resolucion ejercicio 2",
+  "license": "ISC",
+  "author": "Ruiz Santino",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
