@@ -1,0 +1,114 @@
+### Crear tarea pendiente
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Leer material de clase",
+    "completada": false
+}
+
+
+### Crear tarea completada
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar resumen",
+    "completada": true
+}
+
+
+### Crear otra tarea pendiente
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Practicar ejercicios",
+    "completada": false
+}
+
+
+### Consultar todas las tareas
+GET http://localhost:3002/api/tareas
+
+
+### Consultar tareas completadas
+GET http://localhost:3002/api/tareas?estado=completadas
+
+
+### Consultar tareas pendientes
+GET http://localhost:3002/api/tareas?estado=pendientes
+
+
+### Consultar una tarea por nombre
+GET http://localhost:3002/api/tareas/Leer%20material%20de%20clase
+
+
+### Error: tarea duplicada
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Leer material de clase",
+    "completada": false
+}
+
+
+### Error: falta completada
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Hacer actividad"
+}
+
+
+### Error: nombre demasiado corto
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "TP",
+    "completada": false
+}
+
+
+### Error: completada no es boolean
+POST http://localhost:3002/api/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Revisar apuntes",
+    "completada": "si"
+}
+
+
+### Modificar tarea completa
+PUT http://localhost:3002/api/tareas/Leer%20material%20de%20clase
+Content-Type: application/json
+
+{
+    "nombre": "Leer material actualizado",
+    "completada": true
+}
+
+
+### Actualizar solo el estado de una tarea
+PATCH http://localhost:3002/api/tareas/Practicar%20ejercicios/estado
+Content-Type: application/json
+
+{
+    "completada": true
+}
+
+
+### Error: filtro de estado invalido
+GET http://localhost:3002/api/tareas?estado=todas
+
+
+### Eliminar tarea
+DELETE http://localhost:3002/api/tareas/Entregar%20resumen
+
+
+### Error: consultar tarea inexistente
+GET http://localhost:3002/api/tareas/Tarea%20inexistente
