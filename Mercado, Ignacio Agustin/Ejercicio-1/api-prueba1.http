@@ -1,0 +1,37 @@
+@url=http://localhost:3000
+
+### Calcular por GET (Rectangulo)
+GET {{url}}/api/rectangulos/calcular?base=5&altura=10
+
+#### Calcular por GET (Cuadrado)
+GET {{url}}/api/rectangulos/calcular?base=6&altura=6
+
+### Calcular por POST (Rectangulo)
+POST {{url}}/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "base": 12,
+  "altura": 4
+}
+
+### Calcular por POST (Cuadrado)
+POST {{url}}/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "base": 5,
+  "altura": 5
+}
+
+### ERROR GET - Dimensiones invalidas (negativas)
+GET {{url}}/api/rectangulos/calcular?base=-5&altura=10
+
+### ERROR POST - Datos no numericos 
+POST {{url}}/api/rectangulos/calcular
+Content-Type: application/json
+
+{
+  "base": "diez",
+  "altura": "5"
+}
