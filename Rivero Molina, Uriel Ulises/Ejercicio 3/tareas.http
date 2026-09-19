@@ -1,0 +1,96 @@
+@baseUrl = http://localhost:3000
+
+
+### 1. Crear tarea pendiente
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Realizar TP de Programacion IV",
+    "completada": false
+}
+
+
+### 2. Crear tarea completada
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar ExpressJS",
+    "completada": true
+}
+
+
+### 3. Crear otra tarea pendiente
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Preparar el parcial",
+    "completada": false
+}
+
+
+### 4. Crear otra tarea completada
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar TP1",
+    "completada": true
+}
+
+
+### 5. Crear tarea sin indicar estado
+### Debe crearse como pendiente
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Repasar los ejercicios"
+}
+
+
+### 6. Listar todas las tareas
+GET {{baseUrl}}/tareas
+
+
+### 7. Obtener solamente las tareas completadas
+GET {{baseUrl}}/tareas/completadas
+
+
+### 8. Obtener solamente las tareas pendientes
+GET {{baseUrl}}/tareas/pendientes
+
+
+### 9. Intentar crear una tarea con nombre repetido
+### Debe devolver 409
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Entregar TP1",
+    "completada": false
+}
+
+
+### 10. Intentar crear una tarea con nombre vacio
+### Debe devolver 400
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "",
+    "completada": false
+}
+
+
+### 11. Intentar crear una tarea con estado invalido
+### Debe devolver 400
+POST {{baseUrl}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Tarea con error",
+    "completada": "si"
+}

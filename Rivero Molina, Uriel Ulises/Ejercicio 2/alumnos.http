@@ -1,0 +1,121 @@
+@baseUrl = http://localhost:3000
+
+
+### 1. Crear Ariel Rivero - promocionado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ariel Rivero",
+    "notas": [9, 8, 10]
+}
+
+
+### 2. Crear Uriel Rivero - aprobado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Uriel Rivero",
+    "notas": [6, 7, 7]
+}
+
+
+### 3. Crear Tiziano Nahir - reprobado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Tiziano Nahir",
+    "notas": [4, 5, 5]
+}
+
+
+### 4. Crear Ezequiel Leguiza - aprobado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ezequiel Leguiza",
+    "notas": [7, 6, 7]
+}
+
+
+### 5. Crear Martin Reynoso - promocionado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Martin Reynoso",
+    "notas": [8, 9, 8]
+}
+
+
+### 6. Intentar crear un alumno repetido - debe devolver 409
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Ariel Rivero",
+    "notas": [7, 7, 7]
+}
+
+
+### 7. Intentar crear un alumno con una nota invalida - debe devolver 400
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan Guerrero",
+    "notas": [11, 5, 5]
+}
+
+
+### 8. Intentar crear un alumno con menos de 3 notas - debe devolver 400
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Pedro Gomez",
+    "notas": [8, 9]
+}
+
+
+### 9. Listar todos los alumnos
+GET {{baseUrl}}/alumnos
+
+
+### 10. Obtener alumno por ID
+GET {{baseUrl}}/alumnos/1
+
+
+### 11. Obtener alumno que no existe - debe devolver 404
+GET {{baseUrl}}/alumnos/999
+
+
+### 12. Modificar alumno
+PUT {{baseUrl}}/alumnos/2
+Content-Type: application/json
+
+{
+    "nombre": "Uriel Rivero",
+    "notas": [8, 8, 9]
+}
+
+
+### 13. Intentar modificar con un nombre duplicado - debe devolver 409
+PUT {{baseUrl}}/alumnos/2
+Content-Type: application/json
+
+{
+    "nombre": "Ariel Rivero",
+    "notas": [8, 8, 8]
+}
+
+
+### 14. Eliminar alumno
+DELETE {{baseUrl}}/alumnos/4
+
+
+### 15. Intentar eliminar un alumno inexistente - debe devolver 404
+DELETE {{baseUrl}}/alumnos/999

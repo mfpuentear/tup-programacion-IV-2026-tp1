@@ -1,0 +1,14 @@
+### Rectángulo con distintas medidas
+GET http://localhost:3000/api/rectangulo?base=8&altura=5
+
+### Rectángulo que también es cuadrado
+GET http://localhost:3000/api/rectangulo?base=7&altura=7
+
+### Error por no ingresar la altura
+GET http://localhost:3000/api/rectangulo?base=8
+
+### Error por ingresar una medida negativa
+GET http://localhost:3000/api/rectangulo?base=-8&altura=5
+
+### Error por ingresar un valor que no es numérico
+GET http://localhost:3000/api/rectangulo?base=hola&altura=5
