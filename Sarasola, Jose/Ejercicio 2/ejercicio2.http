@@ -1,0 +1,195 @@
+@baseUrl = http://localhost:3002
+
+### Crear alumno reprobado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "notas": [4, 5, 5]
+}
+
+
+### Crear alumno aprobado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Bruno",
+  "notas": [6, 7, 7]
+}
+
+
+### Crear alumno promocionado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carla",
+  "notas": [8, 9, 10]
+}
+
+
+### Listar todos los alumnos
+GET {{baseUrl}}/alumnos
+
+
+### Consultar a Ana
+GET {{baseUrl}}/alumnos/Ana
+
+
+### Consultar a Bruno
+GET {{baseUrl}}/alumnos/Bruno
+
+
+### Consultar a Carla
+GET {{baseUrl}}/alumnos/Carla
+
+
+### Intentar crear alumno con nombre duplicado
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "notas": [8, 8, 8]
+}
+
+
+### Probar duplicado ignorando mayúsculas
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "ana",
+  "notas": [8, 8, 8]
+}
+
+
+### Nombre vacío
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "   ",
+  "notas": [8, 8, 8]
+}
+
+
+### Faltan notas
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego"
+}
+
+
+### Las notas no son un arreglo
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego",
+  "notas": 8
+}
+
+
+### Solo dos notas
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego",
+  "notas": [8, 9]
+}
+
+
+### Cuatro notas
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego",
+  "notas": [8, 9, 7, 10]
+}
+
+
+### Nota no numérica
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego",
+  "notas": [8, "9", 10]
+}
+
+
+### Nota mayor que 10
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego",
+  "notas": [8, 11, 10]
+}
+
+
+### Nota menor que 0
+POST {{baseUrl}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Diego",
+  "notas": [8, -1, 10]
+}
+
+
+### Consultar alumno inexistente
+GET {{baseUrl}}/alumnos/NoExiste
+
+
+### Modificar alumno
+PUT {{baseUrl}}/alumnos/Bruno
+Content-Type: application/json
+
+{
+  "nombre": "Bruno Diaz",
+  "notas": [9, 9, 10]
+}
+
+
+### Consultar alumno modificado
+GET {{baseUrl}}/alumnos/Bruno%20Diaz
+
+
+### Intentar cambiar Carla por un nombre ya existente
+PUT {{baseUrl}}/alumnos/Carla
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "notas": [10, 10, 10]
+}
+
+
+### Modificar alumno inexistente
+PUT {{baseUrl}}/alumnos/NoExiste
+Content-Type: application/json
+
+{
+  "nombre": "Pedro",
+  "notas": [7, 8, 9]
+}
+
+
+### Eliminar alumno
+DELETE {{baseUrl}}/alumnos/Bruno%20Diaz
+
+
+### Consultar alumno eliminado
+GET {{baseUrl}}/alumnos/Bruno%20Diaz
+
+
+### Eliminar alumno inexistente
+DELETE {{baseUrl}}/alumnos/NoExiste
