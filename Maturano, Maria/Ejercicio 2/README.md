@@ -13,3 +13,13 @@ interno.
 
 Definir y fundamentar las decisiones de diseño necesarias para modelar la
 información y exponer la funcionalidad requerida.
+
+## Decisiones de diseño
+
+- **Datos derivados no almacenados:** el promedio y la condición académica se calculan dentro del handler de `GET /alumnos/:nombre` a partir de las notas, y nunca se guardan en el arreglo interno, tal como exige el enunciado.
+
+- **Condición académica en el límite entre 7 y 8:** el enunciado no define qué corresponde a un promedio entre 7 y 8 (por ejemplo, 7.5). Se interpretó que todo promedio mayor a 7 corresponde a "promocionado", dejando "aprobado" limitado al rango [6, 7].
+
+- **Identificador del alumno:** se utiliza el `nombre` como identificador en la URL, ya que el enunciado exige que sea único, evitando así agregar un id autogenerado no solicitado.
+
+- **Actualización parcial en `PUT`:** se permite modificar `nombre`, `notas`, o ambos en una misma solicitud, validando en cada caso que el nuevo valor cumpla las mismas reglas que en la creación (nombre de tipo texto y no duplicado, notas como arreglo de 3 números entre 0 y 10).
