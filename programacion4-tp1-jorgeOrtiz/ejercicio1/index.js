@@ -8,6 +8,8 @@ app.use(express.json())
 let calculos = []; // guardamos la coleccion de recursos mediante un arreglo con el fin de recorrerlo y poder definir el tipo de figura en otra variable
 let id = 1;
 
+
+
 // mediante post se crean nuevos recursos (alto, ancho , area y perimetro).
 //validamos que los datos de tipo numericos sean positivos
 // se calculan el area y perimetro

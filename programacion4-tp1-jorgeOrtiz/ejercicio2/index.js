@@ -6,11 +6,12 @@ app.use(express.json());
 
 
 
-let alumnos = [];
+let alumnos = []; // colección en memoria: simula persistencia y permite operaciones CRUD sobre recursos
 let nextId = 1;
 
 
-// Rutas
+// Rutas ( GET raíz: expone documentación mínima de la API).
+// Nos brinda claridad y descubrimiento de endpoints disponibles.
 app.get('/', (req, res) => {
     res.json({
         message: 'API de Gestión de Alumnos',
@@ -33,7 +34,10 @@ app.get('/', (req, res) => {
 
 
 
-// POST alumno
+// POST → creación con validaciones estrictas para garantizar integridad.
+// POST /api/alumnos: creación de recurso.
+// Nos brinda validación estricta de integridad (nombre único, 3 notas válidas).
+// Se asegura consistencia de datos y se devuelve el recurso creado en JSON.
 
 app.post('/api/alumnos', (req, res) => {
     try {
@@ -108,7 +112,10 @@ app.post('/api/alumnos', (req, res) => {
     }
 });
 
-// GET alumnosss
+
+// GET /api/alumnos: consulta de colección.
+// Fundamenta transformación con map para enriquecer cada recurso con promedio y estado académico.
+// Devuelve lista completa con metadatos (total).
 app.get('/api/alumnos', (req, res) => {
     try {
         const alumnosConEstado = alumnos.map(alumno => {
@@ -134,7 +141,9 @@ app.get('/api/alumnos', (req, res) => {
     }
 });
 
-// GET /api/alumnos/:id - Obtener alumno específico
+// GET /api/alumnos/:id: consulta puntual.
+// Fundamenta validación de ID positivo y búsqueda exacta.
+// Devuelve recurso enriquecido con promedio y estado, coherente con REST.
 app.get('/api/alumnos/:id', (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -164,7 +173,10 @@ app.get('/api/alumnos/:id', (req, res) => {
     }
 });
 
-// PUT /api/alumnos/:id - Actualizar alumno
+// PUT /api/alumnos/:id: actualización de recurso.
+// brinda validación de integridad (nombre único, notas válidas).
+// Se aplica actualización parcial con spread operator, manteniendo consistencia.
+
 app.put('/api/alumnos/:id', (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -214,7 +226,10 @@ app.put('/api/alumnos/:id', (req, res) => {
     }
 });
 
-// DELETE /api/alumnos/:id - Eliminar alumno
+// DELETE /api/alumnos/:id: eliminación de recurso.
+// Fundamenta validación de ID y existencia.
+// Devuelve confirmación con el recurso eliminado, coherente con REST.
+
 app.delete('/api/alumnos/:id', (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -235,7 +250,9 @@ app.delete('/api/alumnos/:id', (req, res) => {
     }
 });
 
-// GET /api/alumnos/nombre/:nombre - Buscar por nombre
+// GET /api/alumnos/nombre/:nombre: búsqueda por atributo.
+// Fundamenta filtrado flexible (includes, case-insensitive).
+// Devuelve colección parcial enriquecida con promedio y estado.
 app.get('/api/alumnos/nombre/:nombre', (req, res) => {
     try {
         const { nombre } = req.params;
