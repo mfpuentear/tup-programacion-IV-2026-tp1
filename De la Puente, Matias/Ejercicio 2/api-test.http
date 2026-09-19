@@ -1,0 +1,24 @@
+@url=http://localhost:3000
+
+GET {{url}}/alumnos
+###
+GET {{url}}/alumnos/juan
+###
+
+POST  {{url}}/alumnos
+Content-Type:  application/json
+
+{
+  "nombre": "lucas",
+  "notas": [6, 5, 7]
+}
+
+###
+
+PUT   {{url}}/alumnos/lucas
+Content-Type:  application/json
+
+{
+  "nombre": "jose",
+  "notas": [3, 3, 5]
+}
