@@ -1,0 +1,53 @@
+###
+@host = http://localhost:3000/api/rectangulos
+
+### 
+
+POST {{host}}
+Content-Type: application/json
+
+{
+  "base": 10,
+  "altura": 5
+}
+
+###
+
+POST {{host}}
+Content-Type: application/json
+
+{
+  "base": 4,
+  "altura": 4
+}
+
+###
+
+POST {{host}}
+Content-Type: application/json
+
+{
+  "base": -2,
+  "altura": 5
+}
+
+###
+
+POST {{host}}
+Content-Type: application/json
+
+{
+  "base": 10
+}
+
+### 
+
+GET {{host}}/calcular?base=8&altura=3
+
+###
+
+GET {{host}}/calcular?base=6&altura=6
+
+###
+
+GET {{host}}/calcular?base=hola&altura=5
