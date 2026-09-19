@@ -18,6 +18,53 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3001/alumnos/Juan Perez
+GET http://localhost:3001/alumnos/Juan%20Perez
 
-GET http://localhost:3001/alumnos/Juan Perez
+###
+
+PUT http://localhost:3001/alumnos/Juan%20Perez
+Content-Type: application/json
+
+{
+  "notas": [6, 6, 6]
+}
+
+###
+
+DELETE http://localhost:3001/alumnos/Juan%20Perez
+
+###
+
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Test Notas Cortas",
+  "notas": [5, 5]
+}
+
+###
+
+PUT http://localhost:3001/alumnos/Juan%20Perez
+Content-Type: application/json
+
+{
+  "nombre": 123
+}
+
+###
+
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "notas": [8, 7, 9]
+}
+
+###
+
+GET http://localhost:3001/alumnos/NoExiste
+
+###
+
+DELETE http://localhost:3001/alumnos/NoExiste

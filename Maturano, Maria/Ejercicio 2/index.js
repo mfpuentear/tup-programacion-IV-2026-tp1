@@ -13,7 +13,7 @@ app.post('/alumnos', (req, res) => {
     return res.status(400).json({ error: 'nombre es requerido y debe ser texto' });
   }
 
-  if (!Array.isArray(notas) || notas.length !== 3 || notas.some(n => typeof n !== 'number' || n < 0 || n > 10)) {
+  if (!Array.isArray(notas) || notas.length !== 3 || notas.some(n => typeof n !== 'number' || Number.isNaN(n) || n < 0 || n > 10)) {
     return res.status(400).json({ error: 'notas debe ser un arreglo de 3 números entre 0 y 10' });
   }
 
@@ -57,6 +57,10 @@ app.put('/alumnos/:nombre', (req, res) => {
     return res.status(404).json({ error: 'alumno no encontrado' });
   }
 
+    if (nuevoNombre !== undefined && typeof nuevoNombre !== 'string') {
+    return res.status(400).json({ error: 'nombre debe ser texto' });
+  }
+
   if (nuevoNombre && nuevoNombre !== nombre) {
     const existe = alumnos.some(a => a.nombre === nuevoNombre);
     if (existe) {
@@ -66,7 +70,7 @@ app.put('/alumnos/:nombre', (req, res) => {
   }
 
   if (notas) {
-    if (!Array.isArray(notas) || notas.length !== 3 || notas.some(n => typeof n !== 'number' || n < 0 || n > 10)) {
+    if (!Array.isArray(notas) || notas.length !== 3 || notas.some(n => typeof n !== 'number' || Number.isNaN(n) || n < 0 || n > 10)) {
       return res.status(400).json({ error: 'notas debe ser un arreglo de 3 números entre 0 y 10' });
     }
     alumno.notas = notas;
