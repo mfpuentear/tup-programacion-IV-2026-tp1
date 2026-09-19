@@ -39,6 +39,8 @@ app.post("/posteos", (req, res) => {
   res.json(calculo);
 });
 
+// GET /llamadas. Esta ruta permite obtener todos los calculos guardados y recorremos el array "calculos" utilizando map(). 
+// Y el map() crea un nuevo array a partir de los elementos del array original
 app.get("/llamadas", (req, res) => {
   calculos = calculos.map(calculo => {
     const tipo =
