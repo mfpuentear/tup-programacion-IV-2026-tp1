@@ -1,0 +1,8 @@
+@url=http://localhost:3000
+
+###
+GET {{url}}/api/rectangulo/calcular?base=18&altura=12
+
+###
+GET {{url}}/api/rectangulo/calcular?base=9&altura=9
+

@@ -1,0 +1,27 @@
+@url=http://localhost:3000
+
+### listar todos los alumnos
+GET {{url}}/api/alumnos
+
+### consultar un alumno puntual (reemplazá el nombre por uno que ya exista)
+GET {{url}}/api/alumnos/Martin Godoy
+
+### crear un alumno nuevo
+POST {{url}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Martin Godoy",
+  "notas": [8, 9, 7]
+}
+
+### modificar las notas de un alumno existente
+PUT {{url}}/api/alumnos/Martin Godoy
+Content-Type: application/json
+
+{
+  "notas": [10, 9, 10]
+}
+
+### eliminar un alumno
+DELETE {{url}}/api/alumnos/Martin Godoy
