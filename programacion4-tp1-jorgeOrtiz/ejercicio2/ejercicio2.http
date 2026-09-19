@@ -1,0 +1,39 @@
+@url = http://localhost:3000
+
+### Crear alumno
+POST {{url}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Jorge Quinteros",
+  "notas": [6, 7, 9]
+}
+
+### crear y duplicar "error"
+POST {{url}}/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Jorge Quinteros",
+  "notas": [5, 7, 4]
+}
+
+### get datos alumnos
+GET {{url}}/api/alumnos
+
+### get alumno puntual
+GET {{url}}/api/alumnos/1
+
+### Actualizar "error"
+PUT {{url}}/api/alumnos/1
+Content-Type: application/json
+
+{
+  "notas": [8, 7, 10]
+}
+
+### Buscar
+GET {{url}}/api/alumnos/nombre/Jorge
+
+### Eliminar
+DELETE {{url}}/api/alumnos/1

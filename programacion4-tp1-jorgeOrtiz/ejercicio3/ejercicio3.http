@@ -1,0 +1,37 @@
+@url = http://localhost:3000
+
+###tareas
+GET {{url}}/tareas
+
+###listas
+GET {{url}}/tareas?estado=listas
+
+###no realizadas
+GET {{url}}/tareas?estado=noRealizadas
+
+###Crear tarea
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Actualizar boletin",
+    "lista": true
+}
+
+###Otra tarea
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "crear web filmaker",
+    "lista": false
+}
+
+###tarea duplicada
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+    "nombre": "crear web filmaker",
+    "lista": false
+}
