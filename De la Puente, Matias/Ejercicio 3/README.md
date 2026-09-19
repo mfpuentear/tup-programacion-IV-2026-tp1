@@ -1,11 +1,20 @@
-# Ejercicio 3
+# Ejercicio 3 
 
-Desarrollar una API con ExpressJS para administrar tareas y su estado de avance.
-Cada tarea deberá contar con un nombre y un estado que indique si fue
-completada, y esta información se conservará en un arreglo interno.
+API REST para la gestión de un listado de tareas con su estado de avance (**completadas** o **pendientes**).
 
-No podrán existir tareas con el mismo nombre. La API deberá facilitar consultas
-que permitan diferenciar las tareas completadas de las pendientes.
+##  Decisiones de Diseño
 
-Definir y fundamentar las decisiones de diseño necesarias para modelar la
-información y exponer la funcionalidad requerida.
+ **Estructura Interna:** Se utiliza un arreglo con objetos del tipo `{ id, nombre, completada }`.
+ **Nombres Únicos:** Se valida que no puedan coexistir dos tareas con el mismo nombre.
+ **Diferenciación por Estado:** Se expone la funcionalidad a través de un *Query Parameter* en `GET /api/tareas?completada=true` o `GET /api/tareas?completada=false`.
+ **Endpoints Expuestos:**
+   `GET /api/tareas`: Consulta global y consulta filtrada por estado.
+   `GET /api/tareas/:id`: Obtiene una tarea específica. 
+
+   `POST /api/tareas`: Agrega una tarea nueva.
+
+   `PUT /api/tareas/:id`: Modifica una tarea existente.
+
+   `PATCH /api/tareas/:id/completar`: Alterna rápidamente entre completada y pendiente.
+   
+   `DELETE /api/tareas/:id`: Elimina una tarea por su ID.
