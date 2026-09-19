@@ -1,0 +1,13 @@
+@url=http://localhost:3000
+
+### Calculo de rectangulo - caso valido (no cuadrado)
+GET {{url}}/rectangulos?base=5&altura=3
+
+### Calculo de rectangulo - caso valido (cuadrado)
+GET {{url}}/rectangulos?base=4&altura=4
+
+### Calculo de rectangulo - base invalida (negativa)
+GET {{url}}/rectangulos?base=-2&altura=3
+
+### Calculo de rectangulo - falta un parametro
+GET {{url}}/rectangulos?base=5

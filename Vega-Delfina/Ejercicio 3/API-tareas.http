@@ -1,0 +1,53 @@
+@url=http://localhost:3000
+
+### Listado completo de tareas
+GET {{url}}/tareas
+
+### Listado de tareas completadas
+GET {{url}}/tareas?completada=true
+
+### Listado de tareas pendientes
+GET {{url}}/tareas?completada=false
+
+### Filtro invalido
+GET {{url}}/tareas?completada=si
+
+### Detalle de una tarea
+GET {{url}}/tareas/1
+
+### Crear tarea
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Limpiar el comedor"
+}
+
+### Crear tarea nombre duplicado 
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Lavar los platos"
+}
+
+### Modificar tarea
+PUT {{url}}/tareas/2
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar para el parcial",
+  "completada": true
+}
+
+### Modificar tarea
+PUT {{url}}/tareas/5
+Content-Type: application/json
+
+{
+  "nombre": "Limpiar el comedor",
+  "completada": true
+}
+
+### Quitar tarea
+DELETE {{url}}/tareas/3

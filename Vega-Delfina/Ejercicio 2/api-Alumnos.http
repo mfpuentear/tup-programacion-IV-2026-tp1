@@ -1,0 +1,40 @@
+@url=http://localhost:3000
+
+### Listado de alumnos
+GET {{url}}/alumnos
+
+### Detalle de un alumno con promedio y condicion
+GET {{url}}/alumnos/1
+
+### Detalle de alumnos inexistente
+GET {{url}}/alumnos/804
+
+###Crear un alumno
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Marcos Brizuela",
+    "notas": [7, 6, 8]
+}
+
+### Crear alumno con nombre duplicado 
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Juan lopez",
+    "notas": [5, 4, 5]
+}
+
+### Crear alumno con notas invalidas
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+    "nombre": "Mirtha Rodas",
+    "notas": [10, 8, 12]
+}
+
+### Quitar un alumno
+DELETE {{url}}/alumnos/1

@@ -1,0 +1,15 @@
+{
+  "name": "ejercicio-1",
+  "version": "1.0.0",
+  "description": "API perimetros y superficies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vega Delfina",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
