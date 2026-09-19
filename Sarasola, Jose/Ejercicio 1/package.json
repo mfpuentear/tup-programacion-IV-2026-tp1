@@ -1,0 +1,12 @@
+{
+  "name": "tp1-ejercicio-1",
+  "version": "1.0.0",
+  "description": "API para calcular perímetro y superficie de rectángulos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,44 @@
+@baseUrl = http://localhost:3001
+
+### Rectángulo válido
+GET {{baseUrl}}/rectangulos?base=5&altura=3
+
+
+### Cuadrado válido
+GET {{baseUrl}}/rectangulos?base=5&altura=5
+
+
+### Dimensiones decimales
+GET {{baseUrl}}/rectangulos?base=7.5&altura=4.2
+
+
+### Falta la base
+GET {{baseUrl}}/rectangulos?altura=5
+
+
+### Falta la altura
+GET {{baseUrl}}/rectangulos?base=5
+
+
+### Base no numérica
+GET {{baseUrl}}/rectangulos?base=hola&altura=5
+
+
+### Altura no numérica
+GET {{baseUrl}}/rectangulos?base=5&altura=hola
+
+
+### Base igual a cero
+GET {{baseUrl}}/rectangulos?base=0&altura=5
+
+
+### Base negativa
+GET {{baseUrl}}/rectangulos?base=-5&altura=5
+
+
+### Altura negativa
+GET {{baseUrl}}/rectangulos?base=5&altura=-3
+
+
+### Ruta inexistente
+GET {{baseUrl}}/otra-ruta
