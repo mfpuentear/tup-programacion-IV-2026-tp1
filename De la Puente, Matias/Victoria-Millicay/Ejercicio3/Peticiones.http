@@ -1,0 +1,52 @@
+### 1. Crear una tarea pendiente
+POST http://localhost:3000/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Completar Práctico de Express",
+  "completada": false
+}
+
+### 2. Crear una tarea completada
+POST http://localhost:3000/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Instalar dependencias del proyecto",
+  "completada": true
+}
+
+### 3. Crear otra tarea pendiente
+POST http://localhost:3000/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Configurar Git y GitHub",
+  "completada": false
+}
+
+### 4. ERROR: Intentar registrar una tarea con el mismo nombre 
+POST http://localhost:3000/api/tareas
+Content-Type: application/json
+
+{
+  "nombre": "completar práctico de express",
+  "completada": true
+}
+
+### 5. Consultar todas las tareas registradas
+GET http://localhost:3000/api/tareas
+
+### 6. Consultar únicamente las tareas completadas
+GET http://localhost:3000/api/tareas?estado=completada
+
+### 7. Consultar únicamente las tareas pendientes
+GET http://localhost:3000/api/tareas?estado=pendiente
+
+### 8.  Actualizar el estado de una tarea a completada
+PUT http://localhost:3000/api/tareas/Configurar%20Git%20y%20GitHub
+Content-Type: application/json
+
+{
+  "completada": true
+}

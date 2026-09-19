@@ -1,0 +1,13 @@
+Fundamentación de Diseño - index.js
+Modelo de Datos y Persistencia Volátil (Arreglo): Se estructuró un arreglo (Array) interno en memoria para administrar las tareas, modelando cada entidad mediante un objeto que contiene los atributos de texto (nombre) y el indicador booleano (completada) para reflejar su estado de avance.
+Garantía Estricta de Unicidad de Nombres: Para cumplir con la regla de negocio que prohíbe duplicar nombres (tanto al crear como al modificar registros), el código normaliza las cadenas mediante trim().toLowerCase() y utiliza el método .some(). Esto previene colisiones por variaciones tipográficas o diferencias entre mayúsculas y minúsculas.
+Gestión de Estados por Defecto y Actualización Flexible: Al registrar una nueva tarea mediante el método POST, el código asigna explícitamente un estado inicial pendiente (completada: false) por defecto si no se especifica de forma válida. Asimismo, el endpoint de actualización (PUT) permite modificar de manera independiente o simultánea el nombre y el estado booleano de la tarea.
+Filtrado Dinámico por Parámetros de Consulta (req.query): El endpoint de lectura (GET /api/tareas) fue diseñado para procesar un parámetro opcional de consulta (?estado=completada o ?estado=pendiente). Esto permite al cliente consumir la información de forma selectiva y eficiente mediante el método .filter(), desacoplando la consulta general de los filtros específicos sin alterar el arreglo original.
+
+Fundamentación de Diseño - peticiones.http
+Uso del Formato .http (Extensión REST Client): Se decidió incorporar este archivo de pruebas en el directorio del ejercicio tal como exigía la cátedra, permitiendo documentar, organizar y ejecutar peticiones HTTP interactivas directamente desde el entorno de desarrollo (VS Code) sin necesidad de herramientas externas.
+Cobertura Integral de Casos de Éxito y Operatividad:
+Se incluyeron peticiones de creación (POST) para registrar nuevas tareas con diferentes estados de avance inicial (pendientes y completadas).
+Se añadió la consulta general (GET) del listado completo y peticiones específicas de filtrado por estado utilizando parámetros de consulta (?estado=completada y ?estado=pendiente).
+Se incorporó una petición de modificación (PUT) orientada a actualizar el estado booleano de una tarea existente mediante parámetros en la ruta (req.params con codificación de espacios).
+Validación Rigurosa de Casos de Error: Se contempló un caso de prueba intencional para verificar la robustez del servidor ante intentos de registrar nombres duplicados (evaluando la normalización de mayúsculas/minúsculas), constatando que la API devuelva correctamente el código de estado HTTP 400 (Bad Request) junto con su mensa

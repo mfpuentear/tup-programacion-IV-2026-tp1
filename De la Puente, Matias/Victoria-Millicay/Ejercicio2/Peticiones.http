@@ -1,0 +1,47 @@
+### 1. Registrar un nuevo alumno con éxito (Promedio Promocionado >= 8)
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "notas": [9, 8, 10]
+}
+
+### 2. Registrar otro alumno (Promedio Aprobado entre 6 y 7.99)
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "notas": [6, 7, 7]
+}
+
+### 3. Registrar un alumno reprobado 
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Lucía",
+  "notas": [4, 5, 5]
+}
+
+### 4. ERROR: Intentar registrar un alumno con el mismo nombre 
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "ana",
+  "notas": [10, 10, 10]
+}
+
+### 5. ERROR: Faltan notas o no son exactamente 3 
+POST http://localhost:3000/api/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Pedro",
+  "notas": [8, 9]
+}
+
+### 6. GET: Consultar la lista completa de alumnos con sus notas, promedios y condiciones calculadas
+GET http://localhost:3000/api/alumnos

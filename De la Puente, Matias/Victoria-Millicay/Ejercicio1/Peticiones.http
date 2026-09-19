@@ -1,0 +1,14 @@
+### 1. Calcular un rectángulo normal
+GET http://localhost:3000/api/rectangulos/calcular?base=10&altura=5
+
+### 2. Calcular un cuadrado 
+GET http://localhost:3000/api/rectangulos/calcular?base=7&altura=7
+
+### 3. Error: Falta un parámetro n
+GET http://localhost:3000/api/rectangulos/calcular?base=10
+
+### 4. Error: Valores en cero o negativos
+GET http://localhost:3000/api/rectangulos/calcular?base=-4&altura=5
+
+### 5. Error: Valores que no son numéricos
+GET http://localhost:3000/api/rectangulos/calcular?base=abc&altura=5    

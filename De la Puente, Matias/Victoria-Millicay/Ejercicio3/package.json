@@ -1,0 +1,15 @@
+{
+  "name": "ejercicio3",
+  "version": "1.0.0",
+  "description": "Api para administrar tareas y su estado de avance",
+  "license": "ISC",
+  "author": "Ana Millicay",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

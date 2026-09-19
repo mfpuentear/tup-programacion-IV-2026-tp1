@@ -1,0 +1,14 @@
+Fundamentación de Diseño - index.js
+Persistencia Volátil en Memoria (Arreglo): Se utilizó un arreglo (Array) interno de objetos para almacenar a los alumnos. Esto modela limpiamente la entidad bajo la estructura { nombre, notas }, cumpliendo estrictamente con el requisito de conservar solo el nombre y las tres calificaciones.
+Validación Estricta de Unicidad: Para cumplir con la regla de negocio que prohíbe duplicar nombres (tanto al registrar), el código normaliza las cadenas mediante trim().toLowerCase() y utiliza el método .some(). Esto evita colisiones o registros repetidos por variaciones tipográficas o de mayúsculas/minúsculas.
+Manejo Dinámico de Datos Derivados (Promedio y Condición): Siguiendo los principios de diseño modular, el promedio aritmético y la condición académica (reprobado, aprobado o promocionado) no se guardan en el arreglo interno. Se calculan dinámicamente en tiempo de ejecución mediante una función auxiliar que procesa las notas con .reduce(), estandariza decimales con .toFixed(2) y evalúa los rangos establecidos de forma eficiente.
+Validación Preventiva en el Cuerpo de la Petición (req.body): Se implementaron guardas de control estrictas que verifican la existencia del nombre y que el arreglo contenga exactamente tres notas numéricas válidas dentro del rango escolar permitido (0 a 10), respondiendo de inmediato con un código HTTP 400 (Bad Request) ante cualquier anomalía.
+
+Fundamentación de Diseño - peticiones.http (Ejercicio 2)
+Uso del Formato .http (Extensión REST Client): Se decidió estructurar el archivo de pruebas utilizando la extensión REST Client de VS Code tal como exigía la cátedra. Esto permite documentar, organizar y ejecutar peticiones interactivas directamente desde el entorno de desarrollo sin la necesidad de herramientas externas o adicionales.
+Cobertura Integral de Casos de Éxito (Estados Académicos):
+Se incluyeron peticiones de registro (POST) variadas para probar todos los rangos y condiciones académicas solicitadas por la cátedra: un alumno promocionado (promedio >= 8), un alumno aprobado (promedio entre 6 y 7.99) y un alumno reprobado (promedio < 6).
+Se añadió una consulta general (GET) para verificar que el listado complete los cálculos derivados de manera correcta para todos los registros almacenados en memoria.
+Validación Rigurosa de Casos de Error (Robustez de la API):  
+Se incorporó intencionalmente una petición con un nombre duplicado en minúsculas ("ana") para comprobar que el sistema valide correctamente la unicidad sin distinguir entre mayúsculas y minúsculas.
+Se agregó una petición con un arreglo de notas incompleto ([8, 9]) para constatar que la API intercepte las fallas de estructura y devuelva el código de estado HTTP 400 (Bad Request) junto con su mensaje descriptivo correspondiente.
