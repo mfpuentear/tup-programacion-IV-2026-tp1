@@ -1,0 +1,34 @@
+@url=http://localhost:3000
+
+##### Listar todos los rectángulos
+GET {{url}}/rectangulos
+
+##### Filtrar solo cuadrados
+GET {{url}}/rectangulos?tipo=cuadrado
+
+##### Filtrar solo rectángulos tradicionales
+GET {{url}}/rectangulos?tipo=rectangulo
+
+##### Detalle por ID
+GET {{url}}/rectangulos/1
+
+##### Crear cuadrado
+POST {{url}}/rectangulos
+Content-Type: application/json
+
+{
+  "base": 6,
+  "altura": 6
+}
+
+##### Modificar figura
+PUT {{url}}/rectangulos/1
+Content-Type: application/json
+
+{
+  "base": 12,
+  "altura": 4
+}
+
+##### Quitar figura
+DELETE {{url}}/rectangulos/2
