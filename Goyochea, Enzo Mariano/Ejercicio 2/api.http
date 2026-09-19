@@ -1,0 +1,16 @@
+@url=http://localhost:3000
+
+GET {{url}}/alumnos
+
+###
+
+POST {{url}}/alumnos/agregar
+
+###
+
+PUT {{url}}/alumnos/1
+
+###
+
+DELETE {{url}}/alumnos/1
+

@@ -1,0 +1,27 @@
+@url=http://localhost:3000
+
+GET {{url}}/
+
+###
+
+GET {{url}}/tareas
+
+###
+
+GET {{url}}/tareas/pendientes
+
+###
+
+GET {{url}}/tareas/completadas
+
+###
+
+POST {{url}}/tareas
+
+###
+
+PUT {{url}}/tareas/1
+// Modificar
+###
+
+DELETE {{url}}/tareas/

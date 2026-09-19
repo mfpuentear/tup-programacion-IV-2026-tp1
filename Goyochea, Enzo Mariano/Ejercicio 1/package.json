@@ -1,0 +1,23 @@
+{
+  "name": "tp1",
+  "version": "1.0.0",
+  "description": "Trabajo Practico 1 - Goyochea Enzo Mariano",
+  "homepage": "https://github.com/duskteal/P4-TP1-fork#readme",
+  "bugs": {
+    "url": "https://github.com/duskteal/P4-TP1-fork/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duskteal/P4-TP1-fork.git"
+  },
+  "license": "ISC",
+  "author": "Goyochea Enzo Mariano",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

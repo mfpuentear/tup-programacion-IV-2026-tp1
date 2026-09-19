@@ -1,0 +1,7 @@
+@url=http://localhost:3000
+
+GET {{url}}/
+
+###
+
+GET {{url}}/rectangulo?alto=2&ancho=4
