@@ -1,0 +1,76 @@
+### Obtener todos los alumnos
+GET http://localhost:3000/alumnos
+
+###
+
+### Obtener un alumno específico (Promocionado)
+GET http://localhost:3000/alumnos/1
+
+###
+
+### Obtener un alumno específico (Aprobado)
+GET http://localhost:3000/alumnos/2
+
+###
+
+### Obtener un alumno específico (Reprobado)
+GET http://localhost:3000/alumnos/3
+
+###
+
+### Crear un nuevo alumno
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Lucas Fernandez",
+  "notas": [7, 8, 9]
+}
+
+###
+
+### Intentar crear un alumno con un nombre existente (Debe fallar - 409 Conflict)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "notas": [10, 10, 10]
+}
+
+###
+
+### Intentar crear un alumno con notas inválidas (Debe fallar - 400 Bad Request)
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Sofia Diaz",
+  "notas": [8, 9]
+}
+
+###
+
+### Modificar un alumno existente
+PUT http://localhost:3000/alumnos/3
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Lopez Ruiz",
+  "notas": [6, 6, 6]
+}
+
+###
+
+### Intentar cambiar el nombre a uno ya ocupado por otro alumno (Debe fallar - 409)
+PUT http://localhost:3000/alumnos/2
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez"
+}
+
+###
+
+### Eliminar un alumno
+DELETE http://localhost:3000/alumnos/3

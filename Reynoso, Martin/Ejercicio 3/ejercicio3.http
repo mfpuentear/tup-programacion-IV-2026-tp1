@@ -1,0 +1,74 @@
+### Obtener todas las tareas
+GET http://localhost:3000/tareas
+
+###
+
+### Obtener únicamente las tareas COMPLETADAS
+GET http://localhost:3000/tareas?completada=true
+
+###
+
+### Obtener únicamente las tareas PENDIENTES
+GET http://localhost:3000/tareas?completada=false
+
+###
+
+### Obtener una tarea por ID
+GET http://localhost:3000/tareas/1
+
+###
+
+### Crear una nueva tarea (por defecto completada = false)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Preparar presentación del proyecto"
+}
+
+###
+
+### Crear una nueva tarea marcándola como completada desde el inicio
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Revisar documentación de Express",
+  "completada": true
+}
+
+###
+
+### Intentar crear una tarea con un nombre repetido (Debe fallar - 409 Conflict)
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Instalar ExpressJS"
+}
+
+###
+
+### Modificar nombre y estado de una tarea existente
+PUT http://localhost:3000/tareas/3
+Content-Type: application/json
+
+{
+  "nombre": "Escribir y ejecutar pruebas HTTP",
+  "completada": true
+}
+
+###
+
+### Cambiar rápidamente el estado a completado mediante PATCH
+PATCH http://localhost:3000/tareas/4/completar
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+###
+
+### Eliminar una tarea por ID
+DELETE http://localhost:3000/tareas/2
