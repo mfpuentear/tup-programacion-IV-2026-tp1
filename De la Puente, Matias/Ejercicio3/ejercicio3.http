@@ -1,0 +1,47 @@
+### 
+@host = http://localhost:3000/api/tareas
+
+### 
+POST {{host}}
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Frances"
+}
+
+### 
+POST {{host}}
+Content-Type: application/json
+
+{
+  "nombre": "Hacer el TP1",
+  "completada": true
+}
+
+### 
+POST {{host}}
+Content-Type: application/json
+
+{
+  "nombre": "Estudiar Frances"
+}
+
+### 
+GET {{host}}
+
+### 
+GET {{host}}?completada=true
+
+### 
+GET {{host}}?completada=false
+
+### 
+PATCH {{host}}/1/completar
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+### 
+DELETE {{host}}/2
