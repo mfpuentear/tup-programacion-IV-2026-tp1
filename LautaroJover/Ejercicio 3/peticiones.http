@@ -1,0 +1,42 @@
+@url=http://localhost:3000
+
+##### Listar todas las tareas
+GET {{url}}/tareas
+
+##### Filtrar solo tareas completadas
+GET {{url}}/tareas?completada=true
+
+##### Filtrar solo tareas pendientes
+GET {{url}}/tareas?completada=false
+
+##### Consultar por ID
+GET {{url}}/tareas/2
+
+##### Crear nueva tarea
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Realizar pull y cerrar el brach",
+  "completada": false
+}
+
+##### Intentar crear tarea duplicada (falla 400)
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Configurar repositorio Git"
+}
+
+##### Marcar tarea como completada
+PUT {{url}}/tareas/2
+Content-Type: application/json
+
+{
+  "nombre": "Implementar Express",
+  "completada": true
+}
+
+##### Eliminar tarea
+DELETE {{url}}/tareas/3
