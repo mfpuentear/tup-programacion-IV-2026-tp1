@@ -1,0 +1,116 @@
+### Listar todos los alumnos
+GET http://localhost:3001/alumnos
+
+### Listar solo los promocionados
+GET http://localhost:3001/alumnos?condicion=promocionado
+
+### Listar solo los aprobados
+GET http://localhost:3001/alumnos?condicion=aprobado
+
+### Listar solo los reprobados
+GET http://localhost:3001/alumnos?condicion=reprobado
+
+### Consultar un alumno (promedio y condición)
+GET http://localhost:3001/alumnos/1
+
+### Crear un alumno
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Carlos López",
+  "notas": [7, 8, 9]
+}
+
+### Modificar un alumno
+PUT http://localhost:3001/alumnos/2
+Content-Type: application/json
+
+{
+  "nombre": "Luis Gómez",
+  "notas": [8, 9, 10]
+}
+
+### Eliminar un alumno
+DELETE http://localhost:3001/alumnos/3
+
+### ERROR 409: nombre repetido al crear
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "ana pérez",
+  "notas": [5, 6, 7]
+}
+
+### ERROR 409: nombre repetido al modificar
+PUT http://localhost:3001/alumnos/2
+Content-Type: application/json
+
+{
+  "nombre": "Ana Pérez",
+  "notas": [5, 6, 7]
+}
+
+### ERROR 400: faltan notas
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Sofía Díaz",
+  "notas": [7, 8]
+}
+
+### ERROR 400: nota fuera de rango
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Sofía Díaz",
+  "notas": [7, 11, -1]
+}
+
+### ERROR 400: nota no numérica
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Sofía Díaz",
+  "notas": [7, "ocho", 9]
+}
+
+### ERROR 400: nombre vacío
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "   ",
+  "notas": [7, 8, 9]
+}
+
+### ERROR 400: JSON inválido
+POST http://localhost:3001/alumnos
+Content-Type: application/json
+
+{ "nombre": "Sofía Díaz", "notas": [7, 8, 9
+
+### ERROR 400: id inválido
+GET http://localhost:3001/alumnos/abc
+
+### ERROR 400: filtro de condición inválido
+GET http://localhost:3001/alumnos?condicion=excelente
+
+### ERROR 404: alumno inexistente
+GET http://localhost:3001/alumnos/999
+
+### ERROR 404: modificar alumno inexistente
+PUT http://localhost:3001/alumnos/999
+Content-Type: application/json
+
+{
+  "nombre": "Nadie",
+  "notas": [5, 5, 5]
+}
+
+### ERROR 404: eliminar alumno inexistente
+DELETE http://localhost:3001/alumnos/999

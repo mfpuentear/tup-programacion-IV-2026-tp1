@@ -1,0 +1,23 @@
+### Perímetro de un rectángulo
+GET http://localhost:3000/rectangulos/perimetro?base=5&altura=3
+
+### Superficie de un cuadrado (esCuadrado: true)
+GET http://localhost:3000/rectangulos/superficie?base=4&altura=4
+
+### Cálculo completo con decimales
+GET http://localhost:3000/rectangulos/calculo?base=2.5&altura=4
+
+### ERROR: falta altura
+GET http://localhost:3000/rectangulos/perimetro?base=5
+
+### ERROR: no numérico
+GET http://localhost:3000/rectangulos/superficie?base=abc&altura=3
+
+### ERROR: valor negativo
+GET http://localhost:3000/rectangulos/calculo?base=-2&altura=3
+
+### ERROR: cero
+GET http://localhost:3000/rectangulos/calculo?base=0&altura=3
+
+### ERROR: ruta inexistente
+GET http://localhost:3000/rectangulos/diagonal
